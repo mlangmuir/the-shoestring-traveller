@@ -1,0 +1,14 @@
+[
+    {
+        "id": "001",
+        "title": "title",
+        "imageSrc": "url",
+        "travelTip": true,
+        "attractions": true,
+        "featured": true,
+        "continent": "continent",
+        "region": "region",
+        "country": "country",
+        "text": "text"
+    }
+]
