@@ -1,14 +1,237 @@
 [
     {
-        "id": "001",
-        "title": "title",
-        "imageSrc": "url",
+        "id": "0001",
+        "title": "Morocco: The Perfect Budget Destination",
+        "date": "August 22, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661220191/Article%20Photos%20-%20The%20Shoestring%20Traveller/Morocco:%20The%20Perfect%20Budget%20Destination/camel-riding-merzouga.jpg",
+                "imgCaption": "Camel riding in the Merzouga desert."
+            },
+        "paragraphs": [
+            {
+                "text": "Looking for the perfect destination for a 2-week budget vacation? Look no further than Morocco! Not only is the accommodation and food affordable, it is generally cheap to fly there from Europe. This makes Morocco one of the best destinations in the world for frugal travellers."
+            },
+            {
+                "subHeading": "Getting to Morocco",
+                "text": "Getting to Morocco from Europe is surprisingly inexpensive! My flight from London to Fez only set me back £27 (about $32 USD) on Ryanair. I found that even after spending extra to add a carry-on bag (Ryanair only allows a personal item with the base fare), I found myself spending less on the flight than I would on a full-course meal at a moderately-priced London restaurant."
+            },
+            {
+                "subHeading": "Accomodation",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661218824/Article%20Photos%20-%20The%20Shoestring%20Traveller/Morocco:%20The%20Perfect%20Budget%20Destination/funky-fes.jpg",
+                "imgCaption": "The view from the rooftop terrace at Funky Fes.",
+                "text": "While hotels in Morocco are affordable relative to North America and Europe, hostels are where you will really save the most. When I was in Fez, I spent only $6 USD a night to sleep on a bunk bed in a hostel dormitory. Not to mention, a traditional all-you-can-eat Moroccan breakfast was included in the price! And if that’s not enough to convince you to stay at a Moroccan hostel, most of them have rooftop terraces that offer stunning views of the city!"
+            },
+            {
+                "text": "However, if you prefer to spend a little more for privacy, hotels are also extremely inexpensive. Depending on the time of year, you can get deals on places such as Pacha Palace in Fez for just $35 USD per night, breakfast included!"
+            },
+            {
+                "subHeading": "Food",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661220092/Article%20Photos%20-%20The%20Shoestring%20Traveller/Morocco:%20The%20Perfect%20Budget%20Destination/lamb-head-marrakesh.jpg",
+                "imgCaption": "Street food from the Jemaa el-Fnaa market in Marrakesh",
+                "text": "Dining in Morocco is generally inexpensive if you manage to avoid tourist traps. And it can be very easy to fall into one without even realizing it. When I was in Chefchaouen, for instance, my tour guide intentionally led us to a restaurant that served tagine for 100 Moroccan dirhams (about 10 USD). Knowing I could get a better price somewhere else, I left the restaurant after the tour guide had sat us down and had a tagine at a restaurant five minutes away for 35 dirhams (about 3 USD). Moreover, dining out in Morocco is inexpensive if you are able to avoid these types of tourist traps."
+            },
+            {
+                "text": "Another way to save money on food while in Morocco is to eat at the markets. One disclaimer that I have is that if you are from North America or Europe, it would be a good idea to visit your local pharmacy to pick up some probiotics to bring along with you on your trip. I certainly overestimated the strength of my stomach and felt a little under the weather for a couple days. Nevertheless, as long as you take precautions, street food in Morocco is not only delicious, it is also generally the cheapest option. In some cases, you can even bargain with the vendors for a better price."
+            },
+            {
+                "text": "While I was in Marrakesh, I visited the Jemma el-Fnaa (the main marketplace of the medina) with three of my hostel-mates. There, we sat down at a vendor that was serving lamb head and got to enjoy a meal for four for just 70 Moroccan dirhams (about 6 USD)."
+            },
+            {
+                "subHeading": "Are you convinced yet?",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661278140/Article%20Photos%20-%20The%20Shoestring%20Traveller/Morocco:%20The%20Perfect%20Budget%20Destination/on-camel-merzouga.jpg",
+                "imgCaption": "The Shoestring Traveller with his camel in the Merzouga desert.",
+                "text": "With the rock bottom prices Morocco has to offer, the country is without a doubt a paradise for frugal travellers with a sense of adventure. So start planning your two-week budget adventure to this beautiful country. Just beware of tourist traps and remember to always bargain for a better price!"
+            }
+        ],
         "travelTip": true,
         "attractions": true,
         "featured": true,
-        "continent": "continent",
-        "region": "region",
-        "country": "country",
-        "text": "text"
+        "continent": "Africa",
+        "region": "North Africa",
+        "country": "Morocco"
+    },
+    {
+        "id": "0002",
+        "title": "How to Travel on a Shoestring Budget",
+        "date": "August 23, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661280710/Article%20Photos%20-%20The%20Shoestring%20Traveller/How%20to%20Travel%20on%20a%20Shoestring%20Budget/budget-cover-img.png"
+            },
+        "paragraphs": [
+            {
+                "text": "Feel that travel bug itching inside of you but don’t feel like you have the means to go explore the world? Fret not! I am here to shed some light on the subject. Travelling does not need to cost tens of thousands of dollars! When I was 22, I visited six different Western European countries while spending just a couple thousand dollars. Here are some tips I followed that enabled me to book my dream vacation on a shoestring budget."
+            },
+            {
+                "subHeading": "Tip #1: Book your air fare well in advance and elect to go during the offseason",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661282887/Article%20Photos%20-%20The%20Shoestring%20Traveller/How%20to%20Travel%20on%20a%20Shoestring%20Budget/tip-1.jpg",
+                "imgCaption": "Seashore of Reykjavik, February 2019",
+                "text": "When you book a vacation, one of the most expensive purchases you will make is your airfare. Moreover, being able to save as much as possible on your ticket will leave you room in the budget for activities you would like to take part in during your stay."
+            },
+            {
+                "text": "The key to getting the best deal on your airfare is to book well in advance and go during the offseason. In my experience, February and October are months where you can get the most bang for your buck. Air tickets are affordable but the weather is not too extreme either. For example, if you’re planning to go to Europe, the weather during these months can be cold but usually not unbearable."
+            },
+            {
+                "text": "In September of 2018, I perhaps found the deal of a lifetime. People still have a hard time believing me when I tell them this but I managed to book a round-trip ticket from Seattle to London, with a three-day stopover in Iceland on the way back for just $436 CAD (about $336 USD)! I booked this almost-too-good-to-be-true deal with Icelandair for the first two weeks of February. Yes, Iceland was cold in February. I am Canadian though so 0 degrees Celsius (32 degrees Fahrenheit) was nothing that I wasn’t used to. I really didn’t mind the cold and thoroughly enjoyed my time exploring the winter wonderland that is Iceland in February."
+            },
+            {
+                "subHeading": "Tip #2: Stay in hostels instead of hotels",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661289037/Article%20Photos%20-%20The%20Shoestring%20Traveller/How%20to%20Travel%20on%20a%20Shoestring%20Budget/tip-2.webp",
+                "imgCaption": "The Happy Porto hostel along the Douro River in Porto, Portugal",
+                "text": "I love hostels. Not only are they extremely affordable, it is an excellent way to meet fellow travellers! Obviously, this tip is not as applicable if you have a family with two kids to take care of. If you are able to, however, staying at a hostel can save you hundreds, if not thousands of dollars on a vacation."
+            },
+            {
+                "text": "My stay at the Happy Porto hostel in October of 2019 cost me €14 a night (also around $14 USD). A hostel in France or Germany might set you back at least €30, but it is still a bargain when compared to the price of a hotel."
+            },
+            {
+                "text": "Staying at hostels has also afforded me the opportunity to meet all kinds of wonderful people from different parts of the globe. In countries like South Africa, where it is considered unsafe to go out alone at night, meeting fellow travellers can allow you to enjoy nighttime activities in a safe manner."
+            },
+            {
+                "subHeading": "Tip #3: Limit the times you eat out and prepare your own meals",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661289687/Article%20Photos%20-%20The%20Shoestring%20Traveller/How%20to%20Travel%20on%20a%20Shoestring%20Budget/tip-3.png",
+                "text": "Dining out can get extremely pricy; especially in Europe! That is why having the capacity to cook your own food is important while travelling on a shoestring budget. Most hostels are equipped with kitchens, which allows budget travellers to save big on food expenses."
+            },
+            {
+                "text": "If you are travelling with a family, an Airbnb might be the next best option seeing as they are also equipped with kitchens. They generally cost just a tad less than hotels but the savings you can manage by having a kitchen make them a more inexpensive option overall."
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661318602/Article%20Photos%20-%20The%20Shoestring%20Traveller/How%20to%20Travel%20on%20a%20Shoestring%20Budget/spaghetti-marinara.webp",
+                "imgCaption": "Spaghetti marinara",
+                "text": "To give you an idea of how much you can save by cooking your own meals, let me share my experience in Rome. On my first day in the city, I decided to order spaghetti marinara at a restaurant close to the Vatican, which was probably not the place to go if I wanted the best deal. Nevertheless, I was quite hungry after a full day of sightseeing at the Vatican so I decided to go there and order the most inexpensive meal on the menu. That spaghetti marinara set me back €6, which was not bad for an Italian restaurant but I knew I could probably make it myself for a fraction of the price."
+            },
+            {
+                "text": "The next day, I decided to visit the local supermarket to pick up a 30-cent box of spaghetti and some fresh tomatoes. I made the pasta and seasoned it with salt and pepper that was provided in the hostel kitchen. That delicious pan of spaghetti cost me only about two or three euros to make and was good for three of my meals while I was in Rome."
+            },{
+                "text": "On the other hand, dining out is still an experience that you want to have at least once in every country or city that you visit. That is why if I am on a shoestring budget, I have a rule that I am to only eat out once in every city I visit. I generally choose a restaurant that serves the local cuisine and I try to avoid restaurants in tourist locations as much as possible. Moreover, it is okay to eat out as long as you stay true to your budget and cook for the majority of your meals."
+            },
+            {
+                "subHeading": "Tip #4: Pack light and book flights with budget airlines",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661373816/Article%20Photos%20-%20The%20Shoestring%20Traveller/How%20to%20Travel%20on%20a%20Shoestring%20Budget/tip-4.png",
+                "imgCaption": "Ryanair offers air fares at rock bottom prices but only a personal item is included in the base fare.",
+                "text": "This is perhaps the one piece of advice that most people have difficulty following. I consider packing to be a skill and becoming a good packer can potentially save you a lot of money. This is because packing light can afford you the opportunity to fly on budget airlines such as Ryanair, Spirit Airlines and Flair Airlines. These airlines offer flights at rock bottom prices but as is the case with most things in life, there is a catch: only a personal item is allowed with the base fare."
+            },
+            {
+                "text": "Depending on the budget airline, adding a carry-on luggage can get quite expensive. Therefore, I always prefer to travel with just a personal item if I can. I once travelled for two months around Europe and Africa with just a regular-sized backpack and it probably saved me hundreds of dollars of baggage fees."
+            },
+            {
+                "text": "While travelling for a long period of time with just a personal item may seem like an impossible feat, it is actually a lot more doable than you might think. This is where packing cubes are your best friend! Rolling up your clothes and fitting them tightly into packing cubes is the best way to save as much space as possible. Incredibly, I was able to fit five changes of clothes into two packing cubes. Besides my clothes, I only had some toiletries, a phone charger and a water bottle to carry with me. So pack like a minimalist and you will feel the physical and financial burden lifted off your shoulders when you travel!"
+            },
+            {
+                "subHeading": "Have fun!",
+                "text": "If you are able to follow these four tips, I am positive that you will be able to save hundreds, if not thousands of dollars on your dream vacation. However, the most important thing is that you have fun and enjoy your trip. I travel this way because I love to save money so that I am able to travel longer. I understand, however, that this may not work for a lot of people. If you are travelling with kids, for example, a hostel may be out of the question. However, you can still opt to stay at an Airbnb and save money by cooking your own meals. The bottom line is to find a way to be frugal without depriving yourself from having the experience of a lifetime!"
+            }
+        ],
+        "travelTip": true,
+        "attractions": false,
+        "featured": true
+    },
+    {
+        "id": "0003",
+        "title": "",
+        "date": "August 24, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "",
+                "imgCaption": ""
+            },
+        "paragraphs": [
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            },
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            },
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            },
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            },
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            },
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            }
+        ],
+        "travelTip": false,
+        "attractions": true,
+        "featured": true,
+        "continent": "Africa",
+        "region": "Southern Africa",
+        "country": ["Botswana", "Namibia"]
+    }
+    {
+        "id": "0004",
+        "title": "5 Must-Do Activities in Porto for Under €20",
+        "date": "August 25, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661450840/Article%20Photos%20-%20The%20Shoestring%20Traveller/5%20Must-Do%20Activities%20in%20Porto%2C%20Portugal/IMG_4137_ejrz6z.jpg",
+                "imgCaption": "The Dom Luís I Bridge crossing the Douro River."
+            },
+        "paragraphs": [
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            },
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            },
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            },
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            },
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            },
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            }
+        ],
+        "travelTip": false,
+        "attractions": true,
+        "featured": true,
+        "continent": "Europe",
+        "region": "Western Europe",
+        "country": "Portugal"
     }
 ]

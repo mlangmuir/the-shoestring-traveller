@@ -1,13 +1,39 @@
-const express = require("express");
+const express = require('express');
+const morgan = require('morgan');
+const { getAllArticles, getArticleById } = require("./handlers");
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 
-const app = express();
+express()
+    .use(function (req, res, next) {
+    res.header(
+        'Access-Control-Allow-Methods',
+        'OPTIONS, HEAD, GET, PUT, POST, DELETE'
+    );
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    next();
+    })
+    .use(morgan('tiny'))
+    .use(express.static('./server/assets'))
+    .use(express.json())
+    .use(express.urlencoded({ extended: false }))
+    .use('/', express.static(__dirname + '/'))
 
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
-});
+    // REST endpoints
 
-app.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
-});
+    .get("/api/articles", getAllArticles)
+
+    .get("/api/articles/id/:articleId", getArticleById)
+
+    //Invalid route
+    .get("*", (req, res) => {
+        res.status(404).json({
+        status: 404,
+        message: "This is obviously not what you are looking for.",
+        });
+    })
+
+    .listen(PORT, () => console.info(`Listening on port ${PORT}`));

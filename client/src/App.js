@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GlobalStyle from "./globalStyles";
-import Header from "./components/Header/Header";
+import GlobalStyle from "./globalStyle";
+import Header from "./components/Header";
 import Home from "./components/Home";
 import About from "./components/About";
 import Destinations from "./components/Destinations/Destinations";
@@ -25,7 +25,7 @@ const App = () => {
             <Route exact path="/travel-tips" element={<TravelTips />} />
             <Route exact path="/gallery" element={<Gallery />} />
             <Route exact path="/contact" element={<Contact />} />
-            <Route exact path="/id/:postId" element={<Article />} />
+            <Route exact path="articles/id/:articleId" element={<Article />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         <Footer/>
