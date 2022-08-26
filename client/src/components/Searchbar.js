@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { useState, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Context } from "../Context";
 
 const Searchbar = () => {
 
     const navigate = useNavigate();
 
     const search = useLocation().search;
+
+    const { allArticles } = useContext(Context);
 
     // allows search bar value to be saved in useState and URLSearchParams
     const [value, setValue] = useState(new URLSearchParams(search).get("name") || '');
@@ -15,9 +18,9 @@ const Searchbar = () => {
     const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
     const [isFocus, setIsFocus] = useState(false);
 
-    // when user selects item from suggestions dropdown, they are redirected to item detail page
+    // when user selects article from suggestions dropdown, they are redirected to article detail page
     const handleSelect=(suggestion) => {
-        navigate(`id/${suggestion}`);
+        navigate(`/articles/id/${suggestion}`);
     }
 
     return (
@@ -33,13 +36,13 @@ const Searchbar = () => {
                 placeholder="Where would you like to go?"
                 value={value}
                 onChange={(ev) => {
-                    setValue(ev.target.value)
-                    // const filteredArray = items.filter((item) => {
-                    //     if (ev.target.value.length >= 1 && item?.name.toLowerCase().includes(ev.target.value.toLowerCase())) {
-                    //         return item;
-                    //     }
-                    // });
-                    // setFilteredSuggestions(filteredArray);
+                    setValue(ev.target.value);
+                    const filteredArray = allArticles.filter((article) => {
+                        if (ev.target.value.length >= 1 && article?.title.toLowerCase().includes(ev.target.value.toLowerCase())) {
+                            return article;
+                        }
+                    });
+                    setFilteredSuggestions(filteredArray);
                 }}
                 onKeyDown={(ev) => {
                     switch (ev.key) {
@@ -48,9 +51,9 @@ const Searchbar = () => {
                             setIsFocus(false);
                             window.scrollTo(0, 0)
                             if (value.length >= 1 && filteredSuggestions.length > 0) {
-                                handleSelect(filteredSuggestions[selectedSuggestionIndex]?._id)
+                                handleSelect(filteredSuggestions[selectedSuggestionIndex]?.id)
                             }
-                            navigate('/items?name='+value)
+                            // navigate('/articles?name='+value)
                             return;
                         }
                         case "ArrowUp": {
@@ -68,7 +71,7 @@ const Searchbar = () => {
             />
             {value.length >= 1 && filteredSuggestions.length > 0 && isFocus &&
                 <List>
-                    {filteredSuggestions.map((item, index) => {
+                    {filteredSuggestions.map((article, index) => {
                         if (index <= 6 && selectedSuggestionIndex <= 7 && selectedSuggestionIndex >= -2) {
                             const isSelected = selectedSuggestionIndex  - index;
                             if (selectedSuggestionIndex === (filteredSuggestions.length + 1)) {
@@ -87,36 +90,22 @@ const Searchbar = () => {
                                         }}
                                         onKeyDown={(ev) => {
                                             if (ev.key === "Enter") {
-                                                handleSelect(item?._id)
+                                                handleSelect(article?.id)
                                             }
                                         }}
                                         onClick={(ev) => {
                                             ev.preventDefault();
                                             setIsFocus(true);
                                             if (value.length >= 1 && filteredSuggestions.length > 0) {
-                                                handleSelect(filteredSuggestions[selectedSuggestionIndex]?._id)
+                                                handleSelect(filteredSuggestions[selectedSuggestionIndex]?.id)
                                             }
                                         }}
                                     >
                                         <span style={{fontStyle: "bold"}}>
-                                            {item?.name.slice(0, value.length)}
+                                            {article?.title.slice(0, value.length)}
                                             <Prediction>
-                                                {item?.name.slice(value.length, item?.name.length)}
+                                                {article?.title.slice(value.length, article?.title.length)}
                                             </Prediction>
-                                        </span>
-                                        <span style={{
-                                            fontSize: "16px",
-                                            fontStyle: "italic"}}
-                                        > 
-                                            &nbsp;in&nbsp;
-                                        </span>
-                                        <span style={{
-                                            fontSize: "16px",
-                                            fontStyle: "italic",
-                                            color: "purple",
-                                        }}
-                                        >
-                                            {item?.category}
                                         </span>
                                     </Suggestion>
                                 </div>
@@ -150,7 +139,8 @@ const Input = styled.input`
 `;
 
 const List = styled.ul`
-    width: 45%;
+    z-index: 999;
+    width: 40%;
     border: 1px solid white;
     border-radius: 5px;
     box-shadow: 0 3px 6px 0 lightgrey;

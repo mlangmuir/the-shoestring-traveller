@@ -1,8 +1,10 @@
+"use strict";
+
 const express = require('express');
 const morgan = require('morgan');
 const { getAllArticles, getArticleById } = require("./handlers");
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 express()
     .use(function (req, res, next) {
@@ -17,7 +19,6 @@ express()
     next();
     })
     .use(morgan('tiny'))
-    .use(express.static('./server/assets'))
     .use(express.json())
     .use(express.urlencoded({ extended: false }))
     .use('/', express.static(__dirname + '/'))

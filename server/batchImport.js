@@ -1,7 +1,6 @@
 const { MongoClient } = require("mongodb");
 
 require("dotenv").config();
-
 const { MONGO_URI } = process.env;
 
 const options = {
@@ -11,8 +10,7 @@ const options = {
 
 const articles = require("./articles.json");
 
-
-const batchImport = async (req, res)=> {
+const batchImport = async ()=> {
 
     const client = new MongoClient(MONGO_URI, options);
 

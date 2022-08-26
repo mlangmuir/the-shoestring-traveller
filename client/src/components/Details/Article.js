@@ -16,7 +16,6 @@ const Article = () => {
         fetch(`/api/articles/id/${articleId}`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setArticleData(data.data);
                 setParagraphs(data.data.paragraphs)
             })
@@ -26,6 +25,7 @@ const Article = () => {
         <Wrapper>
             <Container>
                 {articleData.title && <Title>{articleData.title}</Title>}
+                {articleData.title && <Date>{articleData.date}</Date>}
                 {articleData.coverImgSrc?.imgSrc && <CoverImage src={articleData.coverImgSrc.imgSrc} />}
                 {articleData.coverImgSrc?.imgCaption && <CoverCaption>{articleData.coverImgSrc.imgCaption}</CoverCaption>}
                 <>
@@ -53,12 +53,17 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-    width: 50%;
+    width: 60%;
 `;
 
 const Title = styled.h1`
     text-align: center;
     font-size: 40px;
+`;
+
+const Date = styled.p`
+    text-align: center;
+    font-size: 18px;
 `;
 
 const CoverImage = styled.img`
@@ -68,6 +73,8 @@ const CoverImage = styled.img`
 const CoverCaption = styled.p`
     font-size: 18px;
     margin-bottom: 50px;
+    font-weight: 700;
+    text-align: center;
 `;
 
 const SubHeading = styled.h2`
@@ -82,10 +89,12 @@ const SubImage = styled.img`
 const SubCaption = styled.p`
     font-size: 18px;
     margin-bottom: 50px;
+    font-weight: 700;
+    text-align: center;
 `;
 
 const Paragraph = styled.p`
-    font-size: 24px;
+    font-size: 22px;
     text-align: justify;
     line-height: 40px;
 `;
