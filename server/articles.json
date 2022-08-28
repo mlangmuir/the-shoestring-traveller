@@ -170,10 +170,10 @@
             {
                 "subHeading": "The Safari",
                 "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661461631/Article%20Photos%20-%20The%20Shoestring%20Traveller/Chobe%20Safari:%20A%20Must-Do%20Excursion%20from%20Victoria%20Falls/IMG_6138_fuqrlo.jpg",
-                "videoSrc": "https://res.cloudinary.com/didxdrmjj/video/upload/v1661400049/Article%20Photos%20-%20The%20Shoestring%20Traveller/Chobe%20Safari:%20A%20Must-Do%20Excursion%20from%20Victoria%20Falls/giraffe-video.mov",
                 "text": "After enjoying a nice buffet at a lodge where I tried warthog for the first time, we went on our safari around Chobe National Park. The safari was a pretty bumpy ride that took us through some rough terrains as we sat in awe while admiring the elephants that would roam around our vehicle."
             },
             {
+                "videoSrc": "https://www.youtube.com/embed/Cl_WDjBh7ew",
                 "text": "The most memorable experience, however, was when a giraffe walked right in front of our safari vehicle. To see this 15-foot giant up close was absolutely magnificent and made the experience worth every dollar I spent."
             },
             {
@@ -344,5 +344,93 @@
         "continent": "Africa",
         "region": "North Africa",
         "country": "Morocco"
+    },
+    {
+        "id": "0006",
+        "title": "20 Photos that Prove Cape Town is One of the Most Beautiful Cities in the World",
+        "date": "August 26, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661495928/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6636_g6l0iu.jpg",
+                "imgCaption": "View of Table Mountain from Robben Island"
+            },
+        "paragraphs": [
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661495774/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6483_qy7fwp.jpg",
+                "imgCaption": "V&A Waterfront"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661495886/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6609_omrjhk.jpg",
+                "imgCaption": "Bo Kaap neighbourhood, characterized by its colourful architecture"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496003/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6735_xwek8q.jpg",
+                "imgCaption": "Stellenbosch, about an hour east of Cape Town proper"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661495974/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6707_mixomt.jpg",
+                "imgCaption": "Wine tasting in Stellenbosch"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496028/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6750_uca5iu.jpg",
+                "imgCaption": "Stellenbosch duck parade"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496117/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6857_iayzsy.jpg",
+                "imgCaption": "Cape of Good Hope, where the Atlantic and Indian oceans meet"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496093/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6836_kq5vzn.jpg"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496105/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6851_xjgi5z.jpg"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496184/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6928_gp7cpz.jpg"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496062/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6792_rlrewy.jpg"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661495957/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6684_ypagwr.jpg",
+                "imgCaption": "View of Table Mountain from Bloubergstrand Beach"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496412/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_7070_qxpfkv.jpg",
+                "imgCaption": "The Shoestring Traveller admiring the view of Cape Town and Robben Island from the top of Lion's Head."
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496389/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_7044_mfdm1p.jpg"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496373/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_7039_wv4vrk.jpg"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496631/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_7089_gn2xsi.jpg",
+                "imgCaption": "Kirstenbosch National Botanical Garden"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496317/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6955_kgbpnt.jpg",
+                "imgCaption": "African penguin colony on Boulders Beach"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496297/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6988_m2eoro.jpg"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496358/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_7026_z1ymeh.jpg"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496062/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6792_rlrewy.jpg"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496233/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6993_iff6vq.jpg"
+            }
+        ],
+        "travelTip": false,
+        "attractions": true,
+        "featured": true,
+        "continent": "Africa",
+        "region": "Southern Africa",
+        "country": "South Africa"
     }
 ]

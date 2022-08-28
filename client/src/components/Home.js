@@ -4,10 +4,11 @@ import Searchbar from "./Searchbar";
 import { useContext } from "react";
 import { Context } from "../Context";
 import { useNavigate } from "react-router-dom";
+import LoadingPage from "./LoadingPage";
 
 const Home = () => {
 
-    const { allArticles } = useContext(Context);
+    const { allArticles, isLoading, setIsLoading } = useContext(Context);
 
     console.log(allArticles)
 
@@ -15,42 +16,48 @@ const Home = () => {
 
     return (
         <>
-            <BannerWrapper>
-                <BannerTextDiv>
-                    <BannerTitle>Your guide to planning your dream adventure on a budget!</BannerTitle>
-                    <BannerText>Discover your dream destination:</BannerText>
-                    <Searchbar/>
-                </BannerTextDiv>
-                <CoverShade />
-                <Banner src={capeTownBanner} alt="View of Cape Town from the top of Lion's Head"/>
-            </BannerWrapper>
-            <Container>
-                <FeaturedWrapper>
-                    <FeaturedTitle>Featured from the Blog</FeaturedTitle>
-                        <FeaturedGrid>
-                            {allArticles.map((article, index) => {
-                                return (
-                                    <div key={index}>
-                                        {article.featured &&
-                                            <FeaturedItem
-                                                onClick={ () => {
-                                                    navigate(`/articles/id/${article.id}`)
-                                                }}
-                                            >
-                                                <FeaturedPhoto src={article.coverImgSrc.imgSrc} />
-                                                <FeaturedCaption>{article.title}</FeaturedCaption>
-                                            </FeaturedItem>
-                                        }
-                                    </div>
-                                )
-                            })}
-                        </FeaturedGrid>
-                </FeaturedWrapper>
-                <AboutWrapper>
-                    <AboutTitle>About the Shoestring Traveller</AboutTitle>
-                    <AboutText></AboutText>
-                </AboutWrapper>
-            </Container>
+            {!isLoading ?
+            <>
+                <BannerWrapper>
+                    <BannerTextDiv>
+                        <BannerTitle>Your guide to planning your dream adventure on a budget!</BannerTitle>
+                        <BannerText>Discover your dream destination:</BannerText>
+                        <Searchbar/>
+                    </BannerTextDiv>
+                    <CoverShade />
+                    <Banner src={capeTownBanner} alt="View of Cape Town from the top of Lion's Head"/>
+                </BannerWrapper>
+                <Container>
+                    <FeaturedWrapper>
+                        <FeaturedTitle>Featured from the Blog</FeaturedTitle>
+                            <FeaturedGrid>
+                                {allArticles.map((article, index) => {
+                                    return (
+                                        <div key={index}>
+                                            {article.featured &&
+                                                <FeaturedItem
+                                                    onClick={ () => {
+                                                        navigate(`/articles/id/${article.id}`);
+                                                        window.scrollTo(0,0);
+                                                    }}
+                                                >
+                                                    <FeaturedPhoto src={article.coverImgSrc.imgSrc} />
+                                                    <FeaturedCaption>{article.title}</FeaturedCaption>
+                                                </FeaturedItem>
+                                            }
+                                        </div>
+                                    )
+                                })}
+                            </FeaturedGrid>
+                    </FeaturedWrapper>
+                    <AboutWrapper>
+                        <AboutTitle>About the Shoestring Traveller</AboutTitle>
+                        <AboutText></AboutText>
+                    </AboutWrapper>
+                </Container>
+            </>
+            : <LoadingPage />
+            }
         </>
     )
 }
