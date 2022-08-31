@@ -3,10 +3,17 @@ import Searchbar from "../components/Searchbar";
 import { useNavigate, NavLink } from "react-router-dom";
 import siteLogo from "../assets/logo.png"
 import loginIcon from "../assets/login-icon.png";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = () => {
 
     const navigate = useNavigate();
+
+    const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+
+    if (user) {
+        console.log(user.picture)
+    }
 
     return (
         <NavBar>
@@ -24,10 +31,19 @@ const Header = () => {
                         <StyledNavLink to="/contact">Contact</StyledNavLink>
                     </NavDiv>
                 </Container>
-                <LoginDiv>
-                    <LoginIcon src={loginIcon} alt="Login icon" onClick={()=> navigate("/login")}/>
-                    <LoginText onClick={()=> navigate("/login")}>LOGIN/SIGN UP</LoginText>
-                </LoginDiv>
+                {isAuthenticated && user
+                    ? <LoginDiv>
+                        {user.picture
+                            ? <UserPicture src={user.picture} alt={user.name} onClick={() => navigate("/profile")}/>
+                            : <LoginIcon src={loginIcon} alt="Login icon" onClick={() => navigate("/profile")}/>
+                        }
+                        <LoginText onClick={() => navigate("/profile")}>Hello, {user.given_name ? user.given_name : user.email}</LoginText>
+                    </LoginDiv>
+                    : <LoginDiv>
+                        <LoginIcon src={loginIcon} alt="Login icon" onClick={() => loginWithRedirect()}/>
+                        <LoginText onClick={() => loginWithRedirect()}>LOGIN/SIGN UP</LoginText>
+                    </LoginDiv>
+                }
             </Wrapper>
         </NavBar>
     )
@@ -97,6 +113,16 @@ const LoginDiv = styled.div`
     align-items: center;
 `;
 
+const UserPicture = styled.img`
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+
+    :hover{
+        cursor: pointer;
+    }
+`;
+
 const LoginIcon = styled.img`
     height: 25px;
     width: 25px;
@@ -109,7 +135,7 @@ const LoginIcon = styled.img`
 const LoginText = styled.p`
     color: white;
     font-size: 14px;
-    margin-left: 5px;
+    margin-left: 7px;
 
     :hover{
         cursor: pointer;

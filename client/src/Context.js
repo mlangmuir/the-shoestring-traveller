@@ -6,6 +6,7 @@ const Provider = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [allArticles, setAllArticles] = useState([]);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -22,7 +23,9 @@ const Provider = ({ children }) => {
             value={{
                 allArticles,
                 isLoading,
-                setIsLoading
+                setIsLoading,
+                loggedIn,
+                setLoggedIn
             }}
         >
             {children}

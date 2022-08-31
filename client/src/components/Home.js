@@ -10,8 +10,6 @@ const Home = () => {
 
     const { allArticles, isLoading, setIsLoading } = useContext(Context);
 
-    console.log(allArticles)
-
     const navigate = useNavigate();
 
     return (

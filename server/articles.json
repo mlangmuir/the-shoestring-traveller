@@ -340,7 +340,7 @@
         ],
         "travelTip": false,
         "attractions": true,
-        "featured": true,
+        "featured": false,
         "continent": "Africa",
         "region": "North Africa",
         "country": "Morocco"
@@ -432,5 +432,148 @@
         "continent": "Africa",
         "region": "Southern Africa",
         "country": "South Africa"
+    },
+    {
+        "id": "0007",
+        "title": "5 Things to Do on the Asian Side of Istanbul for Under $1 USD",
+        "date": "August 26, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661474570/Article%20Photos%20-%20The%20Shoestring%20Traveller/5%20Things%20to%20Do%20on%20the%20Asian%20Side%20of%20Istanbul/IMG_7582_flokdy.jpg",
+                "imgCaption": "Skyline of Istanbul's Asian side"
+            },
+        "paragraphs": [
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": "Istanbul is unique in the fact that it is situated in both Asia and Europe. In fact, it is one of the only cities in the world to span two continents. While it is true that most tourist attractions in this bustling Eurasian city are on the European side, the Asian side has its activities to offer as well. Here are 5 activities you can do on your visit to Istanbul's Asian side for under $1 USD or ₺18 Turkish lira."
+            },
+            {
+                "subHeading": "Ride the Kadikoy-Moda Nostalgic Tram",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661476349/Article%20Photos%20-%20The%20Shoestring%20Traveller/5%20Things%20to%20Do%20on%20the%20Asian%20Side%20of%20Istanbul/kadikoy-moda-tram_cq9odf.jpg",
+                "text": "Take a trip back to the Istanbul of the 1950s! What was once a popular mode of public transportation is now a tourist attraction in the city’s Kadikoy area. The tram has 10 stops and is a great way to explore the Asian side of Istanbul. The tram’s route forms a circular route, which is perfect if you are simply planning to take a joyride around the neighbourhood. A regular fare on this tram will cost you ₺1.75, which is only about $0.10 USD!"
+            },
+            {
+                "subHeading": "Visit the Kadikoy Market",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661476147/Article%20Photos%20-%20The%20Shoestring%20Traveller/5%20Things%20to%20Do%20on%20the%20Asian%20Side%20of%20Istanbul/kadikoy-market_qkhk1u.jpg",
+                "text": "With its bustling atmosphere and wide variety of fresh produce, the Kadikoy Market cannot be skipped! Here, you will find many locals that come to do their everyday shopping. The market’s streets are open to pedestrians only, making it a very crowded area. While it is no Grand Bazaar in terms of its popularity, the Kadikoy Market is unique in its own right and is definitely worth a visit."
+            },
+            {
+                "subHeading": "Admire the Haydarpaşa Train Station",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661476125/Article%20Photos%20-%20The%20Shoestring%20Traveller/5%20Things%20to%20Do%20on%20the%20Asian%20Side%20of%20Istanbul/IMG_7368_lf3mlx.jpg",
+                "text": "This historical landmark was constructed in 1909 and is one of the most eye-catching pieces of architecture along the Kadikoy Harbour. As of 2022, Haydarpaşa is under construction but it used to be the city’s busiest train station, attracting thousands of tourists each week. The station is expected to begin serving passengers again once construction on the Marmaray rail line is complete. Until that happens, we’re just going to have to admire this magnificent building from the outside."
+            },
+            {
+                "subHeading": "See Europe from the Kadikoy Lighthouse",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661475348/Article%20Photos%20-%20The%20Shoestring%20Traveller/5%20Things%20to%20Do%20on%20the%20Asian%20Side%20of%20Istanbul/IMG_7406_imbbqk.jpg",
+                "text": "Looking for a quiet place to relax and admire the beautiful Istanbul skyline? Take a walk down the small peninsula near the Kadikoy ferry terminal to the Kadikoy Lighthouse. From there, you can see the European side of the city across the Bosphorus Strait, including an excellent view of the Blue Mosque and the Hagia Sophia."
+            },
+            {
+                "subHeading": "Take the Ferry from the Kadikoy Ferry Terminal",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661475469/Article%20Photos%20-%20The%20Shoestring%20Traveller/5%20Things%20to%20Do%20on%20the%20Asian%20Side%20of%20Istanbul/IMG_7360_h8xsox.jpg",
+                "text": "At the end of your visit to Asia, head to the Kadikoy Ferry Terminal and buy yourself a ticket to Europe. There is no better way to make the transcontinental trip across the Bosphorus Strait than by ferry. A ferry ride with the Şehir Hatları (Istanbul’s government-run public ferry service) from Kadikoy to Besiktas will only set you back ₺4 ($0.22 USD). The experience that you will get for such an affordable price will be priceless. This is the perfect way to cap off your visit to Istanbul’s Asian side!"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661972462/Article%20Photos%20-%20The%20Shoestring%20Traveller/5%20Things%20to%20Do%20on%20the%20Asian%20Side%20of%20Istanbul/IMG_7349_qqa6sm.jpg"
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661972507/Article%20Photos%20-%20The%20Shoestring%20Traveller/5%20Things%20to%20Do%20on%20the%20Asian%20Side%20of%20Istanbul/IMG_7455_bs4wwh.jpg"
+            }
+        ],
+        "travelTip": false,
+        "attractions": true,
+        "featured": true,
+        "continent": "Asia",
+        "region": "Western Asia",
+        "country": "Turkey"
+    },
+    {
+        "id": "0008",
+        "title": "Itinerary for a Day Trip to Seattle",
+        "date": "August 31, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661478006/Article%20Photos%20-%20The%20Shoestring%20Traveller/Itinerary%20for%20a%20Day%20Trip%20to%20Seattle/IMG_2938_jlgmlz.jpg",
+                "imgCaption": "Seattle’s world famous Pike Place Market"
+            },
+        "paragraphs": [
+            {
+                "text": "Having grown up in Vancouver, I would often make day trips across the border to visit the beautiful city of Seattle. It is perhaps the American city I have visited the most, as well as one of my favourites. One of the things I love most about Seattle is the fact that most of its main tourist attractions are within walking distance, making it a suitable destination for a day trip. That being said, here is a 1-day itinerary you can follow to make the most of your next visit to Seattle."
+            },
+            {
+                "subHeading": "Visit Pike Place Market",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661975809/Article%20Photos%20-%20The%20Shoestring%20Traveller/Itinerary%20for%20a%20Day%20Trip%20to%20Seattle/original-starbucks_qhrm1d.jpg",
+                "imgCaption": "The original Starbucks at 1912 Pike Place",
+                "text": "Start off your visit by visiting the world famous Pike Place Market, one of the oldest public markets in America. Pike Place is where the original Starbucks opened its doors in 1971 and is one of the biggest tourist attractions in the city today."
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661975498/Article%20Photos%20-%20The%20Shoestring%20Traveller/Itinerary%20for%20a%20Day%20Trip%20to%20Seattle/fish-toss_cxpl8w.jpg",
+                "imgCaption": "The famous fish-throwing spectacle at Pike Place Fish Market",
+                "text": "After grabbing yourself a Pike Place Roast from Starbucks, head on over to the Pike Place Fish Market for a spectacle unlike no other. At this market, every time someone buys a fish, the employees will throw and catch the ordered fish while chanting in unison!"
+            },
+            {
+                "subHeading": "Admire the Famous Gum Wall",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661974006/Article%20Photos%20-%20The%20Shoestring%20Traveller/Itinerary%20for%20a%20Day%20Trip%20to%20Seattle/IMG_2976_dwsvzx.jpg",
+                "text": "Located on Post Alley under the Pike Place Market is Seattle’s famous Gum Wall. Unintentionally created in the 1990s, the Gum Wall has become one of the city’s most visited local landmarks. Take some Instagram pictures of this decorated wall that is considered by many to be a public display of participatory art."
+            },
+            {
+                "subHeading": "Take a Stroll Along the Seattle Waterfront",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661477729/Article%20Photos%20-%20The%20Shoestring%20Traveller/Itinerary%20for%20a%20Day%20Trip%20to%20Seattle/IMG_2964_mhcmml.jpg",
+                "text": "Behind the Pike Place Market, you will find Seattle's Waterfront Park where you can take in the beautiful views of the Puget Sound. For a bird’s eye view of the sound and downtown skyline, ride the Seattle Great Wheel at Pier 57. An adult ticket for the ride will set you back $17 USD, which I will have to admit, is a little pricey for a ferris wheel ride. I personally could not fit the ferris wheel in my travel budget, so I decided to skip the ride and take a lovely stroll along the waterfront instead."
+            },
+            {
+                "subHeading": "Ride the Seattle Center Monorail",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661477745/Article%20Photos%20-%20The%20Shoestring%20Traveller/Itinerary%20for%20a%20Day%20Trip%20to%20Seattle/IMG_2981_thybzp.jpg",
+                "text": "After taking in the beautiful waterfront view, take a 10 minute walk up Pine Street to the Westlake Center. There, you will find the Seattle Monorail. The monorail will take you to Seattle Center Station, which is adjacent to the Space Needle, Seattle’s most iconic landmark. A ticket costs just $3 USD in 2022 and is an excellent way to see the city’s downtown core."
+            },
+            {
+                "subHeading": "Visit the Iconic Space Needle",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661477833/Article%20Photos%20-%20The%20Shoestring%20Traveller/Itinerary%20for%20a%20Day%20Trip%20to%20Seattle/space-needle_x2kbt1.jpg",
+                "text": "The Space Needle is perhaps the first landmark that comes to mind when I think of Seattle. Along with the rest of Seattle Center, the observation tower was built for the 1962 World’s Fair."
+            },
+            {
+                "text": "Now, I will admit that admission to the Space Needle is expensive. If you are on a shoestring budget like I was, this may not be the activity for you. An adult ticket to the top of the observation tower will set you back $35 - $39 USD, depending on the date and time of day you visit. Personally, I decided to simply take a stroll around Seattle Center and admire the tower from the green pastures below. However, if you are set on seeing the views of the city and can make it work in your budget, I am sure the experience will be worthwhile."
+            },
+            {
+                "subHeading": "Attend a Seattle Sports Game",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661477898/Article%20Photos%20-%20The%20Shoestring%20Traveller/Itinerary%20for%20a%20Day%20Trip%20to%20Seattle/sounders_smvoky.jpg",
+                "imgCaption": "A Seattle Sounders soccer game at Lumen Field ",
+                "text": "Seattlites love their sports and always flock to sporting events in large numbers. The city is home to four major sports teams: the NFL’s Seattle Seahawks, the MLB’s Seattle Mariners, the NHL’s Seattle Kraken and the MLS’s Seattle Sounders."
+            },
+            {
+                "text": "The Mariners and Sounders are the most inexpensive options, with the cheapest tickets on Ticketmaster being $13 USD and $22 USD, respectively. So book your ticket and cap off your day with a Seattle sporting event!"
+            }
+        ],
+        "travelTip": false,
+        "attractions": true,
+        "featured": false,
+        "continent": "North America",
+        "region": "North America",
+        "country": "United States"
+    },
+    {
+        "id": "0009",
+        "title": "",
+        "date": "August 31, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "",
+                "imgCaption": ""
+            },
+        "paragraphs": [
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            }
+        ],
+        "travelTip": false,
+        "attractions": true,
+        "featured": true,
+        "continent": "Europe",
+        "region": "Western Europe",
+        "country": "Portugal"
     }
 ]

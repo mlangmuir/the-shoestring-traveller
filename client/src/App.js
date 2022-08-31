@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import Article from "./components/Details/Article";
 import ErrorPage from "./components/ErrorPage";
 import Footer from "./components/Footer";
+import UserProfile from "./components/UserProfile";
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
         <Header />
           <Routes>
             <Route exact path="/" element={<Home />} />
+            <Route exact path="/profile" element={<UserProfile />} />
             <Route exact path="/about" element={<About />} />
             <Route exact path="/destinations" element={<Destinations />} />
             <Route exact path="/travel-tips" element={<TravelTips />} />
