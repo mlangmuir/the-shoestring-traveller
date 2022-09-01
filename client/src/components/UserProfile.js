@@ -6,7 +6,7 @@ const UserProfile = () => {
 
     const { setLoggedIn } = useContext(Context);
 
-    const { logout, isAuthenticated, isLoading, user } = useAuth0();
+    const { logout, isAuthenticated, user } = useAuth0();
 
     const handleLogout = () => {
         logout({returnTo: window.location.origin});

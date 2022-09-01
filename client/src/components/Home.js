@@ -8,7 +8,7 @@ import LoadingPage from "./LoadingPage";
 
 const Home = () => {
 
-    const { allArticles, isLoading, setIsLoading } = useContext(Context);
+    const { allArticles, isLoading } = useContext(Context);
 
     const navigate = useNavigate();
 

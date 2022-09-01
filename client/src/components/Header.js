@@ -11,10 +11,6 @@ const Header = () => {
 
     const { loginWithRedirect, isAuthenticated, user } = useAuth0();
 
-    if (user) {
-        console.log(user.picture)
-    }
-
     return (
         <NavBar>
             <Wrapper>

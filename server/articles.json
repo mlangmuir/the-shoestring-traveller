@@ -571,7 +571,7 @@
         ],
         "travelTip": false,
         "attractions": true,
-        "featured": true,
+        "featured": false,
         "continent": "Europe",
         "region": "Western Europe",
         "country": "Portugal"
