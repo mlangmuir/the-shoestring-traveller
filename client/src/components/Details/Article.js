@@ -4,14 +4,18 @@ import styled from "styled-components";
 import LoadingPage from "../LoadingPage";
 import { Context } from "../../Context";
 import aboutMePoster from "../../assets/about-me-poster.png";
+import signUpPoster from "../../assets/sign-up-poster.png";
 import discoverChobePoster from "../../assets/discover-chobe.png";
 import tipsPoster from "../../assets/tips-poster.png";
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Article = () => {
 
     const {  isLoading, setIsLoading } = useContext(Context);
 
     const { articleId } = useParams();
+
+    const { isAuthenticated, loginWithRedirect } = useAuth0();
 
     const navigate = useNavigate();
 
@@ -64,6 +68,13 @@ const Article = () => {
                                 window.scrollTo(0,0);
                             }}
                         />
+                        {!isAuthenticated &&
+                        <SignUpPoster
+                            src={signUpPoster}
+                            alt="Poster about signing up for Shoestring Traveller account"
+                            onClick={() => loginWithRedirect()}
+                        />
+                        }
                         {articleData.id !== "0003" &&
                         <DiscoverChobePoster
                             src={discoverChobePoster}
@@ -121,6 +132,15 @@ const AboutMePoster = styled.img`
         cursor: pointer;
     }
 `;
+
+const SignUpPoster = styled.img`
+    width: 100%;
+    margin-top: 100px;
+
+    :hover {
+        cursor: pointer;
+};
+`
 
 const DiscoverChobePoster = styled.img`
     width: 100%;

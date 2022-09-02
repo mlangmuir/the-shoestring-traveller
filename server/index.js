@@ -4,7 +4,7 @@ const express = require('express');
 const { auth } = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 const morgan = require('morgan');
-const { getAllArticles, getArticleById } = require("./handlers");
+const { getAllArticles, getArticles, getArticleById } = require("./handlers");
 
 const PORT = process.env.PORT || 3001;
 
@@ -52,7 +52,9 @@ express()
         res.send(JSON.stringify(req.oidc.user));
     })
 
-    .get("/api/articles", getAllArticles)
+    .get("/api/allArticles", getAllArticles)
+
+    .get("/api/articles", getArticles)
 
     .get("/api/articles/id/:articleId", getArticleById)
 

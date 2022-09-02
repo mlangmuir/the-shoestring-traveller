@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useRef, useState } from 'react';
 import emailjs from "emailjs-com";
 import { useAuth0 } from '@auth0/auth0-react';
+import boKaapBackground from "../assets/bo-kaap-background.JPG";
 
 const Contact = () => {
 
@@ -27,32 +28,32 @@ const Contact = () => {
         <Container>
             {sendSuccess && <Confirmation><p>Thank you for contacting me. I will be in touch as soon as possible!</p></Confirmation>}
             <Form onSubmit={handleSubmit} ref={form} style={{display: sendSuccess === true && "none"}}>
-                <Title>CONTACT ME</Title>
-                <Description>Got questions or comments? Drop me a line and I'll get back to you via email as soon as possible!</Description>
+                <Title>Contact Me</Title>
+                <Description>Drop me a line and I'll get back to you as soon as possible!</Description>
                 <InputDiv>
                     <label required>Name: </label>
                     {isAuthenticated && user.name
-                        ? <Input type="name" placeholder=" Name" name="name" value={user.name} required />
-                        : <Input type="name" placeholder=" Name" name="name" required />
+                        ? <Input type="name" placeholder="Name" name="name" value={user.name} required />
+                        : <Input type="name" placeholder="Name" name="name" required />
                     }
                 </InputDiv>
                 <InputDiv>
                     <label>Email: </label>
                     {isAuthenticated && user.email
-                        ? <Input type="email" placeholder=" Email" name="email" value={user.email}required />
-                        : <Input type="email" placeholder=" Email" name="email" required />
+                        ? <Input type="email" placeholder="Email" name="email" value={user.email}required />
+                        : <Input type="email" placeholder="Email" name="email" required />
                     }
                 </InputDiv>
                 <InputDiv>
                     <label>Comments:</label>
-                    <TextArea placeholder=" Enter your comments here!" name="comments" required></TextArea>
+                    <TextArea placeholder="Enter your comments here!" name="comments" required></TextArea>
                 </InputDiv>
                 <InputDiv>
                     <Submit type="submit" />
                 </InputDiv>
             </Form>
             <CoverShade />
-            <Background src="/assets/vancouver-bg.jpeg" alt="vancouver-background"/>
+            <Background src={boKaapBackground} alt="Bo Kaap background"/>
         </Container>
     )
 }
@@ -66,7 +67,7 @@ const Container = styled.div`
 
 const Confirmation = styled.div`
     z-index: 6;
-    height: 100vh;
+    height: 100%;
     width: 40%;
     text-align: center;
     display: flex;
@@ -85,16 +86,15 @@ const Confirmation = styled.div`
 
 const Form = styled.form`
     z-index: 3;
-    margin-top: 100px;
-    padding: 75px 25px;
-    max-width: 620px;
+    padding: 25px;
+    max-width: 500px;
+    height: 50px;
     font-size: 18px;
     color: white;
     text-shadow: 1px 1px black;
 `;
 
 const Title = styled.h1`
-    font-family: 'Fredericka the Great', cursive;
     font-weight: bold;
     font-size: 42px;
     color: white;
@@ -106,11 +106,10 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-    font-size: 22px;
+    font-size: 20px;
     color: white;
     text-align: justify;
     margin-top: 20px;
-    margin-bottom: 50px;
 
     @media (max-width: 500px) {
         font-size: 20px;
@@ -121,7 +120,7 @@ const Description = styled.p`
 const InputDiv = styled.div`
     display: flex;
     flex-direction: column;
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 25px;
 
     @media (max-width: 650px) {
@@ -131,9 +130,10 @@ const InputDiv = styled.div`
 
 const Input = styled.input`
     width: 100%;
-    height: 40px;
+    height: 30px;
+    padding: 5px;
     display: flex;
-    font-size: 22px;
+    font-size: 20px;
     border: none;
     border-radius: 5px;
     resize: none;
@@ -145,8 +145,9 @@ const Input = styled.input`
 `;
 
 const TextArea = styled.textarea`
-    height: 100px;
-    font-size: 22px;
+    height: 50px;
+    font-size: 20px;
+    padding: 5px;
     border: none;
     border-radius: 5px;
 
@@ -177,7 +178,7 @@ const CoverShade = styled.div`
     height: 100vh;
     object-fit: cover;
     background-color: black;
-    opacity: 70%;
+    opacity: 30%;
 `;
 
 const Background = styled.img`

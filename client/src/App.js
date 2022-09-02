@@ -11,6 +11,7 @@ import Article from "./components/Details/Article";
 import ErrorPage from "./components/ErrorPage";
 import Footer from "./components/Footer";
 import UserProfile from "./components/UserProfile";
+import ListingPage from "./components/ListingResults/ListingPage";
 
 const App = () => {
 
@@ -28,6 +29,7 @@ const App = () => {
             <Route exact path="/gallery" element={<Gallery />} />
             <Route exact path="/contact" element={<Contact />} />
             <Route exact path="articles/id/:articleId" element={<Article />} />
+            <Route exact path="/articles" element={<ListingPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         <Footer/>
