@@ -32,7 +32,7 @@ const Contact = () => {
                 <Description>Drop me a line and I'll get back to you as soon as possible!</Description>
                 <InputDiv>
                     <label required>Name: </label>
-                    {isAuthenticated && user.name
+                    {isAuthenticated && !user.name.includes("@")
                         ? <Input type="name" placeholder="Name" name="name" value={user.name} required />
                         : <Input type="name" placeholder="Name" name="name" required />
                     }

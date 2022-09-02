@@ -12,27 +12,22 @@ const Filters = ({
     setRegion,
     country,
     setCountry,
-    attractions,
-    travelTip,
+    articleType,
+    setArticleType,
     continents,
     regions,
     countries,
+    articleTypes
 }) => {
 
-    const { setDisplayFilters } = useContext(Context);
+    const { displayFilters, setDisplayFilters } = useContext(Context);
 
+    // const [allFilters, setAllFilters] = useState([]);
 
     // applied filters button displays all filters based on 4 categories
     const handleApplyFilters = () => {
         page = 1
-        setDisplayFilters(filtersLabel);
-        // if (companyNameTab !== "") {
-        //     setDisplayFilters(current => [...current, companyNameTab]);
-        // }
-        // if (displayValue !== "") {
-        //     setDisplayFilters(current => [...current, displayValue]);
-        // }
-        doSearch({ continent, region, country, attractions, travelTip, page });
+        doSearch({ continent, region, country, articleType, page });
         window.scrollTo(0,0);
     }
 
@@ -46,7 +41,7 @@ const Filters = ({
     //     }
     // },[])
 
-    console.log(continents)
+    console.log(displayFilters)
 
     return (
         <FilterBox>
@@ -60,8 +55,10 @@ const Filters = ({
                         onChange={(e) => {
                             if (e.target.checked && !continent.includes(item)) {
                                 setContinent([...continent, item]);
+                                setDisplayFilters([...displayFilters, item]);
                             } else if(!e.target.checked && continent.includes(item)) {
                                 setContinent(continent.filter(val => val !== item));
+                                setDisplayFilters(displayFilters.filter(val => val !== item));
                             }
                         }}
                         checked={continent.includes(item)}
@@ -80,9 +77,11 @@ const Filters = ({
                         <Input
                             onChange={(e) => {
                                 if (e.target.checked && !region.includes(item)) {
-                                    setRegion([...region, item]);    
+                                    setRegion([...region, item]);
+                                    setDisplayFilters([...displayFilters, item]);
                                 } else if(!e.target.checked && region.includes(item)) {
                                     setRegion(region.filter(val => val !== item));
+                                    setDisplayFilters(displayFilters.filter(val => val !== item));
                                 }
                             }}
                             checked={region.includes(item)}
@@ -101,12 +100,37 @@ const Filters = ({
                         <Input
                             onChange={(e) => {
                                 if (e.target.checked && !country.includes(item)) {
-                                    setCountry([...country, item]);    
+                                    setCountry([...country, item]);
+                                    setDisplayFilters([...displayFilters, item]);     
                                 } else if(!e.target.checked && country.includes(item)) {
                                     setCountry(country.filter(val => val !== item));
+                                    setDisplayFilters(displayFilters.filter(val => val !== item));
                                 }
                             }}
                             checked={country.includes(item)}
+                            type="checkbox"
+                            id={item}
+                        />
+                        <Label htmlFor={item}>{item}</Label>
+                    </div>
+                )
+            })}
+
+            <FilterBy>Article Type</FilterBy>
+            {articleTypes.map((item, index) => {
+                return (
+                    <div key={index}>
+                        <Input
+                            onChange={(e) => {
+                                if (e.target.checked && !articleType.includes(item)) {
+                                    setArticleType([...articleType, item]);
+                                    setDisplayFilters([...displayFilters, item]);    
+                                } else if(!e.target.checked && articleType.includes(item)) {
+                                    setArticleType(articleType.filter(val => val !== item));
+                                    setDisplayFilters(displayFilters.filter(val => val !== item));
+                                }
+                            }}
+                            checked={articleType.includes(item)}
                             type="checkbox"
                             id={item}
                         />
@@ -165,6 +189,7 @@ const Input = styled.input`
 const Button = styled.button`
     font-size: 18px;
     color: white;
+    background-color: #050a30;
     width: 100%;
     margin-top: 25px;
     border: none;

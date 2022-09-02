@@ -44,6 +44,30 @@ const getArticles = async (req, res) => {
         filters.push({ $or: regionFilters });
     }
 
+    const country = req.query.country || "";
+    const splitCountry = Array.isArray(country) === false ? [country] : country;
+    const countryFilters = [];
+    splitCountry.forEach((item) => {
+        if (item) {
+            countryFilters.push({ "country": item });
+        }
+    })
+    if (countryFilters.length > 0) {
+        filters.push({ $or: countryFilters });
+    }
+
+    const articleType = req.query.articleType || "";
+    const splitArticleType = Array.isArray(articleType) === false ? [articleType] : articleType;
+    const articleTypeFilters = [];
+    splitArticleType.forEach((item) => {
+        if (item) {
+            articleTypeFilters.push({ "articleType": item });
+        }
+    })
+    if (articleTypeFilters.length > 0) {
+        filters.push({ $or: articleTypeFilters });
+    }
+
     // setting page limit, page numbers and sorting type and direction
     const limit = req.query.limit || 15;
     const page = req.query.page || 1;
@@ -71,6 +95,7 @@ const getArticles = async (req, res) => {
     const continents = await db.collection('articles').distinct('continent');
     const regions = await db.collection('articles').distinct('region');
     const countries = await db.collection('articles').distinct('country');
+    const articleTypes = await db.collection('articles').distinct('articleType');
 
     res.status(200).send({
         page,
@@ -81,6 +106,7 @@ const getArticles = async (req, res) => {
         continents,
         regions,
         countries,
+        articleTypes,
         data,
     })
 }

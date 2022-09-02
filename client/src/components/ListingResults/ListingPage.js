@@ -8,7 +8,7 @@ import Grid from "./Grid";
 
 const ListingPage = () => {
 
-    const { isLoading, setIsLoading, displayFilters, continents, setContinents, regions, setRegions, countries, setCountries } = useContext(Context);
+    const { isLoading, setIsLoading, displayFilters, continents, setContinents, regions, setRegions, countries, setCountries, articleTypes, setArticleTypes } = useContext(Context);
 
     const [results, setResults] = useState([]);
     const [page, setPage] = useState(0);
@@ -27,8 +27,7 @@ const ListingPage = () => {
     const [continent, setContinent] = useState(new URLSearchParams(search).get("continent") || []);
     const [region, setRegion] = useState(new URLSearchParams(search).getAll("region") || []);
     const [country, setCountry] = useState(new URLSearchParams(search).getAll("country") || []);
-    const [attractions, setAttractions] = useState(new URLSearchParams(search).getAll("attractions") || false);
-    const [travelTip, setTravelTip] = useState(new URLSearchParams(search).getAll("travelTip") || false);
+    const [articleType, setArticleType] = useState(new URLSearchParams(search).getAll("articleType") || []);
 
     // callback that overwrites query params
     const getQueryParams = useCallback((overwrites={})=>{
@@ -38,8 +37,7 @@ const ListingPage = () => {
             continent = null,
             region = null,
             country = null,
-            attractions = null,
-            travelTip = null,
+            articleType = null,
             title = null,
             page = null
         } = overwrites;
@@ -54,8 +52,7 @@ const ListingPage = () => {
             { key: 'continent', value: continent || searchParams.get("continent") || []},
             { key: 'region', value: region || searchParams.getAll("region") || []},
             { key: 'country', value: country || searchParams.getAll("country") || []},
-            { key: 'attractions', value: attractions || searchParams.getAll("attractions") || false},
-            { key: 'travelTip', value: travelTip || searchParams.getAll("travelTip") || false},
+            { key: 'articleType', value: articleType || searchParams.getAll("articleType") || []},
             { key: 'page', value: page || searchParams.get("page") || '1'}
         ]
 
@@ -71,7 +68,7 @@ const ListingPage = () => {
         return paramsStr;
     },[search])
 
-    console.log(search.substring(1))
+    console.log(displayFilters)
 
     // fetches data necessary for filtering based on the search URL params defined above
     useEffect(() => {
@@ -87,6 +84,7 @@ const ListingPage = () => {
                 setContinents(data.continents);
                 setRegions(data.regions);
                 setCountries(data.countries);
+                setArticleTypes(data.articleTypes);
                 setIsLoading(false);
             })
     },[sortKey, setIsLoading, search]);
@@ -107,30 +105,7 @@ const ListingPage = () => {
     }
 
     // concatenating all filter arrays/variables to display all applied filters at top of page
-    const filtersLabel = continent.concat(region, country, attractions, travelTip)
-
-    // using the variables used in params to create a "Showing results by: <category>" label at top of listing page
-    // let filtersLabel = [];
-
-    // filtersConcat.map((item) => {
-    //     if (item === "1") {
-    //         filtersLabel.push("In stock");
-    //     } else if (item === "25") {
-    //         filtersLabel.push("Under $25");
-    //     } else if (item === "25-50") {
-    //         filtersLabel.push("$25-$50");
-    //     } else if (item === "50-100") {
-    //         filtersLabel.push("$50-100");
-    //     } else if (item === "100-200") {
-    //         filtersLabel.push("$100-$200");
-    //     } else if (item === "200-300") {
-    //         filtersLabel.push("$200-$300");
-    //     } else if (item === "300") {
-    //         filtersLabel.push("$300+");
-    //     } else if (item !== "0") {
-    //         filtersLabel.push(item);
-    //     }
-    // })
+    const filtersLabel = continent.concat(region, country, articleType)
 
     // dividing total item count by items per page to get total # of pages
     const totalPages = Math.ceil(itemCount / 15);
@@ -149,8 +124,8 @@ const ListingPage = () => {
                                             <FiltersApplied>{displayValue}</FiltersApplied>
                                         </div> */}
                                     {/* </FiltersAppliedDiv> */}
-                                    {/* <FiltersAppliedDiv>
-                                        {displayFilters.slice(0,5).map((item, index) => {
+                                    <FiltersAppliedDiv>
+                                        {displayFilters.map((item, index) => {
                                             return (
                                                 <div key={index}>
                                                     {index === 4
@@ -163,8 +138,8 @@ const ListingPage = () => {
                                                 </div>
                                             )
                                         })}
-                                    </FiltersAppliedDiv> */}
-                                {/* }    */}
+                                    </FiltersAppliedDiv>
+                                
                                 {itemCount === 348
                                     && <FiltersAppliedDiv>
                                         <div>
@@ -197,6 +172,8 @@ const ListingPage = () => {
                                 setRegion={setRegion}
                                 country={country}
                                 setCountry={setCountry}
+                                articleType={articleType}
+                                setArticleType={setArticleType}
                                 page={page}
                                 title={title}
                                 continents={continents}
@@ -205,6 +182,8 @@ const ListingPage = () => {
                                 setRegions={setRegions}
                                 setCountries={setCountries}
                                 countries={countries}
+                                articleTypes={articleTypes}
+                                setArticleTypes={setArticleTypes}
                             />
                             <Grid
                                 results={results}
@@ -215,8 +194,7 @@ const ListingPage = () => {
                                 continent={continent}
                                 region={region}
                                 country={country}
-                                attractions={attractions}
-                                travelTip={travelTip}
+                                articleType={articleType}
                             />
                         </BodyWrapper>
                     </Container>

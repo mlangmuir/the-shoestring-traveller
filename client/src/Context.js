@@ -6,11 +6,11 @@ const Provider = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [allArticles, setAllArticles] = useState([]);
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [displayValue, setDisplayValue] = useState ("");
+    const [displayFilters, setDisplayFilters] = useState ([]);
     const [continents, setContinents] = useState([]);
     const [regions, setRegions] = useState([]);
     const [countries, setCountries] = useState([]);
+    const [articleTypes, setArticleTypes] = useState([]);
 
     useEffect(() => {
         setIsLoading(true);
@@ -28,16 +28,16 @@ const Provider = ({ children }) => {
                 allArticles,
                 isLoading,
                 setIsLoading,
-                loggedIn,
-                setLoggedIn,
-                displayValue,
-                setDisplayValue,
+                displayFilters,
+                setDisplayFilters,
                 continents,
                 setContinents,
                 regions,
                 setRegions,
                 countries,
-                setCountries
+                setCountries,
+                articleTypes,
+                setArticleTypes
             }}
         >
             {children}

@@ -44,8 +44,7 @@
                 "text": "With the rock bottom prices Morocco has to offer, the country is without a doubt a paradise for frugal travellers with a sense of adventure. So start planning your two-week budget adventure to this beautiful country. Just beware of tourist traps and remember to always bargain for a better price!"
             }
         ],
-        "travelTip": true,
-        "attractions": true,
+        "articleType": "Tourist Attractions",
         "featured": true,
         "continent": "Africa",
         "region": "North Africa",
@@ -122,8 +121,7 @@
                 "text": "If you are able to follow these four tips, I am positive that you will be able to save hundreds, if not thousands of dollars on your dream vacation. However, the most important thing is that you have fun and enjoy your trip. I travel this way because I love to save money so that I am able to travel longer. I understand, however, that this may not work for a lot of people. If you are travelling with kids, for example, a hostel may be out of the question. However, you can still opt to stay at an Airbnb and save money by cooking your own meals. The bottom line is to find a way to be frugal without depriving yourself from having the experience of a lifetime!"
             }
         ],
-        "travelTip": true,
-        "attractions": false,
+        "articleType": "Travel Tips",
         "featured": true
     },
     {
@@ -185,8 +183,7 @@
                 "text": "If you have the means, renting a car would afford you the opportunity to see the lions when they are most active. In addition, you will likely be able to see more of what the park has to offer and venture onto Okavango  Delta afterwards. I was, however, pretty content with going on a guided tour as it allowed me to learn more about the animals in the region from an excellent local tour guide. So if you are ever in Victoria Falls, I highly recommend doing an excursion out to Chobe National Park whether it is via rental car or guided tour!"
             }
         ],
-        "travelTip": false,
-        "attractions": true,
+        "articleType": "Tourist Attractions",
         "featured": true,
         "continent": "Africa",
         "region": "Southern Africa",
@@ -235,8 +232,7 @@
                 "text": "Perhaps the most important landmark in Porto, the Dom Luís I bridge was constructed in 1886 by a pupil of Gustave Eiffel. The bridge connects the city of Porto on the north side of the Douro River to Nova de Gaia on the south side. The Dom Luís I has two decks separated by an arch that defines the architecture of the bridge. Take a walk across the bridge on the upper deck to enjoy stunning views of the river and old town!"
             }
         ],
-        "travelTip": false,
-        "attractions": true,
+        "articleType": "Tourist Attractions",
         "featured": true,
         "continent": "Europe",
         "region": "Western Europe",
@@ -338,8 +334,7 @@
                 "imgCaption": "Essaouira, port city along the Atlantic Ocean"
             }
         ],
-        "travelTip": false,
-        "attractions": true,
+        "articleType": "Gallery",
         "featured": false,
         "continent": "Africa",
         "region": "North Africa",
@@ -417,14 +412,13 @@
                 "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662056018/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6988_m2eoro_oa0y6x.jpg"
             },
             {
-                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1661496358/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_7026_z1ymeh.jpg"
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662138830/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_7025_ozabzt.jpg"
             },
             {
                 "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662056017/Article%20Photos%20-%20The%20Shoestring%20Traveller/Photos%20that%20Show%20You%20Why%20Cape%20Town%20is%20One%20of%20the%20Most%20Beautiful%20Cities%20in%20the%20World/IMG_6993_iff6vq_edzhd6.jpg"
             }
         ],
-        "travelTip": false,
-        "attractions": true,
+        "articleType": "Gallery",
         "featured": true,
         "continent": "Africa",
         "region": "Southern Africa",
@@ -475,8 +469,7 @@
                 "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662057604/Article%20Photos%20-%20The%20Shoestring%20Traveller/5%20Things%20to%20Do%20on%20the%20Asian%20Side%20of%20Istanbul/IMG_7455_bs4wwh_zaztek.jpg"
             }
         ],
-        "travelTip": false,
-        "attractions": true,
+        "articleType": "Tourist Attractions",
         "featured": true,
         "continent": "Asia",
         "region": "Western Asia",
@@ -539,11 +532,134 @@
                 "text": "The Mariners and Sounders are the most inexpensive options, with the cheapest tickets on Ticketmaster being $13 USD and $22 USD, respectively. So book your ticket and cap off your day with a Seattle sporting event!"
             }
         ],
-        "travelTip": false,
-        "attractions": true,
+        "articleType": "Tourist Attractions",
         "featured": false,
         "continent": "North America",
-        "region": "North America",
+        "region": "Northern America",
         "country": "United States"
+    },
+    {
+        "id": "0009",
+        "title": "How to Stay Safe While Travelling",
+        "date": "September 1, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662140897/Article%20Photos%20-%20The%20Shoestring%20Traveller/Safety%20Article/1_onxhoh.png"
+            },
+        "paragraphs": [
+            {
+                "text": "While the vast majority of our trips go relatively smoothly, it is important to be aware that travel has its risks as well. In many countries, tourists are often targets of petty crimes such as pickpocketing and harassment."
+            },
+            {
+                "text": "Therefore, while travelling, safety should always be the number one priority. This is especially true in countries like Mexico and South Africa where crime rates are generally higher than what we may be used to in North America and Europe. Having been to these countries, I followed the following tips to keep myself safe while travelling."
+            },
+            {
+                "subHeading": "Tip #1: Do Your Research",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662140894/Article%20Photos%20-%20The%20Shoestring%20Traveller/Safety%20Article/travel-research_bgxpse.jpg",
+                "text": "The more you learn about your travel destination, the more likely you are to be prepared to keep yourself safe. Get familiar with the cultural customs of the country or region and what you must do to respect those customs."
+            },
+            {
+                "text": "It would also be a good idea to look into the types of crimes that may be prevalent at your destination. If pickpocketing is common, for instance, it may be a good idea to invest in a pair of trousers with zippered pockets at the front."
+            },
+            {
+                "subHeading": "Tip #2: Don’t Draw Attention to Yourself",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662140895/Article%20Photos%20-%20The%20Shoestring%20Traveller/Safety%20Article/IMG_6472_o4tw25.jpg",
+                "text": "The last thing you should be doing while travelling is flash your jewellery and other valuables around. So leave your golden necklace and Rolex watch at home and try to blend in as much as possible."
+            },
+            {
+                "text": "When I was in South Africa during the 2019 Rugby World Cup, I decided to purchase a South African rugby jersey in order to blend in more with the locals. I’m not sure if I actually fooled anyone into thinking I was South African but I certainly didn’t want to look like a tourist in a country where tourists have been known to be targets of theft and violent crime."
+            },
+            {
+                "subHeading": "Tip #3: Be Vigilant",
+                "text": "Always be aware of your surroundings. This advice is applicable wherever you are, but especially when you are in an unfamiliar place where you may not speak the local language. My rule of thumb has always been to try to be at least arm’s length away from everyone and to keep my belongings close."
+            },
+            {
+                "subHeading": "Tip #4: Consider Wearing a Money Belt",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662140893/Article%20Photos%20-%20The%20Shoestring%20Traveller/Safety%20Article/money-belt_copy_q6hsni.jpg",
+                "text": "Getting a money belt is probably one of the best investments I’ve made. These belts are meant to be worn underneath your shirt in order to keep your valuables hidden from pickpockets."
+            },
+            {
+                "text": "My approach has always been to keep one credit card and the cash I need for the day in a wallet, and leave my passport and the rest of my cash in the money belt. That way, if my wallet was ever stolen, I would only lose a fraction of what I brought with me."
+            },
+            {
+                "subHeading": "Tip #5: Purchase Travel Insurance",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662140894/Article%20Photos%20-%20The%20Shoestring%20Traveller/Safety%20Article/world-nomads_wh7wmm.jpg",
+                "text": "No matter how much you want to save that extra cash, you should always make sure you have travel insurance. Despite always travelling on a shoestring budget, I always make travel insurance one of my top priorities."
+            },
+            {
+                "text": "However, before you go online and start shopping for travel insurance, it is worth checking to see if you might already be covered. Some credit cards, for example, offer travel insurance benefits so it is important to check to see if any of the cards you own have you covered."
+            },
+            {
+                "text": "If you do not own a credit card with travel insurance benefits and are under 66 years of age, I would recommend looking into purchasing insurance with World Nomads. In my experience, their coverage is both affordable and comprehensive. Insurance for my 2-month backpacking trip to Europe and Africa in 2019 only set me back $217 CAD ($165 USD). The coverage included $5 million for emergency medical expenses, $2500  for trip cancellations, $700 for trip delays and much more."
+            },
+            {
+                "subHeading": "Tip #6: See a Doctor about Vaccinations and Medications",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662140895/Article%20Photos%20-%20The%20Shoestring%20Traveller/Safety%20Article/Malarone_lvadjh.webp",
+                "text": "Your need for vaccinations and medications depend on your travel destination. But it’s always best to err on the side of caution and go see a doctor to make sure you are up to date with your vaccines."
+            },
+            {
+                "text": "Before my trip to Africa in 2019, I decided to go to a doctor for a consultation about any vaccinations or medications I may need for the trip. I was surprised to find out that I was not up to date with a couple of my vaccines. Moreover, booking an appointment with your doctor before travelling could be a good way of making sure all your immunizations are up to date."
+            },
+            {
+                "text": "In addition, because I was travelling in a malaria zone, I was prescribed Malarone for the trip. It may also be a good idea to pick up some probiotics from your local pharmacy in case your stomach doesn’t respond well to foreign foods."
+            }
+        ],
+        "articleType": "Travel Tips",
+        "featured": false
+    },
+    {
+        "id": "0010",
+        "title": "5 Tips for Solo Travellers",
+        "date": "September 1, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662142432/Article%20Photos%20-%20The%20Shoestring%20Traveller/Solo%20Travel%20Tips/IMG_2994_dhnpvf.jpg",
+                "imgCaption": "The Shoestring Traveller in front of the Tower of London"
+            },
+        "paragraphs": [
+            {
+                "text": "I love to travel solo. Yes, it’s fun to travel with friends and family as well but travelling solo is when you learn the most about yourself. There’s something exciting about putting yourself in an unfamiliar place and figuring it out on your own, while meeting different people along the way."
+            },
+            {
+                "text": "In addition, I love the idea of being able to participate in the activities of your own choosing and follow your own itinerary day after day. Having gone on numerous solo trips myself, here are some tips I follow in order to make the most of my solo vacations."
+            },
+            {
+                "subHeading": "Tip #1: Stay in Hostels",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662142908/Article%20Photos%20-%20The%20Shoestring%20Traveller/Solo%20Travel%20Tips/hostels_copy_ysgdqw.jpg",
+                "text": "Hostels are perfect for solo travellers. I cannot stress this enough! Not only are they affordable, they offer you the chance to meet adventurous people from all over the world. Doing activities with your hostel buddies is not only a blast, it can also be a way to ensure your safety while travelling at night."
+            },
+            {
+                "subHeading": "Tip #2: Befriend the Locals",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662142908/Article%20Photos%20-%20The%20Shoestring%20Traveller/Solo%20Travel%20Tips/45d85aec-942f-42bf-b027-548f9ddf9dda_b1wel2.jpg",
+                "text": "While meeting other travellers is fun, meeting locals can be quite the enriching experience. Befriending locals can give a different perspective of your travel destination, as well as give you insight into what everyday life is like there."
+            },
+            {
+                "text": "Getting to know the people working at the hostel is a good start. In my experience, the hostel employees are always extremely knowledgeable and are able to answer most of my questions about the local area."
+            },
+            {
+                "text": "Another thing I like to do is go on an application called MeetUp to see what types of activities are in the area. The app basically allows event organizers to post events for people to attend, with most events being open to the public."
+            },
+            {
+                "subHeading": "Tip #3: Go to the Local Tourism Office",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662142908/Article%20Photos%20-%20The%20Shoestring%20Traveller/Solo%20Travel%20Tips/tourism-office_od92j2.jpg",
+                "text": "Not sure what activities fit best with your budget and schedule? Head on over to the local tourism office and they will give you some ideas."
+            },
+            {
+                "text": "If you are on a budget, you can ask if there are any free walking tours or low-cost activities in the area. Be specific about what you are looking for and they will help you out!"
+            },
+            {
+                "subHeading": "Tip #4: Prepare Entertainment for Long Trips",
+                "text": "Being alone on a bus or plane for long periods of time is not my favourite thing to do. That is why I always make sure I am prepared with some form of entertainment, whether that’s a book or a podcast I downloaded on my iPhone. Take the time to prepare your entertainment and that long bus ride will be over before you know it!"
+            },
+            {
+                "subHeading": "Tip #5: Stay in Touch with Friends and Family",
+                "text": "In your travels, people will come and go. This can make you feel a little lonely while travelling solo. That is why it is important to stay in touch with your loved ones back home."
+            },
+            {
+                "text": "So give your parents a call or stay in touch with what your friends are doing. Maintaining a good support system is essential for taking care of your mental health while travelling abroad!"
+            }
+        ],
+        "articleType": "Travel Tips",
+        "featured": false
     }
 ]
