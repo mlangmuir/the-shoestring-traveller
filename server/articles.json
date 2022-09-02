@@ -661,5 +661,91 @@
         ],
         "articleType": "Travel Tips",
         "featured": false
+    },
+    {
+        "id": "0011",
+        "title": "A Tour Around Iceland’s Golden Circle",
+        "date": "September 2, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145394/Article%20Photos%20-%20The%20Shoestring%20Traveller/Golden%20Circle/IMG_1995_tzzot5.jpg"
+            },
+        "paragraphs": [
+            {
+                "text": "In 2019, I travelled to Iceland and stayed in the capital Reykjavik for 3 nights. While I would’ve liked to stay for a lot longer, my stopover on the amazing flight deal I got with Icelandair did not afford me that option."
+            },
+            {
+                "text": "Moreover, with the little time I had in the small country of 300 thousand, I decided to book a day tour around the famous Golden Circle, which encompasses most of the southwestern portion of the island. Full-day tours of the Golden Circle from Reykajavik go for as low as 9253 Icelandic krona ($65 USD), which is quite the bargain considering how expensive everything in Iceland is."
+            },
+            {
+                "text": "Despite the fact that everything was covered in snow, the experience was everything I imagined it to be and more! Iceland in February is an absolute winter wonderland and the snow should not stop you from visiting. Here are some of the highlights of my tour around the Golden Circle, along with some pictures that will surely convince you to book your Icelandic vacation."
+            },
+            {
+                "subHeading": "Kerid Crater",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145394/Article%20Photos%20-%20The%20Shoestring%20Traveller/Golden%20Circle/IMG_1989_itvmcl.jpg",
+                "text": "One of our first stops on the tour was Kerid Crater, a volcanic crater located in Iceland’s Western Volcanic Zone. The crater is over 6500 years old and is believed to have been formed by a huge volcanic explosion."
+            },
+            {
+                "subHeading": "The Great Geysir",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145394/Article%20Photos%20-%20The%20Shoestring%20Traveller/Golden%20Circle/IMG_2038_xg25iz.jpg",
+                "text": "This was, without a doubt, my favourite tourist attraction along the Golden Circle. It was the first time I had seen a geyser before and I found myself standing in awe when a gush of boiling water would hurl into the air every few minutes."
+            },
+            {
+                "subHeading": "Gullfoss (Golden Falls)",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145396/Article%20Photos%20-%20The%20Shoestring%20Traveller/Golden%20Circle/IMG_2092_adrvcw.jpg",
+                "text": "One of the most iconic waterfalls on the island, Gullfoss (Golden Falls in Icelandic) is a must-see attraction along the Golden Circle."
+            },
+            {
+                "text": "According to geologists, the falls were created by glacial outbursts at the end of the last ice age. The falls include two separate drops with the first measuring at 21 metres (69 feet) and the second at 70 metres (230 feet)."
+            },
+            {
+                "subHeading": "Secret Lagoon",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145394/Article%20Photos%20-%20The%20Shoestring%20Traveller/Golden%20Circle/IMG_2025_vneo6q.jpg",
+                "text": "Located along the Golden Circle, the Secret Lagoon offers a more affordable alternative to the more well-known Blue Lagoon. When I was there, the air temperature was at 0 degrees Celsius (32 degrees Fahrenheit), so it was nice to warm up in a geothermal pool for a couple hours."
+            },
+            {
+                "text": "While it is true that the Blue Lagoon offers more amenities, the Secret Lagoon is more historic seeing as it was built in 1891, making it the oldest pool in Iceland. The pool is also located beside a spouting geyser and includes a bar and small dining area."
+            },
+            {
+                "subHeading": "Thingvellir National Park",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145396/Article%20Photos%20-%20The%20Shoestring%20Traveller/Golden%20Circle/IMG_2108_ip1mr9.jpg",
+                "text": "Thingvellir National Park is the former location of the annual parliament of Iceland dating back to the year 930. Today, it is one of Iceland’s three UNESCO World Heritage sites."
+            },
+            {
+                "subHeading": "Icelandic Horses",
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145394/Article%20Photos%20-%20The%20Shoestring%20Traveller/Golden%20Circle/IMG_2041_wtejls.jpg",
+                "text": "Along the journey, our tour guide stopped at a farm to allow us the chance to look at some Icelandic horses, a breed of horse characterized by their heavy coat and sturdy build."
+            },
+            {
+                "text": "Despite their small stature, our tour guide made it very clear to us that they were not ponies. Apparently, Icelandic farmers get very offended when tourists call them ponies."
+            }
+        ],
+        "articleType": "Tourist Attractions",
+        "featured": false,
+        "continent": "Europe",
+        "region": "Western Europe",
+        "country": "Iceland"
+    },
+    {
+        "id": "0012",
+        "title": "An Emotional Visit to Johannesburg’s Apartheid Museum",
+        "date": "September 2, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145496/Article%20Photos%20-%20The%20Shoestring%20Traveller/Apartheid%20Museum/IMG_5717_njltvi.jpg"
+            },
+        "paragraphs": [
+            {
+                "subHeading": "",
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            }
+        ],
+        "articleType": "Tourist Attractions",
+        "featured": false,
+        "continent": "Africa",
+        "region": "Southern Africa",
+        "country": "South Africa"
     }
 ]
