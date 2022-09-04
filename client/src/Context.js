@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
+import usePersistedState from './usePersistedState';
 
 export const Context = createContext();
 
@@ -6,7 +7,7 @@ const Provider = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [allArticles, setAllArticles] = useState([]);
-    const [displayFilters, setDisplayFilters] = useState ([]);
+    const [allFilters, setAllFilters] = usePersistedState("allFilters", []);
     const [continents, setContinents] = useState([]);
     const [regions, setRegions] = useState([]);
     const [countries, setCountries] = useState([]);
@@ -28,8 +29,8 @@ const Provider = ({ children }) => {
                 allArticles,
                 isLoading,
                 setIsLoading,
-                displayFilters,
-                setDisplayFilters,
+                allFilters,
+                setAllFilters,
                 continents,
                 setContinents,
                 regions,

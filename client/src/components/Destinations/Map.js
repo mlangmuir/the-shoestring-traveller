@@ -1,9 +1,11 @@
-
+import { worldMap } from "../../assets/world-map.png";
 
 const Maps = () => {
 
     return (
-        <div></div>
+        <div>
+            <img src={worldMap} />
+        </div>
     )
 }
 

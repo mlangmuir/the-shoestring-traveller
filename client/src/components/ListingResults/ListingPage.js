@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { Context } from "../../Context";
 import LoadingPage from "../LoadingPage";
 import Filters from "./Filters";
-import Grid from "./Grid";
+import List from "./List";
 
 const ListingPage = () => {
 
-    const { isLoading, setIsLoading, displayFilters, continents, setContinents, regions, setRegions, countries, setCountries, articleTypes, setArticleTypes } = useContext(Context);
+    const { isLoading, setIsLoading, allFilters, continents, setContinents, regions, setRegions, countries, setCountries, articleTypes, setArticleTypes } = useContext(Context);
 
     const [results, setResults] = useState([]);
     const [page, setPage] = useState(0);
@@ -24,7 +24,7 @@ const ListingPage = () => {
     const sortDirection = new URLSearchParams(search).get("sortDirection") || '1';
     const sortSelected = `${sortKey}|${sortDirection}`;
 
-    const [continent, setContinent] = useState(new URLSearchParams(search).get("continent") || []);
+    const [continent, setContinent] = useState(new URLSearchParams(search).getAll("continent") || []);
     const [region, setRegion] = useState(new URLSearchParams(search).getAll("region") || []);
     const [country, setCountry] = useState(new URLSearchParams(search).getAll("country") || []);
     const [articleType, setArticleType] = useState(new URLSearchParams(search).getAll("articleType") || []);
@@ -68,7 +68,7 @@ const ListingPage = () => {
         return paramsStr;
     },[search])
 
-    console.log(displayFilters)
+    console.log(allFilters)
 
     // fetches data necessary for filtering based on the search URL params defined above
     useEffect(() => {
@@ -89,12 +89,10 @@ const ListingPage = () => {
             })
     },[sortKey, setIsLoading, search]);
 
-    console.log(results)
-
     // on select of dropdown sort menu, the value is split into sortName and sortDirection to be used as params
     const handleOnChange = (e) => {
         const [sortKey, sortDirection] = e.target.value.split('|');
-        doSearch({sortKey,sortDirection});
+        doSearch({sortKey, sortDirection});
         window.scrollTo(0, 0);
     }
 
@@ -105,7 +103,9 @@ const ListingPage = () => {
     }
 
     // concatenating all filter arrays/variables to display all applied filters at top of page
-    const filtersLabel = continent.concat(region, country, articleType)
+    // const filtersLabel = continent.concat(region, country, articleType)
+
+    // console.log(filtersLabel)
 
     // dividing total item count by items per page to get total # of pages
     const totalPages = Math.ceil(itemCount / 15);
@@ -125,14 +125,14 @@ const ListingPage = () => {
                                         </div> */}
                                     {/* </FiltersAppliedDiv> */}
                                     <FiltersAppliedDiv>
-                                        {displayFilters.map((item, index) => {
+                                        {allFilters.map((item, index) => {
                                             return (
                                                 <div key={index}>
                                                     {index === 4
                                                         ? <FiltersApplied>{item}...</FiltersApplied>
                                                         : <FiltersApplied>{item}</FiltersApplied>
                                                     }
-                                                    {index !== displayFilters.length - 1 && index !== 4
+                                                    {index !== allFilters.length - 1 && index !== 4
                                                         && <FiltersApplied>,&nbsp;</FiltersApplied>
                                                     }
                                                 </div>
@@ -162,10 +162,21 @@ const ListingPage = () => {
                             </SelectDiv>
                         </TitleTextDiv>
                         <BodyWrapper>
+                            <List
+                                results={results}
+                                page={page}
+                                pageCount={pageCount}
+                                itemCount={itemCount}
+                                doSearch={doSearch}
+                                continent={continent}
+                                region={region}
+                                country={country}
+                                articleType={articleType}
+                            />
                             <Filters
                                 results={results}
                                 doSearch={doSearch}
-                                filtersLabel={filtersLabel}
+                                // filtersLabel={filtersLabel}
                                 continent={continent}
                                 setContinent={setContinent}
                                 region={region}
@@ -184,17 +195,6 @@ const ListingPage = () => {
                                 countries={countries}
                                 articleTypes={articleTypes}
                                 setArticleTypes={setArticleTypes}
-                            />
-                            <Grid
-                                results={results}
-                                page={page}
-                                pageCount={pageCount}
-                                itemCount={itemCount}
-                                doSearch={doSearch}
-                                continent={continent}
-                                region={region}
-                                country={country}
-                                articleType={articleType}
                             />
                         </BodyWrapper>
                     </Container>
@@ -305,13 +305,14 @@ const SelectDiv = styled.div`
 `;
 
 const SelectLabel = styled.label`
-    font-size: 20px;
+    font-size: 18px;
     margin-right: 15px;
     font-weight: 700;
 `;
 
 const Select = styled.select`
-    height: 50%;
+    height: 30px;
+    width: 230px;
     font-size: 18px;
 
     :hover {
@@ -321,6 +322,7 @@ const Select = styled.select`
 
 const BodyWrapper = styled.div`
     display: flex;
+    justify-content: space-between;
 
     @media (max-width: 950px) {
         flex-direction: column;

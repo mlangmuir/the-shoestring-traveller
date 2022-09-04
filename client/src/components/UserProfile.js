@@ -16,7 +16,7 @@ const UserProfile = () => {
     return (
         isAuthenticated && (
             <div>
-                <img src={user.picture} alt={user.name} />
+                <img src={user.picture} alt={user.name} width={40} height={40} />
                 <h2>{user.name}</h2>
                 <p>{user.email}</p>
                 <button onClick={handleLogout}>

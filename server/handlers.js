@@ -25,8 +25,10 @@ const getArticles = async (req, res) => {
     const continent = req.query.continent || "";
     const splitContinent = Array.isArray(continent) === false ? [continent] : continent;
     const continentFilters = [];
-    splitContinent.filter(item => !!item).forEach((item) => {
-        continentFilters.push({ "continent": item });
+    splitContinent.forEach((item) => {
+        if (item) {
+            continentFilters.push({ "continent": item });
+        }
     })
     if (continent.length > 0) {
         filters.push({ $or: continentFilters });
@@ -72,7 +74,7 @@ const getArticles = async (req, res) => {
     const limit = req.query.limit || 15;
     const page = req.query.page || 1;
     const sortKey = req.query.sortKey || "id";
-    const sortDirection = req.query.sortDirection || 1;
+    const sortDirection = req.query.sortDirection || -1;
     const findFilters = filters.length > 0 ? { $and: filters } : {};
     const findTitle = title ? { title: { $regex: RegExp(title.toLowerCase()) } } : {};
     const find = { ...findFilters, ...findTitle };

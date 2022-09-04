@@ -20,12 +20,13 @@ const Filters = ({
     articleTypes
 }) => {
 
-    const { displayFilters, setDisplayFilters } = useContext(Context);
+    console.log(continent)
 
-    // const [allFilters, setAllFilters] = useState([]);
+    const { allFilters, setAllFilters } = useContext(Context);
 
     // applied filters button displays all filters based on 4 categories
-    const handleApplyFilters = () => {
+    const handleApplyFilters = (e) => {
+        e.preventDefault();
         page = 1
         doSearch({ continent, region, country, articleType, page });
         window.scrollTo(0,0);
@@ -41,103 +42,116 @@ const Filters = ({
     //     }
     // },[])
 
-    console.log(displayFilters)
+    useEffect(() => {
+        setContinent([]);
+        setAllFilters([]);
+    },[])
+    
+
+    console.log(allFilters)
 
     return (
         <FilterBox>
             <FilterTitle>Filters</FilterTitle>
-
-            <FilterBy>Continents</FilterBy>
-            {continents.map((item, index) => {
-                return (
-                    <div key={index}>
-                        <Input
-                        onChange={(e) => {
-                            if (e.target.checked && !continent.includes(item)) {
-                                setContinent([...continent, item]);
-                                setDisplayFilters([...displayFilters, item]);
-                            } else if(!e.target.checked && continent.includes(item)) {
-                                setContinent(continent.filter(val => val !== item));
-                                setDisplayFilters(displayFilters.filter(val => val !== item));
-                            }
-                        }}
-                        checked={continent.includes(item)}
-                        type="checkbox"
-                        id={item}
-                    />
-                        <Label htmlFor={item}>{item}</Label>
-                    </div>
-                )
-            })}
-
-            <FilterBy>Regions</FilterBy>
-            {regions.map((item, index) => {
-                return (
-                    <div key={index}>
-                        <Input
+            <FilterDiv>
+                <FilterBy>Continents</FilterBy>
+                {continents.map((item, index) => {
+                    return (
+                        <div key={index}>
+                            <Input
                             onChange={(e) => {
-                                if (e.target.checked && !region.includes(item)) {
-                                    setRegion([...region, item]);
-                                    setDisplayFilters([...displayFilters, item]);
-                                } else if(!e.target.checked && region.includes(item)) {
-                                    setRegion(region.filter(val => val !== item));
-                                    setDisplayFilters(displayFilters.filter(val => val !== item));
+                                if (e.target.checked && !continent.includes(item)) {
+                                    setContinent([...continent, item]);
+                                    // setAllFilters([...allFilters, item]);
+                                } else if(!e.target.checked && continent.includes(item)) {
+                                    setContinent(continent.filter(val => val !== item));
+                                    // setAllFilters(allFilters.filter(val => val !== item));
                                 }
                             }}
-                            checked={region.includes(item)}
+                            checked={continent.includes(item)}
                             type="checkbox"
                             id={item}
                         />
-                        <Label htmlFor={item}>{item}</Label>
-                    </div>
-                )
-            })}
+                            <Label htmlFor={item}>{item}</Label>
+                        </div>
+                    )
+                })}
+            </FilterDiv>
 
-            <FilterBy>Countries</FilterBy>
-            {countries.map((item, index) => {
-                return (
-                    <div key={index}>
-                        <Input
-                            onChange={(e) => {
-                                if (e.target.checked && !country.includes(item)) {
-                                    setCountry([...country, item]);
-                                    setDisplayFilters([...displayFilters, item]);     
-                                } else if(!e.target.checked && country.includes(item)) {
-                                    setCountry(country.filter(val => val !== item));
-                                    setDisplayFilters(displayFilters.filter(val => val !== item));
-                                }
-                            }}
-                            checked={country.includes(item)}
-                            type="checkbox"
-                            id={item}
-                        />
-                        <Label htmlFor={item}>{item}</Label>
-                    </div>
-                )
-            })}
+            <FilterDiv>
+                <FilterBy>Regions</FilterBy>
+                {regions.map((item, index) => {
+                    return (
+                        <div key={index}>
+                            <Input
+                                onChange={(e) => {
+                                    if (e.target.checked && !region.includes(item)) {
+                                        setRegion([...region, item]);
+                                        // setAllFilters([...allFilters, item]);
+                                    } else if(!e.target.checked && region.includes(item)) {
+                                        setRegion(region.filter(val => val !== item));
+                                        // setAllFilters(allFilters.filter(val => val !== item));
+                                    }
+                                }}
+                                checked={region.includes(item)}
+                                type="checkbox"
+                                id={item}
+                            />
+                            <Label htmlFor={item}>{item}</Label>
+                        </div>
+                    )
+                })}
+            </FilterDiv>
+            
+            <FilterDiv>
+                <FilterBy>Countries</FilterBy>
+                {countries.map((item, index) => {
+                    return (
+                        <div key={index}>
+                            <Input
+                                onChange={(e) => {
+                                    if (e.target.checked && !country.includes(item)) {
+                                        setCountry([...country, item]);
+                                        // setAllFilters([...allFilters, item]);     
+                                    } else if(!e.target.checked && country.includes(item)) {
+                                        setCountry(country.filter(val => val !== item));
+                                        // setAllFilters(allFilters.filter(val => val !== item));
+                                    }
+                                }}
+                                checked={country.includes(item)}
+                                type="checkbox"
+                                id={item}
+                            />
+                            <Label htmlFor={item}>{item}</Label>
+                        </div>
+                    )
+                })}
+            </FilterDiv>
 
-            <FilterBy>Article Type</FilterBy>
-            {articleTypes.map((item, index) => {
-                return (
-                    <div key={index}>
-                        <Input
-                            onChange={(e) => {
-                                if (e.target.checked && !articleType.includes(item)) {
-                                    setArticleType([...articleType, item]);
-                                    setDisplayFilters([...displayFilters, item]);    
-                                } else if(!e.target.checked && articleType.includes(item)) {
-                                    setArticleType(articleType.filter(val => val !== item));
-                                    setDisplayFilters(displayFilters.filter(val => val !== item));
-                                }
-                            }}
-                            checked={articleType.includes(item)}
-                            type="checkbox"
-                            id={item}
-                        />
-                        <Label htmlFor={item}>{item}</Label>
-                    </div>
-                )
-            })}
+            <FilterDiv>
+                <FilterBy>Article Type</FilterBy>
+                {articleTypes.map((item, index) => {
+                    return (
+                        <div key={index}>
+                            <Input
+                                onChange={(e) => {
+                                    if (e.target.checked && !articleType.includes(item)) {
+                                        setArticleType([...articleType, item]);
+                                        // setAllFilters([...allFilters, item]);    
+                                    } else if(!e.target.checked && articleType.includes(item)) {
+                                        setArticleType(articleType.filter(val => val !== item));
+                                        // setAllFilters(allFilters.filter(val => val !== item));
+                                    }
+                                }}
+                                checked={articleType.includes(item)}
+                                type="checkbox"
+                                id={item}
+                            />
+                            <Label htmlFor={item}>{item}</Label>
+                        </div>
+                    )
+                })}
+            </FilterDiv>
 
             <Button onClick={handleApplyFilters}>
                 Apply filters
@@ -147,26 +161,30 @@ const Filters = ({
 }
 
 const FilterBox = styled.div`
+    width: 180px;
+    padding: 0 25px;
     border: 1px solid lightgrey;
-    width: 280px;
-    padding: 25px;
 
-    @media (max-width: 950px) {
+    /* @media (max-width: 950px) {
         margin-bottom: 50px;
         width: 65%;
-    }
+    } */
+`;
+
+const FilterDiv = styled.div`
+    margin-bottom: 40px;
 `;
 
 const FilterTitle = styled.h2`
     border-bottom: 1px solid lightgrey;
     padding-bottom: 10px;
     font-weight: 700;
+    margin-bottom: 40px;
 `;
 
 const FilterBy = styled.h3`
     border-bottom: 1px solid lightgrey;
     padding-bottom: 10px;
-    margin-top: 40px;
     font-weight: 700;
 `;
 
