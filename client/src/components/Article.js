@@ -1,13 +1,15 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
-import LoadingPage from "../LoadingPage";
-import { Context } from "../../Context";
-import aboutMePoster from "../../assets/about-me-poster.png";
-import signUpPoster from "../../assets/sign-up-poster.png";
-import discoverChobePoster from "../../assets/discover-chobe.png";
-import tipsPoster from "../../assets/tips-poster.png";
+import LoadingPage from "./LoadingPage";
+import { Context } from "../Context";
+import aboutMePoster from "../assets/about-me-poster.png";
+import signUpPoster from "../assets/sign-up-poster.png";
+import discoverChobePoster from "../assets/discover-chobe.png";
+import tipsPoster from "../assets/tips-poster.png";
 import { useAuth0 } from '@auth0/auth0-react';
+import { AiOutlineHeart } from "react-icons/ai";
+import { BiBookmark } from "react-icons/bi";
 
 const Article = () => {
 
@@ -20,7 +22,17 @@ const Article = () => {
     const navigate = useNavigate();
 
     const [articleData, setArticleData] = useState([]);
-    const [paragraphs, setParagraphs] = useState([])
+    const [paragraphs, setParagraphs] = useState([]);
+    const [favourite, setFavourite] = useState(false);
+    const [readLater, setReadLater] = useState(false);
+
+    const handleFavourite = () => {
+        setFavourite(!favourite);
+    }
+
+    const handleReadLater = () => {
+        setReadLater(!readLater);
+    }
 
     // fetches article based on articleId param
     useEffect(() => {
@@ -38,8 +50,26 @@ const Article = () => {
         <>
             {!isLoading ?
             <Wrapper>
-                {articleData.title && <Title>{articleData.title}</Title>}
-                {articleData.title && <Date>{articleData.date}</Date>}
+                <TitleDiv>
+                    {articleData.title && <Title>{articleData.title}</Title>}
+                    {articleData.title && <Date>{articleData.date}</Date>}
+                    <IconsWrapper>
+                        <HeartIconDiv onClick={handleFavourite}>
+                            <AiOutlineHeart
+                                size={20}
+                                style={{color: favourite && "red"}}
+                            />
+                            <IconText>Favourite</IconText>
+                        </HeartIconDiv>
+                        <BookmarkIconDiv onClick={handleReadLater}>
+                            <BiBookmark
+                                size={20}
+                                style={{color: readLater && "green"}}
+                            />
+                            <IconText>Read Later</IconText>
+                        </BookmarkIconDiv>
+                    </IconsWrapper>
+                </TitleDiv>
                 <Container>
                     <ArticleDiv>
                         {articleData.coverImgSrc?.imgSrc && <CoverImage src={articleData.coverImgSrc.imgSrc} />}
@@ -105,10 +135,76 @@ const Article = () => {
 }
 
 const Wrapper = styled.div`
+    margin-top: 75px;
     margin-bottom: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
+`;
+
+const TitleDiv = styled.div`
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const Title = styled.h1`
+    font-size: 32px;
+    text-align: center;
+`;
+
+const Date = styled.p`
+    width: 100%;
+    padding-bottom: 30px;
+    text-align: center;
+    margin-top: 0;
+    font-size: 16px;
+    border-bottom: 1px solid lightgrey;
+`;
+
+
+const IconsWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
+`;
+
+const HeartIconDiv = styled.div`
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 20px;
+    padding: 0 10px;
+    height: 35px;
+
+    :hover {
+        cursor: pointer;
+        background-color: #f5f5f5;
+    }
+`;
+
+const BookmarkIconDiv = styled.div`
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 20px;
+    padding: 0 10px;
+    height: 35px;
+
+    :hover {
+        cursor: pointer;
+        background-color: #f5f5f5;
+    }
+`;
+
+const IconText = styled.p`
+    margin-left: 7px;
+    margin-right: 5px;
+    font-size: 12px;
 `;
 
 const Container = styled.div`
@@ -159,19 +255,6 @@ const TipsPoster = styled.img`
         cursor: pointer;
     }
 `; 
-
-const Title = styled.h1`
-    margin-top: 100px;
-    text-align: center;
-    font-size: 28px;
-`;
-
-const Date = styled.p`
-    margin-bottom: 50px;
-    margin-top: 0;
-    text-align: center;
-    font-size: 16px;
-`;
 
 const CoverImage = styled.img`
     width: 100%;

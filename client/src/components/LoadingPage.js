@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 `;
 
 const Icon = styled.img`
-    width: 150px;
+    width: 125px;
 `;
 
 export default LoadingPage;

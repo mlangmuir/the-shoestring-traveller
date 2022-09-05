@@ -28,7 +28,7 @@ const Footer = () => {
         <Wrapper>
             <ListsWrapper>
 
-                <Container style={{marginRight: "120px"}}>
+                <FeaturedContainer>
                     <Title>FEATURED ARTICLES</Title>
                     {allArticles.map((article, index) => {
                         return (
@@ -46,7 +46,7 @@ const Footer = () => {
                             </div>
                         )
                     })}
-                </Container>
+                </FeaturedContainer>
 
                 <Container>
                     <Title>CONTINENTS</Title>
@@ -113,47 +113,74 @@ const Footer = () => {
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     background-color: #050a30;
     width: 100vw;
     bottom: 0;
-
-    @media (max-width: 757px) {
-        height: 550px;
-    }
-
-    @media (max-width: 525px) {
-        height: 650px;
-    }
-
-    @media (max-width: 393px) {
-        height: 750px;
-    }
-
-    @media (max-width: 359px) {
-        height: 950px;
-    }
 `;
 
 const ListsWrapper = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     margin-bottom: 30px;
 
-    @media (max-width: 775px) {
+    @media (max-width: 950px) {
         flex-wrap: wrap;
+    }
+
+    @media (max-width: 450px) {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+    }
+`;
+
+const FeaturedContainer = styled.div`
+    margin-right: 120px;
+    margin-left: 30px;
+    color: white;
+    width: 520px;
+
+    @media (max-width: 1100px) {
+        width: 25%;
+    }
+
+    @media (max-width: 950px) {
+        width: 40%;
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 750px) {
+        width: 35%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    @media (max-width: 450px) {
+        width: 80%;
+        text-align: center;
+        margin-bottom: 5px;
     }
 `;
 
 const Container = styled.div`
     color: white;
     font-size: 16px;
-    width: 20%;
+    width: 35%;
 
-    @media (max-width: 600px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    @media (max-width: 950px) {
+        width: 40%;
+    }
+
+    @media (max-width: 750px) {
+        width: 35%;
+    }
+
+    @media (max-width: 450px) {
+        width: 80%;
+        text-align: center;
+        margin-bottom: 5px;
     }
 `;
 
@@ -161,6 +188,11 @@ const Title = styled.h3`
     font-weight: 700;
     font-size: 22px;
     margin-top: 40px;
+
+    @media (max-width: 450px) {
+        font-size: 16px;
+        margin-bottom: -5px;
+    }
 `;
 
 const Item = styled.p`
@@ -170,12 +202,21 @@ const Item = styled.p`
     :hover {
         cursor: pointer;
     }
+
+    @media (max-width: 450px) {
+        font-size: 12px;
+        line-height: 15px;
+    }
 `;
 
 const Copyright = styled.p`
     color: white;
     text-align: center;
     margin-bottom: 30px;
+
+    @media (max-width: 450px) {
+        font-size: 12px;
+    }
 `;
 
 export default Footer;

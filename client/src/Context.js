@@ -12,6 +12,7 @@ const Provider = ({ children }) => {
     const [regions, setRegions] = useState([]);
     const [countries, setCountries] = useState([]);
     const [articleTypes, setArticleTypes] = useState([]);
+    const [profileTab, setProfileTab] = useState("profile");
 
     useEffect(() => {
         setIsLoading(true);
@@ -38,7 +39,9 @@ const Provider = ({ children }) => {
                 countries,
                 setCountries,
                 articleTypes,
-                setArticleTypes
+                setArticleTypes,
+                profileTab,
+                setProfileTab
             }}
         >
             {children}

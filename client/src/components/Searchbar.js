@@ -33,7 +33,7 @@ const Searchbar = () => {
                     }, 200)
                 }}
                 type="search"
-                placeholder="Where would you like to go?"
+                placeholder="Search this site"
                 value={value}
                 onChange={(ev) => {
                     setValue(ev.target.value);

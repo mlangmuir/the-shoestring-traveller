@@ -20,7 +20,6 @@ const Destinations = () => {
     return (
         <Wrapper>
             <Title>Discover your dream destination!</Title>
-            <BrowseBy>Browse by region:</BrowseBy>
             <MapDiv>
                 <NorthernAmerica
                     onClick={()=> {
@@ -88,7 +87,6 @@ const Destinations = () => {
                 <Map src={worldMap} />
             </MapDiv>
 
-            <BrowseBy>Browse by continent:</BrowseBy>
             <ContinentDiv>
                 <ContinentWrapper
                     onClick={()=> {
@@ -142,27 +140,32 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
-    margin-top: 50px;
-`;
+    margin-top: 75px;
+    margin-bottom: 50px;
 
-const BrowseBy = styled.h2`
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 400;
+    @media (max-width: 550px) {
+        text-align: center;
+        font-size: 28px;
+    }
 `;
 
 const MapDiv = styled.div`
+    width: 80%;
     display: flex;
     justify-content: center;
     margin-bottom: 80px;
     margin-top: 20px;
+
+    @media (max-width: 1150px) {
+        width: 95%;
+    }
 `;
 
 const NorthernAmerica = styled.div`
     z-index: 1;
     position: absolute;
-    margin-right: 55%;
-    margin-top: 5%;
+    margin-right: 48%;
+    margin-top: 3%;
     width: 7%;
     height: 7%;
     display: flex;
@@ -173,13 +176,24 @@ const NorthernAmerica = styled.div`
         cursor: pointer;
         transform: scale(1.1);
     }
+
+    @media (max-width: 1150px) {
+        margin-right: 62%;
+        margin-top: 7%;
+        width: 9%;
+        height: 9%;
+    }
+
+    @media (max-width: 550px) {
+        margin-top: 10%;
+    }
 `;
 
 const CentralAmerica = styled.div`
     z-index: 1;
     position: absolute;
-    margin-right: 48%;
-    margin-top: 18%;
+    margin-right: 40%;
+    margin-top: 15%;
     width: 7%;
     height: 7%;
     display: flex;
@@ -189,6 +203,17 @@ const CentralAmerica = styled.div`
     :hover{
         cursor: pointer;
         transform: scale(1.1);
+    }
+
+    @media (max-width: 1150px) {
+        margin-right: 45%;
+        margin-top: 20%;
+        width: 9%;
+        height: 9%;
+    }
+
+    @media (max-width: 550px) {
+        margin-top: 23%;
     }
 `;
 
@@ -206,13 +231,17 @@ const WesternEurope = styled.div`
         cursor: pointer;
         transform: scale(1.1);
     }
+
+    @media (max-width: 550px) {
+        margin-top: 10%;
+    }
 `;
 
 const NorthAfrica = styled.div`
     z-index: 1;
     position: absolute;
-    margin-right: 6%;
-    margin-top: 15%;
+    margin-right: 3%;
+    margin-top: 12%;
     width: 7%;
     height: 7%;
     display: flex;
@@ -222,6 +251,10 @@ const NorthAfrica = styled.div`
     :hover{
         cursor: pointer;
         transform: scale(1.1);
+    }
+
+    @media (max-width: 550px) {
+        margin-top: 22%;
     }
 `;
 
@@ -229,7 +262,7 @@ const SouthernAfrica = styled.div`
     z-index: 1;
     position: absolute;
     margin-left: 5%;
-    margin-top: 29%;
+    margin-top: 25%;
     width: 7%;
     height: 7%;
     display: flex;
@@ -240,22 +273,30 @@ const SouthernAfrica = styled.div`
         cursor: pointer;
         transform: scale(1.1);
     }
+
+    @media (max-width: 550px) {
+        margin-top: 35%;
+    }
 `;
 
 const WestAsia = styled.div`
     z-index: 1;
     position: absolute;
-    margin-left: 17%;
-    margin-top: 11%;
+    margin-left: 19%;
+    margin-top: 8%;
     width: 7%;
     height: 7%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    :hover{
+    :hover {
         cursor: pointer;
         transform: scale(1.1);
+    }
+
+    @media (max-width: 550px) {
+        margin-top: 15%;
     }
 `;
 
@@ -265,7 +306,7 @@ const EastAsia = styled.div`
     min-width: 3%;
     min-height: 3%;
     margin-left: 45%;
-    margin-top: 15%;
+    margin-top: 12%;
     width: 7%;
     height: 7%;
     display: flex;
@@ -276,12 +317,24 @@ const EastAsia = styled.div`
         cursor: pointer;
         transform: scale(1.1);
     }
+
+    @media (max-width: 550px) {
+        margin-left: 55%;
+    }
 `;
 
 const RegionImage = styled.img`
     width: 100%;
     border: 1px solid lightgrey;
     padding: 10px;
+
+    @media (max-width: 1150px) {
+        border: none;
+    }
+
+    @media (max-width: 550px) {
+        display: none;
+    }
 `;
 
 const RegionText = styled.p`
@@ -291,12 +344,21 @@ const RegionText = styled.p`
     text-align: center;
     width: 100%;
     font-weight: 700;
+
+    @media (max-width: 1150px) {
+        font-size: 10px;
+        margin-top: -5px;
+    }
 `;
 
 const Map = styled.img`
     z-index: 0;
     width: 80%;
     opacity: 40%;
+
+    @media (max-width: 1150px) {
+        width: 95%;
+    }
 `;
 
 const ContinentDiv = styled.div`
@@ -324,6 +386,10 @@ const ContinentText = styled.h2`
     font-size: 36px;
     font-weight: 700;
     position: absolute;
+
+    @media (max-width: 550px) {
+        font-size: 28px;
+    }
 `;
 
 const CoverShade = styled.div`
@@ -336,6 +402,11 @@ const CoverShade = styled.div`
     width: 450px;
     height: 225px;
     margin: 20px;
+
+    @media (max-width: 550px) {
+        width: 300px;
+        height: 150px;
+    }
 `;
 
 const Continent = styled.img`
@@ -343,6 +414,11 @@ const Continent = styled.img`
     width: 450px;
     height: 225px;
     margin: 20px;
+
+    @media (max-width: 550px) {
+        width: 300px;
+        height: 150px;
+    }
 `;
 
 

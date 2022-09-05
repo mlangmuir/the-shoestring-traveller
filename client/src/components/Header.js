@@ -4,44 +4,95 @@ import { useNavigate, NavLink } from "react-router-dom";
 import siteLogo from "../assets/logo.png"
 import loginIcon from "../assets/login-icon.png";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useContext, useState } from "react";
+import { Context } from "../Context";
+import hamburger from "../assets/hamburger-icon.png";
 
 const Header = () => {
 
     const navigate = useNavigate();
 
+    const { setProfileTab } = useContext(Context);
+
+    const [clickBurger, setClickBurger] = useState(false);
+
     const { loginWithRedirect, isAuthenticated, user } = useAuth0();
 
+    const handleLogin = () => {
+        loginWithRedirect();
+        setProfileTab("profile");
+    }
+
+    const handleClickProfile = () => {
+        navigate("/profile");
+        setProfileTab("profile");
+    }
+
+    const handleClickBurger = () => {
+        setClickBurger(!clickBurger);
+    }
+
     return (
+        <>
         <NavBar>
             <Wrapper>
                 <NavLink to="/">
                     <Logo src={siteLogo} alt="The Shoestring Traveller Logo"/>
                 </NavLink>
-                <Container>
-                    <Searchbar />
-                    <NavDiv>
-                        <StyledNavLink to="/">Home</StyledNavLink>
-                        <StyledNavLink to="/about">About</StyledNavLink>
-                        <StyledNavLink to="/destinations">Destinations</StyledNavLink>
-                        <StyledNavLink to="/travel-tips">Travel Tips</StyledNavLink>
-                        <StyledNavLink to="/contact">Contact</StyledNavLink>
-                    </NavDiv>
-                </Container>
-                {isAuthenticated && user
-                    ? <LoginDiv>
-                        {user.picture
-                            ? <UserPicture src={user.picture} alt={user.name} onClick={() => navigate("/profile")}/>
-                            : <LoginIcon src={loginIcon} alt="Login icon" onClick={() => navigate("/profile")}/>
-                        }
-                        <LoginText onClick={() => navigate("/profile")}>Hello, {user.given_name ? user.given_name : user.email}</LoginText>
-                    </LoginDiv>
-                    : <LoginDiv>
-                        <LoginIcon src={loginIcon} alt="Login icon" onClick={() => loginWithRedirect()}/>
-                        <LoginText onClick={() => loginWithRedirect()}>LOGIN/SIGN UP</LoginText>
-                    </LoginDiv>
-                }
+                    <Container>
+                        <Searchbar />
+                        <NavDiv>
+                            <StyledNavLink to="/">Home</StyledNavLink>
+                            <StyledNavLink to="/about">About</StyledNavLink>
+                            <StyledNavLink to="/destinations">Destinations</StyledNavLink>
+                            <StyledNavLink to="/travel-tips">Travel Tips</StyledNavLink>
+                            <StyledNavLink to="/contact">Contact</StyledNavLink>
+                        </NavDiv>
+                    </Container>
+                    {isAuthenticated && user
+                        ? <LoginDiv>
+                            {user.picture
+                                ? <UserPicture src={user.picture} alt={user.name} onClick={handleClickProfile}/>
+                                : <LoginIcon src={loginIcon} alt="Login icon" onClick={handleClickProfile}/>
+                            }
+                            <LoginText onClick={handleClickProfile}>My Profile</LoginText>
+                        </LoginDiv>
+                        : <LoginDiv>
+                            <LoginIcon src={loginIcon} alt="Login icon" onClick={handleLogin}/>
+                            <LoginText onClick={handleLogin}>Sign In / Sign Up</LoginText>
+                        </LoginDiv>
+                    }
             </Wrapper>
+            <Hamburger src={hamburger} onClick={handleClickBurger}/>
         </NavBar>
+
+        
+        <MobileWrapper  style={{display: !clickBurger && "none"}}>
+        <MobileContainer>
+            <MobileNavDiv>
+                <MobileStyledNavLink to="/">Home</MobileStyledNavLink>
+                <MobileStyledNavLink to="/about">About</MobileStyledNavLink>
+                <MobileStyledNavLink to="/destinations">Destinations</MobileStyledNavLink>
+                <MobileStyledNavLink to="/travel-tips">Travel Tips</MobileStyledNavLink>
+                <MobileStyledNavLink to="/contact">Contact</MobileStyledNavLink>
+            </MobileNavDiv>
+            <Searchbar />
+        </MobileContainer>
+        {isAuthenticated && user
+            ? <MobileLoginDiv style={{display: !clickBurger && "none"}}>
+                {user.picture
+                    ? <MobileUserPicture src={user.picture} alt={user.name} onClick={handleClickProfile}/>
+                    : <MobileLoginIcon src={loginIcon} alt="Login icon" onClick={handleClickProfile}/>
+                }
+                <MobileLoginText onClick={handleClickProfile}>My Profile</MobileLoginText>
+            </MobileLoginDiv>
+            : <MobileLoginDiv style={{display: !clickBurger && "none"}}>
+                <MobileLoginIcon src={loginIcon} alt="Login icon" onClick={handleLogin}/>
+                <MobileLoginText onClick={handleLogin}>Sign In / Sign Up</MobileLoginText>
+            </MobileLoginDiv>
+        }
+    </MobileWrapper>
+    </>
     )
 }
 
@@ -56,11 +107,14 @@ const Wrapper = styled.div`
     width: 95%;
     display: flex;
     justify-content: space-between;
+`;
 
-    @media (max-width: 1050px) {
-        flex-direction: column;
-        align-items: center;
-        margin-right: 0;
+const Logo = styled.img`
+    height: 85px;
+    padding: 5px;
+
+    @media (max-width: 725px) {
+        margin-left: 20px;
     }
 `;
 
@@ -71,13 +125,12 @@ const Container = styled.div`
     margin-top: -5px;
 
     @media (max-width: 1050px) {
-        width: 90%;
+        width: 60%;
     }
-`;
 
-const Logo = styled.img`
-    height: 85px;
-    padding: 5px;
+    @media (max-width: 725px) {
+        display: none;
+    }
 `;
 
 const NavDiv = styled.div`
@@ -85,11 +138,6 @@ const NavDiv = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: -8px;
-
-    @media (max-width: 600px) {
-        flex-direction: column;
-        align-items: center;
-    }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -97,8 +145,8 @@ const StyledNavLink = styled(NavLink)`
     text-decoration: none;
     font-size: 18px;
 
-    @media (max-width: 600px) {
-        margin-top: 20px;
+    @media (max-width: 775px) {
+        font-size: 16px;
     }
 `;
 
@@ -107,6 +155,10 @@ const LoginDiv = styled.div`
     height: 100px;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 725px) {
+        display: none;
+    }
 `;
 
 const UserPicture = styled.img`
@@ -131,10 +183,96 @@ const LoginIcon = styled.img`
 const LoginText = styled.p`
     color: white;
     font-size: 14px;
-    margin-left: 7px;
+    margin-left: 10px;
 
     :hover{
         cursor: pointer;
+    }
+`;
+
+const MobileWrapper = styled.div`
+    display: none;
+
+    @media (max-width: 725px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 20px;
+        background-color: #303133;
+    }
+`;
+
+const MobileContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+const MobileNavDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+const MobileStyledNavLink = styled(NavLink)`
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    line-height: 35px;
+`;
+
+const MobileLoginDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+const MobileUserPicture = styled.img`
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+
+    :hover{
+        cursor: pointer;
+    }
+`;
+
+const MobileLoginIcon = styled.img`
+    height: 25px;
+    width: 25px;
+
+    :hover{
+        cursor: pointer;
+    }
+`;
+
+const MobileLoginText = styled.p`
+    color: white;
+    font-size: 14px;
+    margin-top: 5px;
+
+    :hover{
+        cursor: pointer;
+    }
+`;
+
+const Hamburger = styled.img`
+    display: none;
+    width: 35px;
+    height: 35px;
+    margin-top: 30px;
+    padding-right: 20px;
+
+    :hover {
+        cursor: pointer;
+    }
+
+    @media (max-width: 725px) {
+        display: block;
     }
 `;
 
