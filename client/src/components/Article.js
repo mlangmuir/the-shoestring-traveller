@@ -10,6 +10,11 @@ import tipsPoster from "../assets/tips-poster.png";
 import { useAuth0 } from '@auth0/auth0-react';
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiBookmark } from "react-icons/bi";
+import usePersistedState from "../usePersistedState";
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
 
 const Article = () => {
 
@@ -23,16 +28,30 @@ const Article = () => {
 
     const [articleData, setArticleData] = useState([]);
     const [paragraphs, setParagraphs] = useState([]);
-    const [favourite, setFavourite] = useState(false);
-    const [readLater, setReadLater] = useState(false);
+    const [favourite, setFavourite] = usePersistedState("favourite", []);
+    const [readLater, setReadLater] = usePersistedState("readLater", []);
 
     const handleFavourite = () => {
-        setFavourite(!favourite);
+        if (!favourite.includes(articleId)) {
+            setFavourite([...favourite, articleId]);
+        } else {
+            setFavourite(favourite.filter(val => val !== articleId));
+        }
     }
 
     const handleReadLater = () => {
-        setReadLater(!readLater);
+        if (!readLater.includes(articleId)) {
+            setReadLater([...readLater, articleId]);
+        } else {
+            setReadLater(readLater.filter(val => val !== articleId));
+        }
     }
+
+    const handleSignIn = () => {
+        loginWithRedirect();
+    }
+
+    console.log(favourite)
 
     // fetches article based on articleId param
     useEffect(() => {
@@ -54,20 +73,56 @@ const Article = () => {
                     {articleData.title && <Title>{articleData.title}</Title>}
                     {articleData.title && <Date>{articleData.date}</Date>}
                     <IconsWrapper>
-                        <HeartIconDiv onClick={handleFavourite}>
-                            <AiOutlineHeart
-                                size={20}
-                                style={{color: favourite && "red"}}
-                            />
-                            <IconText>Favourite</IconText>
-                        </HeartIconDiv>
-                        <BookmarkIconDiv onClick={handleReadLater}>
-                            <BiBookmark
-                                size={20}
-                                style={{color: readLater && "green"}}
-                            />
-                            <IconText>Read Later</IconText>
-                        </BookmarkIconDiv>
+                        {isAuthenticated
+                            ? <Tippy placement="bottom" content="Add to Favourites">
+                                <HeartIconDiv onClick={handleFavourite}>
+                                    <AiOutlineHeart
+                                        size={20}
+                                        style={{color: favourite.includes(articleId) && "red"}}
+                                    />
+                                    <IconText>Favourite</IconText>
+                                </HeartIconDiv>
+                            </Tippy>
+                            : <Tippy placement="bottom" content="Sign in to add to Favourites">
+                                <HeartIconDiv onClick={handleSignIn}>
+                                    <AiOutlineHeart
+                                        size={20}
+                                        style={{color: favourite.includes(articleId) && "red"}}
+                                    />
+                                    <IconText>Favourite</IconText>
+                                </HeartIconDiv>
+                            </Tippy>
+                        }
+                        {isAuthenticated
+                            ? <Tippy placement="bottom" content="Add to Read Later">
+                                <BookmarkIconDiv onClick={handleReadLater}>
+                                    <BiBookmark
+                                        size={20}
+                                        style={{color: readLater.includes(articleId) && "green"}}
+                                    />
+                                    <IconText>Read Later</IconText>
+                                </BookmarkIconDiv>
+                            </Tippy>
+                            : <Tippy placement="bottom" content="Sign in to add to Read Later">
+                                <BookmarkIconDiv onClick={handleReadLater}>
+                                    <BiBookmark
+                                        size={20}
+                                        style={{color: readLater.includes(articleId) && "green"}}
+                                    />
+                                    <IconText>Read Later</IconText>
+                                </BookmarkIconDiv>
+                            </Tippy>
+                        }
+                        <Snackbar open={favourite.includes(articleId)} severity="success">
+                            <Alert
+                                severity="success"
+                                // onClose={clearSnackbar}
+                                elevation={6}
+                                variant="filled"
+                            >
+                                Article added to Favourites!
+                            </Alert>
+                        </Snackbar>
                     </IconsWrapper>
                 </TitleDiv>
                 <Container>
