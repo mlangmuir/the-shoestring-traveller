@@ -22,7 +22,7 @@ const Article = () => {
 
     const { articleId } = useParams();
 
-    const { isAuthenticated, loginWithRedirect } = useAuth0();
+    const { isAuthenticated, loginWithRedirect, user } = useAuth0();
 
     const navigate = useNavigate();
 
@@ -30,28 +30,16 @@ const Article = () => {
     const [paragraphs, setParagraphs] = useState([]);
     const [favourite, setFavourite] = usePersistedState("favourite", []);
     const [readLater, setReadLater] = usePersistedState("readLater", []);
+    const [clickFavourite, setClickFavourite] = useState(false);
+    const [clickReadLater, setClickReadLater] = useState(false);
+    const [favouriteData, setFavouriteData] = useState([]);
+    const [concatArticleUser, setConcatArticleUser] = useState("");
 
-    const handleFavourite = () => {
-        if (!favourite.includes(articleId)) {
-            setFavourite([...favourite, articleId]);
-        } else {
-            setFavourite(favourite.filter(val => val !== articleId));
+    useEffect(() => {
+        if (user) {
+            setConcatArticleUser(articleId + "|" + user?.email);
         }
-    }
-
-    const handleReadLater = () => {
-        if (!readLater.includes(articleId)) {
-            setReadLater([...readLater, articleId]);
-        } else {
-            setReadLater(readLater.filter(val => val !== articleId));
-        }
-    }
-
-    const handleSignIn = () => {
-        loginWithRedirect();
-    }
-
-    console.log(favourite)
+    },[articleId]);
 
     // fetches article based on articleId param
     useEffect(() => {
@@ -64,6 +52,104 @@ const Article = () => {
                 setIsLoading(false);
             })
     },[articleId]);
+
+        // fetches favourite data
+        useEffect(() => {
+            setIsLoading(true);
+            if (user) {
+            fetch(`/api/favourites/${user.email}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    setFavouriteData(data.data);
+                    setIsLoading(false);
+                })
+            }
+        },[user]);
+    
+    // useEffect(() => {
+    //     if (favouriteData) {
+    //         const findFavourite = favouriteData.find(item => item?.id == concatArticleUser);
+    //         console.log(findFavourite)
+    //         if (findFavourite) {
+    //             setClickFavourite(true);
+    //         }
+    //     }
+    // }, [concatArticleUser, clickFavourite, favouriteData]);
+
+    console.log(clickFavourite)
+
+    let postArticleInfo;
+    if (user) {
+        postArticleInfo = {
+            userId: user?.email,
+            articleId: articleId,
+            articleData: articleData
+        }
+    }
+
+    const handleFavourite = () => {
+        if (!favourite.includes(concatArticleUser)) {
+            setFavourite([...favourite, concatArticleUser]);
+            setClickFavourite(true);
+
+            fetch(`/api/add-favourite/${concatArticleUser}`, {
+                method: "POST",
+                headers: {"Accept": "application/json","Content-Type": "application/json"},
+                body: JSON.stringify(postArticleInfo),
+            }).then(res =>  res.json())
+            .catch(e => {
+                console.log("error", e);
+            });
+
+        } else {
+            setFavourite(favourite.filter(val => val !== concatArticleUser));
+            setClickFavourite(false);
+
+            fetch(`/api/delete-favourite/${concatArticleUser}`, {
+                method: "DELETE",
+            }).then(res =>  res.json())
+            .catch(e => {
+                console.log("error", e);
+            });
+        }
+    }
+
+    const handleReadLater = () => {
+        if (!readLater.includes(articleId)) {
+            setReadLater([...readLater, articleId]);
+            setClickReadLater(true);
+            setTimeout(() => {
+                setClickReadLater(false);
+            }, 3000);
+
+            fetch(`/api/add-read-later/${concatArticleUser}`, {
+                method: "POST",
+                headers: {"Accept": "application/json","Content-Type": "application/json"},
+                body: JSON.stringify(postArticleInfo),
+            }).then(res =>  res.json())
+            .catch(e => {
+                console.log("error", e);
+            });
+
+        } else {
+            setReadLater(readLater.filter(val => val !== articleId));
+            setClickReadLater(false);
+
+            fetch(`/api/delete-read-later/${concatArticleUser}`, {
+                method: "DELETE",
+            }).then(res =>  res.json())
+            .catch(e => {
+                console.log("error", e);
+            });
+        }
+    }
+
+    const handleSignIn = () => {
+        loginWithRedirect();
+    }
+
+    favouriteData && console.log(favouriteData)
+
 
     return (
         <>
@@ -78,7 +164,7 @@ const Article = () => {
                                 <HeartIconDiv onClick={handleFavourite}>
                                     <AiOutlineHeart
                                         size={20}
-                                        style={{color: favourite.includes(articleId) && "red"}}
+                                        style={{color: clickFavourite && "red"}}
                                     />
                                     <IconText>Favourite</IconText>
                                 </HeartIconDiv>
@@ -87,7 +173,6 @@ const Article = () => {
                                 <HeartIconDiv onClick={handleSignIn}>
                                     <AiOutlineHeart
                                         size={20}
-                                        style={{color: favourite.includes(articleId) && "red"}}
                                     />
                                     <IconText>Favourite</IconText>
                                 </HeartIconDiv>
@@ -113,14 +198,22 @@ const Article = () => {
                                 </BookmarkIconDiv>
                             </Tippy>
                         }
-                        <Snackbar open={favourite.includes(articleId)} severity="success">
+                        <Snackbar open={clickFavourite}>
                             <Alert
                                 severity="success"
-                                // onClose={clearSnackbar}
                                 elevation={6}
                                 variant="filled"
                             >
                                 Article added to Favourites!
+                            </Alert>
+                        </Snackbar>
+                        <Snackbar open={clickReadLater}>
+                            <Alert
+                                severity="success"
+                                elevation={6}
+                                variant="filled"
+                            >
+                                Article added to Read Later!
                             </Alert>
                         </Snackbar>
                     </IconsWrapper>

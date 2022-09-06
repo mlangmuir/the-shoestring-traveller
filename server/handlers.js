@@ -1,10 +1,11 @@
 const { getDb } = require('./db');
 
 const getAllArticles = async (req, res) => {
+
     const db = await getDb();
 
     // get all articles from database
-    let data = await db.collection("articles").find({}).toArray();
+    const data = await db.collection("articles").find({}).toArray();
 
     (data.length > 0) ?
         // send data
@@ -114,12 +115,11 @@ const getArticles = async (req, res) => {
 }
 
 const getArticleById = async (req, res) => {
-    console.log('test')
+
     const db = await getDb();
 
     // get article id from req params
 
-    console.log(req.params)
     const articleId = req.params.articleId;
 
     // getting item by id from database and store it in result
@@ -131,4 +131,101 @@ const getArticleById = async (req, res) => {
         res.status(404).send({ status: 404, articleId, message: "Invalid article id" })
 };
 
-module.exports = { getAllArticles, getArticles, getArticleById };
+const addFavourite = async(req, res) => {
+
+    console.log('body', req.body)
+    console.log('params', req.params)
+
+    const db = await getDb();
+
+    try {
+        await db.collection("favourites").insertOne({
+            id: req.params.articleUserId,
+            userId: req.body.userId,
+            articleId: req.body.articleId,
+            article: req.body.articleData
+        });
+
+        res.status(201).json({ status: 201 , message: "Added to Favourites" })
+    } catch {
+        // send error message
+        res.status(404).json({ status: 404, message: "Article not found" });
+    }
+};
+
+const addReadLater = async(req, res) => {
+
+    try {
+        await db.collection("read-later").insertOne({
+            id: req.params.articleUserId,
+            userId: req.body.userId,
+            articleId: req.body.articleId,
+            article: req.body.articleData
+        });
+
+        res.status(201).json({ status: 201 , message: "Added to Read Later" })
+    } catch {
+        // send error message
+        res.status(404).json({ status: 404, message: "Article not found" });
+    }
+};
+
+const deleteFavourite = async(req, res) => {
+
+    const db = await getDb();
+
+    try {
+        await db.collection("favourites").deleteOne({ id: req.params.articleUserId });
+
+        res.status(201).json({ status: 201 , message: "Deleted from Favourites" })
+    } catch {
+        // send error message
+        res.status(404).json({ status: 404, message: "Article not found" });
+    }
+};
+
+const deleteReadLater = async(req, res) => {
+
+    const db = await getDb();
+
+    try {
+        await db.collection("read-later").deleteOne({ id: req.params.articleUserId });
+
+        res.status(201).json({ status: 201 , message: "Deleted from Read Later" })
+    } catch {
+        // send error message
+        res.status(404).json({ status: 404, message: "Article not found" });
+    }
+};
+
+const getFavouriteArticles = async (req, res) => {
+
+    console.log(req.body)
+
+    const db = await getDb();
+
+    try {
+        const data = await db.collection(`favourites`).find({ userId: req.params.userId }).toArray();
+        // send data
+        res.status(200).send({ status: 200, data: data })
+    } catch {
+        // send error message
+        res.status(404).send({ status: 404, message: "Not found" })
+    }
+};
+
+const getReadLaterArticles = async (req, res) => {
+
+    const db = await getDb();
+
+    const data = await db.collection("read-later").find({}).toArray();
+
+    (data.length > 0) ?
+        // send data
+        res.status(200).send({ status: 200, data: data }) :
+        // send error message
+        res.status(404).send({ status: 404, message: "Not found" })
+};
+
+
+module.exports = { getAllArticles, getArticles, getArticleById, addFavourite, addReadLater, deleteFavourite, deleteReadLater, getFavouriteArticles };

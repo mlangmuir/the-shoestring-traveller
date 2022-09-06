@@ -7,8 +7,10 @@ import gif404 from "../assets/404.gif"
 
 // declare errorPage function
 const ErrorPage = () => {
+
     const { isLoading } = useContext(Context);
-    const navigate = useNavigate()
+
+    const navigate = useNavigate();
 
     // declare handleClick function which redirects user to homepage
     const handleClick = () => {

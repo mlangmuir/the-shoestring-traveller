@@ -4,7 +4,7 @@ const express = require('express');
 const { auth } = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 const morgan = require('morgan');
-const { getAllArticles, getArticles, getArticleById } = require("./handlers");
+const { getAllArticles, getArticles, getArticleById, addFavourite, addReadLater, deleteFavourite, deleteReadLater, getFavouriteArticles } = require("./handlers");
 
 const PORT = process.env.PORT || 3001;
 
@@ -57,6 +57,16 @@ express()
     .get("/api/articles", getArticles)
 
     .get("/api/articles/id/:articleId", getArticleById)
+
+    .get("/api/favourites/:userId", getFavouriteArticles)
+
+    .post("/api/add-favourite/:articleUserId", addFavourite)
+
+    .post("/api/add-read-later/:articleUserId", addReadLater)
+
+    .delete("/api/delete-favourite/:articleUserId", deleteFavourite)
+
+    .delete("/api/delete-read-later/:articleUserId", deleteReadLater)
 
     //Invalid route
     .get("*", (req, res) => {
