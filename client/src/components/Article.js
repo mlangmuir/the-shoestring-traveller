@@ -33,6 +33,7 @@ const Article = () => {
     const [clickFavourite, setClickFavourite] = useState(false);
     const [clickReadLater, setClickReadLater] = useState(false);
     const [favouriteData, setFavouriteData] = useState([]);
+    const [readLaterData, setReadLaterData] = useState([]);
     const [concatArticleUser, setConcatArticleUser] = useState("");
 
     useEffect(() => {
@@ -55,13 +56,22 @@ const Article = () => {
 
         // fetches favourite data
         useEffect(() => {
-            setIsLoading(true);
             if (user) {
             fetch(`/api/favourites/${user.email}`)
                 .then((res) => res.json())
                 .then((data) => {
                     setFavouriteData(data.data);
-                    setIsLoading(false);
+                })
+            }
+        },[user]);
+
+        // fetches read later data
+        useEffect(() => {
+            if (user) {
+            fetch(`/api/read-later/${user.email}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    setReadLaterData(data.data);
                 })
             }
         },[user]);
@@ -75,8 +85,6 @@ const Article = () => {
     //         }
     //     }
     // }, [concatArticleUser, clickFavourite, favouriteData]);
-
-    console.log(clickFavourite)
 
     let postArticleInfo;
     if (user) {
@@ -115,12 +123,9 @@ const Article = () => {
     }
 
     const handleReadLater = () => {
-        if (!readLater.includes(articleId)) {
-            setReadLater([...readLater, articleId]);
+        if (!readLater.includes(concatArticleUser)) {
+            setReadLater([...readLater, concatArticleUser]);
             setClickReadLater(true);
-            setTimeout(() => {
-                setClickReadLater(false);
-            }, 3000);
 
             fetch(`/api/add-read-later/${concatArticleUser}`, {
                 method: "POST",
@@ -132,7 +137,7 @@ const Article = () => {
             });
 
         } else {
-            setReadLater(readLater.filter(val => val !== articleId));
+            setReadLater(readLater.filter(val => val !== concatArticleUser));
             setClickReadLater(false);
 
             fetch(`/api/delete-read-later/${concatArticleUser}`, {
@@ -148,8 +153,8 @@ const Article = () => {
         loginWithRedirect();
     }
 
-    favouriteData && console.log(favouriteData)
-
+    favouriteData && console.log(favouriteData);
+    readLaterData && console.log(readLaterData);
 
     return (
         <>
@@ -183,7 +188,7 @@ const Article = () => {
                                 <BookmarkIconDiv onClick={handleReadLater}>
                                     <BiBookmark
                                         size={20}
-                                        style={{color: readLater.includes(articleId) && "green"}}
+                                        style={{color: clickReadLater && "green"}}
                                     />
                                     <IconText>Read Later</IconText>
                                 </BookmarkIconDiv>
@@ -192,7 +197,6 @@ const Article = () => {
                                 <BookmarkIconDiv onClick={handleReadLater}>
                                     <BiBookmark
                                         size={20}
-                                        style={{color: readLater.includes(articleId) && "green"}}
                                     />
                                     <IconText>Read Later</IconText>
                                 </BookmarkIconDiv>

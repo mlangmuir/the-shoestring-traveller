@@ -3,7 +3,6 @@ import { Context } from "../../Context";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ErrorPage from "../ErrorPage";
 
 const Favourites = () => {
 
@@ -11,7 +10,7 @@ const Favourites = () => {
 
     const { user } = useAuth0();
 
-    const { isLoading, setIsLoading } = useContext(Context);
+    const { setIsLoading } = useContext(Context);
 
     const navigate = useNavigate();
 
@@ -27,47 +26,46 @@ const Favourites = () => {
     },[user]);
 
     return (
-       <Wrapper>
-                <Title>Favourites</Title>
-                {favouriteData.length > 0
-                    ? <ListContainer>
-                            {favouriteData?.map((item, index) => {
-                                return (
-                                    <ItemWrapper key={index}>
-                                        <Image
-                                            src={item?.article?.coverImgSrc?.imgSrc}
-                                            onClick={() => {
-                                                setIsLoading(true);
-                                                navigate(`/articles/id/${item?.article?.id}`);
-                                                window.scrollTo(0,0);
-                                            }}
-                                        />
-                                            <ItemTextDiv>
-                                                <ItemTitle
-                                                    onClick={() => {
-                                                        setIsLoading(true);
-                                                        navigate(`/articles/id/${item?.article?.id}`);
-                                                        window.scrollTo(0,0);
-                                                    }}
-                                                >
-                                                    {item?.article?.title}
-                                                </ItemTitle>
-                                                <ItemDate>{item?.article?.date}</ItemDate>
-                                                {item?.article?.paragraphs?.[0]?.text
-                                                    ? <ItemParagraph>{item?.article?.paragraphs?.[0]?.text}</ItemParagraph>
-                                                    : <ItemParagraph>{item?.article?.coverImgSrc?.imgCaption}</ItemParagraph>
-                                                }
-                                            </ItemTextDiv>
-                                    </ItemWrapper>
-                                )
-                            })}
-                        </ListContainer>
-                        : <NoFavourites>
-                            <h2>You haven't added any favourites yet.</h2>
-                        </NoFavourites>
-                    }
-            </Wrapper>
-        
+        <Wrapper>
+            <Title>Favourites</Title>
+            {favouriteData.length > 0
+                ? <ListContainer>
+                        {favouriteData?.map((item, index) => {
+                            return (
+                                <ItemWrapper key={index}>
+                                    <Image
+                                        src={item?.article?.coverImgSrc?.imgSrc}
+                                        onClick={() => {
+                                            setIsLoading(true);
+                                            navigate(`/articles/id/${item?.article?.id}`);
+                                            window.scrollTo(0,0);
+                                        }}
+                                    />
+                                        <ItemTextDiv>
+                                            <ItemTitle
+                                                onClick={() => {
+                                                    setIsLoading(true);
+                                                    navigate(`/articles/id/${item?.article?.id}`);
+                                                    window.scrollTo(0,0);
+                                                }}
+                                            >
+                                                {item?.article?.title}
+                                            </ItemTitle>
+                                            <ItemDate>{item?.article?.date}</ItemDate>
+                                            {item?.article?.paragraphs?.[0]?.text
+                                                ? <ItemParagraph>{item?.article?.paragraphs?.[0]?.text}</ItemParagraph>
+                                                : <ItemParagraph>{item?.article?.coverImgSrc?.imgCaption}</ItemParagraph>
+                                            }
+                                        </ItemTextDiv>
+                                </ItemWrapper>
+                            )
+                        })}
+                    </ListContainer>
+                    : <NoFavourites>
+                        <p>You haven't added any articles to Favourites yet.</p>
+                    </NoFavourites>
+                }
+        </Wrapper>
     )
 }
 
@@ -81,13 +79,13 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
     border-bottom: 1px solid lightgrey;
-    width: 100%;
+    width: 80%;
     text-align: center;
     padding-bottom: 30px;
 `;
 
 const ListContainer = styled.div`
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
 
@@ -159,7 +157,7 @@ const ItemParagraph = styled.p`
 `;
 
 const NoFavourites = styled.div`
-    height: 40vh;
+    height: 42vh;
 `;
 
 export default Favourites;

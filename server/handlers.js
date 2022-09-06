@@ -133,9 +133,6 @@ const getArticleById = async (req, res) => {
 
 const addFavourite = async(req, res) => {
 
-    console.log('body', req.body)
-    console.log('params', req.params)
-
     const db = await getDb();
 
     try {
@@ -154,6 +151,8 @@ const addFavourite = async(req, res) => {
 };
 
 const addReadLater = async(req, res) => {
+
+    const db = await getDb();
 
     try {
         await db.collection("read-later").insertOne({
@@ -200,12 +199,10 @@ const deleteReadLater = async(req, res) => {
 
 const getFavouriteArticles = async (req, res) => {
 
-    console.log(req.body)
-
     const db = await getDb();
 
     try {
-        const data = await db.collection(`favourites`).find({ userId: req.params.userId }).toArray();
+        const data = await db.collection("favourites").find({ userId: req.params.userId }).toArray();
         // send data
         res.status(200).send({ status: 200, data: data })
     } catch {
@@ -218,14 +215,14 @@ const getReadLaterArticles = async (req, res) => {
 
     const db = await getDb();
 
-    const data = await db.collection("read-later").find({}).toArray();
-
-    (data.length > 0) ?
+    try {
+        const data = await db.collection("read-later").find({ userId: req.params.userId }).toArray();
         // send data
-        res.status(200).send({ status: 200, data: data }) :
+        res.status(200).send({ status: 200, data: data })
+    } catch {
         // send error message
         res.status(404).send({ status: 404, message: "Not found" })
+    }
 };
 
-
-module.exports = { getAllArticles, getArticles, getArticleById, addFavourite, addReadLater, deleteFavourite, deleteReadLater, getFavouriteArticles };
+module.exports = { getAllArticles, getArticles, getArticleById, addFavourite, addReadLater, deleteFavourite, deleteReadLater, getFavouriteArticles, getReadLaterArticles };

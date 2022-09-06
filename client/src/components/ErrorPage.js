@@ -1,16 +1,25 @@
 import styled from "styled-components";
-import  {useNavigate} from 'react-router-dom';
+import  { useNavigate } from 'react-router-dom';
 import LoadingPage from "./LoadingPage";
 import { Context } from "../Context";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import gif404 from "../assets/404.gif"
 
 // declare errorPage function
 const ErrorPage = () => {
 
-    const { isLoading } = useContext(Context);
+    const { isLoading, setIsLoading } = useContext(Context);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 1000)
+    },[isLoading]);
+
+    console.log(isLoading)
 
     // declare handleClick function which redirects user to homepage
     const handleClick = () => {

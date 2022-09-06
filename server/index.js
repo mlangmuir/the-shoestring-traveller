@@ -4,7 +4,7 @@ const express = require('express');
 const { auth } = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 const morgan = require('morgan');
-const { getAllArticles, getArticles, getArticleById, addFavourite, addReadLater, deleteFavourite, deleteReadLater, getFavouriteArticles } = require("./handlers");
+const { getAllArticles, getArticles, getArticleById, addFavourite, addReadLater, deleteFavourite, deleteReadLater, getFavouriteArticles, getReadLaterArticles } = require("./handlers");
 
 const PORT = process.env.PORT || 3001;
 
@@ -59,6 +59,8 @@ express()
     .get("/api/articles/id/:articleId", getArticleById)
 
     .get("/api/favourites/:userId", getFavouriteArticles)
+
+    .get("/api/read-later/:userId", getReadLaterArticles)
 
     .post("/api/add-favourite/:articleUserId", addFavourite)
 
