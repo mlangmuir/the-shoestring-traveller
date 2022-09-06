@@ -64,16 +64,26 @@ const BannerWrapper = styled.div`
     display: flex;
     align-items: center;
     height: 625px;
+
+    @media (max-width: 850px) {
+        justify-content: center;
+        width: 100%;
+    }
 `;
 
 const BannerTextDiv = styled.div`
     z-index: 3;
     display: flex;
     flex-direction: column;
-    align-items: center;
     position: absolute;
-    margin-left: 20%;
+    margin-left: 15%;
     margin-bottom: 75px;
+    width: 500px;
+
+    @media (max-width: 850px) {
+        width: 80%;
+        margin-left: 0;
+    }
 `;
 
 const BannerTitle = styled.p`
@@ -82,6 +92,16 @@ const BannerTitle = styled.p`
     width: 600px;
     font-size: 48px;
     font-weight: 700;
+
+    @media (max-width: 850px) {
+        width: 80%;
+        font-size: 42px;
+    }
+
+    @media (max-width: 450px) {
+        width: 95%;
+        font-size: 36px;
+    }
 `;
 
 const BannerText = styled.p`
@@ -92,12 +112,17 @@ const BannerText = styled.p`
     font-weight: 400;
     margin-top: -20px;
     margin-bottom: -10px;
+
+    @media (max-width: 850px) {
+        width: 80%;
+        margin: 0;
+    }
 `;
 
 const CoverShade = styled.div`
     z-index: 2;
     position: absolute;
-    width: 100vw;
+    width: 100%;
     object-fit: cover;
     background-color: black;
     opacity: 30%;
@@ -122,16 +147,25 @@ const FeaturedWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 850px) {
+        width: 100%;
+    }
 `;
 
 const FeaturedTitle = styled.h2`
     font-size: 32px;
     text-align: center;
+
+    @media (max-width: 850px) {
+        font-size: 28px;
+    }
 `;
 
 const FeaturedGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 `;
 
 const FeaturedItem = styled.div`
@@ -156,11 +190,19 @@ const FeaturedCaption = styled.p`
 const AboutWrapper = styled.div`
     margin-top: 50px;
     width: 800px;
+
+    @media (max-width: 850px) {
+        width: 95%;
+    }
 `;
 
 const AboutTitle = styled.h2`
     font-size: 32px;
     text-align: center;
+
+    @media (max-width: 850px) {
+        font-size: 28px;
+    }
 `;
 
 const AboutText = styled.p`

@@ -6,7 +6,7 @@ import About from "./components/About";
 import Destinations from "./components/Destinations/Destinations";
 import TravelTips from "./components/TravelTips";
 import Contact from "./components/Contact";
-import Article from "./components/Article";
+import Article from "./components/Article/Article";
 import ErrorPage from "./components/ErrorPage";
 import Footer from "./components/Footer";
 import Profile from "./components/UserProfile/Profile";

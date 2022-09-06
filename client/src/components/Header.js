@@ -104,9 +104,13 @@ const NavBar = styled.div`
 `;
 
 const Wrapper = styled.div`
-    width: 95%;
+    width: 75%;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 1450px) {
+        width: 95%;
+    }
 `;
 
 const Logo = styled.img`

@@ -74,6 +74,7 @@ const Confirmation = styled.div`
     align-items: center;
     font-size: 32px;
     color: white;
+    margin-top: 100px;
 
     @media (max-width: 855px) {
         width: 80%
@@ -173,7 +174,7 @@ const Submit = styled.input`
 
 const CoverShade = styled.div`
     z-index: 2;
-    position: fixed;
+    position: absolute;
     width: 100vw;
     height: 100vh;
     object-fit: cover;
@@ -183,10 +184,10 @@ const CoverShade = styled.div`
 
 const Background = styled.img`
     z-index: 1;
-    position: fixed;
     width: 100vw;
     height: 100vh;
     object-fit: cover;
+    margin-top: -100px;
 `;
 
 export default Contact;

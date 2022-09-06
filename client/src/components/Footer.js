@@ -124,6 +124,11 @@ const ListsWrapper = styled.div`
     display: flex;
     justify-content: space-around;
     margin-bottom: 30px;
+    width: 75%;
+
+    @media (max-width: 1450px) {
+        width: 95%;
+    }
 
     @media (max-width: 950px) {
         flex-wrap: wrap;
@@ -190,7 +195,7 @@ const Title = styled.h3`
     margin-top: 40px;
 
     @media (max-width: 450px) {
-        font-size: 16px;
+        font-size: 20px;
         margin-bottom: -5px;
     }
 `;
@@ -204,8 +209,7 @@ const Item = styled.p`
     }
 
     @media (max-width: 450px) {
-        font-size: 12px;
-        line-height: 15px;
+        line-height: 17px;
     }
 `;
 
