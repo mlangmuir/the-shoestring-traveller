@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Context } from '../../Context';
 import LoadingPage from '../LoadingPage';
 import { useAuth0 } from '@auth0/auth0-react';
+import moment from "moment";
 
 const CommentBox = ({ articleData }) => {
 
@@ -24,10 +25,12 @@ const CommentBox = ({ articleData }) => {
         setIsLoading(true);
 
         const postCommentInfo = {
-            userId: user?.email,
+            userId: user.email,
             articleId: articleId,
+            user: user,
+            article: articleData,
             comment: inputText,
-            article: articleData
+            date: moment().format('lll')
         }
         
         fetch(`/api/add-comment/${articleId}`, {
@@ -85,7 +88,7 @@ const CommentBox = ({ articleData }) => {
                                 cursor: 'auto'
                             }}
                         >
-                            Meow
+                            Post
                         </DisabledButton>
                         : <Button
                             onClick={handlePost}
@@ -112,7 +115,7 @@ const NumComments = styled.h1`
 
 const Wrapper = styled.div`
     height: 150px;
-    padding: 20px 0px;
+    padding: 25px 0px;
     margin-top: -16px;
     border-bottom: 1px solid #ECECEC;
     overflow: hidden;
@@ -144,6 +147,7 @@ const TextArea = styled.textarea`
 const SubmitDiv = styled.div`
     display: flex;
     justify-content: right;
+    margin-top: 10px;
 `;
 
 const CountGrey = styled.p`
@@ -177,12 +181,13 @@ const Button = styled.button`
 `;
 
 const DisabledButton = styled.button`
-    opacity: 30%;
     color: white;
     font-size: 20px;
-    padding: 0px 25px;
+    padding: 0 25px;
     border: none;
-    border-radius: 30px;
+    border-radius: 8px;
+    opacity: 30%;
+    background-color: #050a30;
 
     :hover {
         cursor: pointer;

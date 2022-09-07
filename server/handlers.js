@@ -133,8 +133,10 @@ const getCommentsByArticle = async (req, res) => {
 
     const db = await getDb();
 
+    const articleId = req.params.articleId;
+
     try {
-        const data = await db.collection("comments").find({ articleId: req.params.articleId }).toArray();
+        const data = await db.collection("comments").find({ "articleId": articleId }).toArray();
         // send data
         res.status(200).send({ status: 200, data: data })
     } catch {
@@ -147,8 +149,10 @@ const getCommentsByUser = async (req, res) => {
 
     const db = await getDb();
 
+    const userId = req.params.userId;
+
     try {
-        const data = await db.collection("comments").find({ userId: req.params.userId }).toArray();
+        const data = await db.collection("comments").find({ "userId": userId }).toArray();
         // send data
         res.status(200).send({ status: 200, data: data })
     } catch {
@@ -203,8 +207,10 @@ const addComment = async(req, res) => {
         await db.collection("comments").insertOne({
             userId: req.body.userId,
             articleId: req.body.articleId,
+            user: req.body.user,
+            article: req.body.article,
             comment: req.body.comment,
-            article: req.body.article
+            date: req.body.date
         });
 
         res.status(201).json({ status: 201 , message: "Comment added" })

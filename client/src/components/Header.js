@@ -70,16 +70,16 @@ const Header = () => {
         <MobileWrapper  style={{display: !clickBurger && "none"}}>
         <MobileContainer>
             <MobileNavDiv>
-                <MobileStyledNavLink to="/">Home</MobileStyledNavLink>
-                <MobileStyledNavLink to="/about">About</MobileStyledNavLink>
-                <MobileStyledNavLink to="/destinations">Destinations</MobileStyledNavLink>
-                <MobileStyledNavLink to="/travel-tips">Travel Tips</MobileStyledNavLink>
-                <MobileStyledNavLink to="/contact">Contact</MobileStyledNavLink>
+                <MobileStyledNavLink to="/" onClick={handleClickBurger}>Home</MobileStyledNavLink>
+                <MobileStyledNavLink to="/about" onClick={handleClickBurger}>About</MobileStyledNavLink>
+                <MobileStyledNavLink to="/destinations" onClick={handleClickBurger}>Destinations</MobileStyledNavLink>
+                <MobileStyledNavLink to="/travel-tips" onClick={handleClickBurger}>Travel Tips</MobileStyledNavLink>
+                <MobileStyledNavLink to="/contact" onClick={handleClickBurger}>Contact</MobileStyledNavLink>
             </MobileNavDiv>
             <Searchbar />
         </MobileContainer>
         {isAuthenticated && user
-            ? <MobileLoginDiv style={{display: !clickBurger && "none"}}>
+            ? <MobileLoginDiv style={{display: !clickBurger && "none"}} onClick={handleClickBurger}>
                 {user.picture
                     ? <MobileUserPicture src={user.picture} alt={user.name} onClick={handleClickProfile}/>
                     : <MobileLoginIcon src={loginIcon} alt="Login icon" onClick={handleClickProfile}/>

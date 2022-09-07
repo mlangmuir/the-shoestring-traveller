@@ -77,6 +77,10 @@ const Wrapper = styled.div`
     align-items: center;
     width: 100%;
     margin-left: 50px;
+
+    @media (max-width: 800px) {
+        margin-left: 0;
+    }
 `;
 
 const Title = styled.h1`
@@ -117,6 +121,11 @@ const ItemWrapper = styled.div`
     display: flex;
     align-items: flex-start;
     border-bottom: 1px dotted lightgrey;
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 const Image = styled.img`
@@ -134,6 +143,10 @@ const ItemTextDiv = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 25px;
+
+    @media (max-width: 800px) {
+        margin-left: 0;
+    }
 `;
 
 const ItemTitle = styled.h1`
@@ -145,17 +158,29 @@ const ItemTitle = styled.h1`
         cursor: pointer;
         color: #0000EE;
     }
+
+    @media (max-width: 800px) {
+        text-align: center;
+    }
 `;
 
 const ItemDate = styled.p`
     color: grey;
     font-size: 14px;
     margin-bottom: -5px;
+
+    @media (max-width: 800px) {
+        text-align: center;
+    }
 `;
 
 const ItemParagraph = styled.p`
     font-size: 14px;
     text-align: justify;
+
+    @media (max-width: 800px) {
+        text-align: center;
+    }
 `;
 
 const NoReadLater = styled.div`

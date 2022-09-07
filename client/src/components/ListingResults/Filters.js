@@ -165,10 +165,10 @@ const FilterBox = styled.div`
     padding: 0 25px;
     border: 1px solid lightgrey;
 
-    /* @media (max-width: 950px) {
+    @media (max-width: 1100px) {
         margin-bottom: 50px;
         width: 65%;
-    } */
+    }
 `;
 
 const FilterDiv = styled.div`
@@ -213,6 +213,7 @@ const Button = styled.button`
     border: none;
     border-radius: 5px;
     height: 30px;
+    margin-bottom: 25px;
 
     :hover {
         cursor: pointer;

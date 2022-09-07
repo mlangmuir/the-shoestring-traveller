@@ -129,7 +129,6 @@ const Icons = ({ articleData }) => {
         loginWithRedirect();
     }
 
-
     return (
         <IconsWrapper>
             {isAuthenticated

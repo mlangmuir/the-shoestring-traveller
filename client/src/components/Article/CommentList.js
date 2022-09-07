@@ -21,11 +21,16 @@ const CommentList = () => {
 
     return (
         <Wrapper>
-            {articleComments.map((item, index) => {
+            {articleComments.reverse().map((item, index) => {
                 return (
-                    <p key={index}>
-                        {item.comment}
-                    </p>
+                    <CommentWrapper key={index}>
+                        <Image src={item?.user?.picture} />
+                        <TextDiv>
+                            <Name>{item?.user?.name}</Name>
+                            <Date>{item?.date}</Date>
+                            <Comment>{item?.comment}</Comment>
+                        </TextDiv>
+                    </CommentWrapper>
                 )
             })}
         </Wrapper>
@@ -33,7 +38,43 @@ const CommentList = () => {
 }
 
 const Wrapper = styled.div`
-    width: 80%;
+    margin-top: 30px;
+    overflow: hidden;
+`;
+
+const CommentWrapper = styled.div`
+    display: flex;
+    padding: 10px 0;
+`;
+
+const Image = styled.img`
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+`;
+
+const TextDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-top: -15px;
+`;
+
+const Name = styled.p`
+    font-size: 16px;
+    font-weight: 600;
+`;
+
+const Date = styled.p`
+    font-size: 12px;
+    color: grey;
+    margin-top: -15px;
+`;
+
+const Comment = styled.p`
+    margin-top: -5px;
+    text-align: justify;
+    font-size: 16px;
 `;
 
 export default CommentList;
