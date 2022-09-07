@@ -185,6 +185,10 @@ const ItemParagraph = styled.p`
 
 const NoReadLater = styled.div`
     height: 42vh;
+
+    @media (max-width: 800px) {
+        text-align: center;
+    }
 `;
 
 export default ReadLater;
