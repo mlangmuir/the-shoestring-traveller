@@ -16,10 +16,8 @@ const ErrorPage = () => {
         setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false);
-        }, 1000)
+        }, 2000)
     },[isLoading]);
-
-    console.log(isLoading)
 
     // declare handleClick function which redirects user to homepage
     const handleClick = () => {

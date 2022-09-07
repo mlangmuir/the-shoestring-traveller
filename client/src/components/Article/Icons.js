@@ -7,13 +7,11 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import { useParams } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useState, useEffect, useContext } from "react";
-import { Context } from "../../Context";
+import { useState, useEffect } from "react";
 
 const Icons = ({ articleData }) => {
 
     const { articleId } = useParams();
-
 
     const { isAuthenticated, loginWithRedirect, user } = useAuth0();
 
@@ -40,7 +38,7 @@ const Icons = ({ articleData }) => {
                 setFoundFavourite(data.data.find(item => item.id === concatArticleUser));
             })
         }
-    },[]);
+    },[setFavouriteData, user]);
 
     // fetches read later data
     useEffect(() => {
@@ -51,7 +49,7 @@ const Icons = ({ articleData }) => {
                 setReadLaterData(data.data);
             })
         }
-    },[user]);
+    },[setReadLaterData, user]);
 
     let postArticleInfo;
     if (user) {
@@ -72,11 +70,11 @@ const Icons = ({ articleData }) => {
 
         setClickFavourite(!clickFavourite);
 
-        if (foundFavourite) {
-            setClickFavourite(true);
-        }
+        // if (foundFavourite) {
+        //     setClickFavourite(true);
+        // }
 
-        if (clickFavourite) {
+        if (clickFavourite === false) {
 
             fetch(`/api/add-favourite/${concatArticleUser}`, {
                 method: "POST",
@@ -87,7 +85,7 @@ const Icons = ({ articleData }) => {
                 console.log("error", e);
             });
 
-        } else {
+        } else if (clickFavourite === true) {
 
             fetch(`/api/delete-favourite/${concatArticleUser}`, {
                 method: "DELETE",

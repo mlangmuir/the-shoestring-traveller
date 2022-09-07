@@ -5,6 +5,8 @@ import LoadingPage from "../LoadingPage";
 import { Context } from "../../Context";
 import Icons from "./Icons";
 import Sidebar from "./Sidebar";
+import CommentBox from "./CommentBox";
+import CommentList from "./CommentList";
 
 const Article = () => {
 
@@ -54,6 +56,8 @@ const Article = () => {
                             )
                         })}
                         </>
+                        <CommentBox articleData={articleData} />
+                        <CommentList />
                     </ArticleDiv>
                     <Sidebar />
                 </Container>
@@ -77,6 +81,10 @@ const TitleDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 850px) {
+        width: 90%;
+    }
 `;
 
 const Title = styled.h1`
@@ -97,10 +105,20 @@ const Container = styled.div`
     width: 80%;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 850px) {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 const ArticleDiv = styled.div`
     width: 62%;
+
+    @media (max-width: 850px) {
+        width: 90%;
+    }
 `;
 
 const CoverImage = styled.img`
@@ -146,6 +164,11 @@ const Paragraph = styled.p`
     font-size: 20px;
     text-align: justify;
     line-height: 40px;
+
+    @media (max-width: 850px) {
+        font-size: 18px;
+        line-height: 30px;
+    }
 `;
 
 export default Article;

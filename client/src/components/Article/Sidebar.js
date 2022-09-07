@@ -58,6 +58,10 @@ const Sidebar = () => {
 
 const SidebarDiv = styled.div`
     width: 30%;
+
+    @media (max-width: 850px) {
+        width: 70%;
+    }
 `;
 
 const AboutMePoster = styled.img`
@@ -65,6 +69,10 @@ const AboutMePoster = styled.img`
 
     :hover {
         cursor: pointer;
+    }
+
+    @media (max-width: 850px) {
+        margin-top: 100px;
     }
 `;
 

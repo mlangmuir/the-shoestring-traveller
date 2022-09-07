@@ -90,8 +90,6 @@ const getArticles = async (req, res) => {
         .limit(limit)
         .toArray();
 
-    console.log('data', data)
-
     // countDocuments method counts # of items coming from DB based on filters applied in "find" variable
     const itemCount = await db.collection("articles").countDocuments(find);
     // using distinct to return names of all categories and body locations
@@ -131,6 +129,34 @@ const getArticleById = async (req, res) => {
         res.status(404).send({ status: 404, articleId, message: "Invalid article id" })
 };
 
+const getCommentsByArticle = async (req, res) => {
+
+    const db = await getDb();
+
+    try {
+        const data = await db.collection("comments").find({ articleId: req.params.articleId }).toArray();
+        // send data
+        res.status(200).send({ status: 200, data: data })
+    } catch {
+        // send error message
+        res.status(404).send({ status: 404, message: "Not found" })
+    }
+};
+
+const getCommentsByUser = async (req, res) => {
+
+    const db = await getDb();
+
+    try {
+        const data = await db.collection("comments").find({ userId: req.params.userId }).toArray();
+        // send data
+        res.status(200).send({ status: 200, data: data })
+    } catch {
+        // send error message
+        res.status(404).send({ status: 404, message: "Not found" })
+    }
+};
+
 const addFavourite = async(req, res) => {
 
     const db = await getDb();
@@ -166,6 +192,25 @@ const addReadLater = async(req, res) => {
     } catch {
         // send error message
         res.status(404).json({ status: 404, message: "Article not found" });
+    }
+};
+
+const addComment = async(req, res) => {
+
+    const db = await getDb();
+
+    try {
+        await db.collection("comments").insertOne({
+            userId: req.body.userId,
+            articleId: req.body.articleId,
+            comment: req.body.comment,
+            article: req.body.article
+        });
+
+        res.status(201).json({ status: 201 , message: "Comment added" })
+    } catch {
+        // send error message
+        res.status(404).json({ status: 404, message: "Not found" });
     }
 };
 
@@ -225,4 +270,4 @@ const getReadLaterArticles = async (req, res) => {
     }
 };
 
-module.exports = { getAllArticles, getArticles, getArticleById, addFavourite, addReadLater, deleteFavourite, deleteReadLater, getFavouriteArticles, getReadLaterArticles };
+module.exports = { getAllArticles, getArticles, getArticleById, getCommentsByArticle, getCommentsByUser, addFavourite, addReadLater, addComment, deleteFavourite, deleteReadLater, getFavouriteArticles, getReadLaterArticles };

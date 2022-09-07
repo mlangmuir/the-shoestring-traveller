@@ -25,6 +25,8 @@ const Favourites = () => {
         }
     },[user]);
 
+    console.log(favouriteData)
+
     return (
         <Wrapper>
             <Title>Favourites</Title>
