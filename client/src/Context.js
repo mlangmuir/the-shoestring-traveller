@@ -5,7 +5,7 @@ export const Context = createContext();
 
 const Provider = ({ children }) => {
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [allArticles, setAllArticles] = useState([]);
     const [allFilters, setAllFilters] = usePersistedState("allFilters", []);
     const [continents, setContinents] = useState([]);

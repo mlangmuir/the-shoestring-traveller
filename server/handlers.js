@@ -129,14 +129,13 @@ const getArticleById = async (req, res) => {
         res.status(404).send({ status: 404, articleId, message: "Invalid article id" })
 };
 
-const getCommentsByArticle = async (req, res) => {
+
+const getFavouriteArticles = async (req, res) => {
 
     const db = await getDb();
 
-    const articleId = req.params.articleId;
-
     try {
-        const data = await db.collection("comments").find({ "articleId": articleId }).toArray();
+        const data = await db.collection("favourites").find({ userId: req.params.userId }).toArray();
         // send data
         res.status(200).send({ status: 200, data: data })
     } catch {
@@ -145,14 +144,43 @@ const getCommentsByArticle = async (req, res) => {
     }
 };
 
-const getCommentsByUser = async (req, res) => {
+const getReadLaterArticles = async (req, res) => {
 
     const db = await getDb();
 
-    const userId = req.params.userId;
+    try {
+        const data = await db.collection("read-later").find({ userId: req.params.userId }).toArray();
+        // send data
+        res.status(200).send({ status: 200, data: data })
+    } catch {
+        // send error message
+        res.status(404).send({ status: 404, message: "Not found" })
+    }
+};
+
+
+const getCommentsByArticle = async (req, res) => {
+
+    const db = await getDb();
 
     try {
-        const data = await db.collection("comments").find({ "userId": userId }).toArray();
+        const data = await db.collection("comments").find({ articleId: req.params.articleId }).toArray();
+        // send data
+        res.status(200).send({ status: 200, data: data })
+    } catch {
+        // send error message
+        res.status(500).send({ status: 500, message: "Error" })
+    }
+};
+
+const getCommentsByUser = async (req, res) => {
+
+    console.log('test')
+
+    const db = await getDb();
+
+    try {
+        const data = await db.collection("comments").find({ userId: req.params.userId }).toArray();
         // send data
         res.status(200).send({ status: 200, data: data })
     } catch {
@@ -245,34 +273,6 @@ const deleteReadLater = async(req, res) => {
     } catch {
         // send error message
         res.status(404).json({ status: 404, message: "Article not found" });
-    }
-};
-
-const getFavouriteArticles = async (req, res) => {
-
-    const db = await getDb();
-
-    try {
-        const data = await db.collection("favourites").find({ userId: req.params.userId }).toArray();
-        // send data
-        res.status(200).send({ status: 200, data: data })
-    } catch {
-        // send error message
-        res.status(404).send({ status: 404, message: "Not found" })
-    }
-};
-
-const getReadLaterArticles = async (req, res) => {
-
-    const db = await getDb();
-
-    try {
-        const data = await db.collection("read-later").find({ userId: req.params.userId }).toArray();
-        // send data
-        res.status(200).send({ status: 200, data: data })
-    } catch {
-        // send error message
-        res.status(404).send({ status: 404, message: "Not found" })
     }
 };
 

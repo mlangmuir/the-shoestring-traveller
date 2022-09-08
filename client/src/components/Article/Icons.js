@@ -7,49 +7,60 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import { useParams } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { Context } from "../../Context";
+import LoadingPage from "../LoadingPage";
 
 const Icons = ({ articleData }) => {
 
     const { articleId } = useParams();
 
+    const { isLoading, setIsLoading } = useContext(Context);
+
     const { isAuthenticated, loginWithRedirect, user } = useAuth0();
 
     const [clickFavourite, setClickFavourite] = useState(false);
     const [clickReadLater, setClickReadLater] = useState(false);
-    const [favouriteData, setFavouriteData] = useState([]);
-    const [readLaterData, setReadLaterData] = useState([]);
     const [foundFavourite, setFoundFavourite] = useState("");
+    const [foundReadLater, setFoundReadLater] = useState("");
     const [concatArticleUser, setConcatArticleUser] = useState("");
 
+    // fetches favourite and read later data + concats article id with user email
     useEffect(() => {
         if (user) {
-            setConcatArticleUser(articleId + "|" + user?.email);
+            fetch(`/api/favourites/${user.email}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    setConcatArticleUser(articleId + "|" + user?.email);
+                    return data;
+                })
+                .then((data) => {
+                    setFoundFavourite(data.data.find(item => item.id === concatArticleUser));
+                })
+            fetch(`/api/read-later/${user.email}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    setConcatArticleUser(articleId + "|" + user?.email);
+                    return data;
+                })
+                .then((data) => {
+                    setFoundReadLater(data.data.find(item => item.id === concatArticleUser));
+                })
+            setIsLoading(false);
         }
-    },[articleId]);
+    },[user, concatArticleUser]);
 
-    // fetches favourite data
     useEffect(() => {
-        if (user) {
-        fetch(`/api/favourites/${user.email}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setFavouriteData(data.data);
-                setFoundFavourite(data.data.find(item => item.id === concatArticleUser));
-            })
+        if (foundFavourite) {
+            setClickFavourite(true);
         }
-    },[setFavouriteData, user]);
+    },[foundFavourite])
 
-    // fetches read later data
     useEffect(() => {
-        if (user) {
-        fetch(`/api/read-later/${user.email}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setReadLaterData(data.data);
-            })
+        if (foundReadLater) {
+            setClickReadLater(true);
         }
-    },[setReadLaterData, user]);
+    },[foundReadLater])
 
     let postArticleInfo;
     if (user) {
@@ -60,21 +71,11 @@ const Icons = ({ articleData }) => {
         }
     }
 
-    console.log(foundFavourite)
-    console.log(favouriteData)
-    console.log(clickFavourite)
-    console.log(concatArticleUser)
-
-
     const handleFavourite = () => {
 
-        setClickFavourite(!clickFavourite);
+        if (!clickFavourite) {
 
-        // if (foundFavourite) {
-        //     setClickFavourite(true);
-        // }
-
-        if (clickFavourite === false) {
+            setClickFavourite(true);
 
             fetch(`/api/add-favourite/${concatArticleUser}`, {
                 method: "POST",
@@ -85,7 +86,9 @@ const Icons = ({ articleData }) => {
                 console.log("error", e);
             });
 
-        } else if (clickFavourite === true) {
+        } else if (clickFavourite) {
+
+            setClickFavourite(false);
 
             fetch(`/api/delete-favourite/${concatArticleUser}`, {
                 method: "DELETE",
@@ -97,13 +100,10 @@ const Icons = ({ articleData }) => {
     }
 
     const handleReadLater = () => {
-        setClickReadLater(!clickReadLater);
+        
+        if (!clickReadLater) {
 
-        // if (foundFavourite) {
-        //     setClickFavourite(true);
-        // }
-
-        if (clickReadLater) {
+            setClickReadLater(true);
 
             fetch(`/api/add-read-later/${concatArticleUser}`, {
                 method: "POST",
@@ -114,7 +114,9 @@ const Icons = ({ articleData }) => {
                 console.log("error", e);
             });
 
-        } else {
+        } else if (clickReadLater) {
+
+            setClickReadLater(false);
 
             fetch(`/api/delete-read-later/${concatArticleUser}`, {
                 method: "DELETE",
@@ -130,13 +132,15 @@ const Icons = ({ articleData }) => {
     }
 
     return (
-        <IconsWrapper>
+        <>
+        {!isLoading
+        ? <IconsWrapper>
             {isAuthenticated
                 ? <Tippy placement="bottom" content="Add to Favourites">
                     <HeartIconDiv onClick={handleFavourite}>
                         <AiOutlineHeart
                             size={20}
-                            style={{color: clickFavourite && "red"}}
+                            style={{color: clickFavourite ? "red" : "black"}}
                         />
                         <IconText>Favourite</IconText>
                     </HeartIconDiv>
@@ -155,7 +159,7 @@ const Icons = ({ articleData }) => {
                     <BookmarkIconDiv onClick={handleReadLater}>
                         <BiBookmark
                             size={20}
-                            style={{color: clickReadLater && "green"}}
+                            style={{color: clickReadLater ? "green" : "black"}}
                         />
                         <IconText>Read Later</IconText>
                     </BookmarkIconDiv>
@@ -169,7 +173,7 @@ const Icons = ({ articleData }) => {
                     </BookmarkIconDiv>
                 </Tippy>
             }
-            <Snackbar open={clickFavourite}>
+            <Snackbar open={foundFavourite}>
                 <Alert
                     severity="success"
                     elevation={6}
@@ -188,6 +192,9 @@ const Icons = ({ articleData }) => {
                 </Alert>
             </Snackbar>
         </IconsWrapper>
+        : <LoadingPage />
+        }
+        </>
     )
 }
 

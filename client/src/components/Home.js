@@ -5,6 +5,10 @@ import { useContext } from "react";
 import { Context } from "../Context";
 import { useNavigate } from "react-router-dom";
 import LoadingPage from "./LoadingPage";
+import aboutMePoster from "../assets/about-me-poster.png";
+import signUpPoster from "../assets/sign-up-poster.png";
+import discoverChobePoster from "../assets/discover-chobe.png";
+import tipsPoster from "../assets/tips-poster.png";
 
 const Home = () => {
 
@@ -48,10 +52,11 @@ const Home = () => {
                                 })}
                             </FeaturedGrid>
                     </FeaturedWrapper>
-                    <AboutWrapper>
-                        <AboutTitle>About the Shoestring Traveller</AboutTitle>
-                        <AboutText></AboutText>
-                    </AboutWrapper>
+                    <PostersWrapper>
+                        <Poster src={aboutMePoster} />
+                        <Poster src={signUpPoster} />
+                        <Poster src = {tipsPoster} />
+                    </PostersWrapper>
                 </Container>
             </>
             : <LoadingPage />
@@ -143,13 +148,17 @@ const Container = styled.div`
 
 const FeaturedWrapper = styled.div`
     margin-top: 50px;
-    width: 80%;
+    width: 75%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    @media (max-width: 1550px) {
+        width: 80%;
+    }
+
     @media (max-width: 850px) {
-        width: 100%;
+        width: 90%;
     }
 `;
 
@@ -175,6 +184,10 @@ const FeaturedItem = styled.div`
     :hover {
         cursor: pointer;
     }
+
+    @media (max-width: 850px) {
+        padding: 20px 12px;
+    }
 `;
 
 const FeaturedPhoto = styled.img`
@@ -187,25 +200,28 @@ const FeaturedCaption = styled.p`
     font-weight: bold;
 `;
 
-const AboutWrapper = styled.div`
-    margin-top: 50px;
-    width: 800px;
+const PostersWrapper = styled.div`
+    margin: 100px 0;
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
 
-    @media (max-width: 850px) {
-        width: 95%;
+    @media (max-width: 1400px) {
+        width: 100%;
+    }
+
+    @media (max-width: 1100px) {
+        flex-direction: column;
+        align-items: center;
     }
 `;
 
-const AboutTitle = styled.h2`
-    font-size: 32px;
-    text-align: center;
+const Poster = styled.img`
+    height: 400px;
 
-    @media (max-width: 850px) {
-        font-size: 28px;
+    @media (max-width: 1100px) {
+        margin-bottom: 50px;
     }
-`;
-
-const AboutText = styled.p`
 `;
 
 export default Home;

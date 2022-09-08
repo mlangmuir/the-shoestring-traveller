@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../../Context";
 import styled from "styled-components";
+import LoadingPage from "../LoadingPage";
 
 const CommentList = () => {
 
@@ -10,30 +11,36 @@ const CommentList = () => {
     const { articleId } = useParams();
 
     useEffect(() => {
-        fetch(`/api/comments/${articleId}`)
+        fetch(`/api/article-comments/${articleId}`)
             .then((res) => res.json())
             .then((data) => {
                 setArticleComments(data.data);
+                setIsLoading(false);
             })
     },[setArticleComments]);
 
     console.log(articleComments)
 
     return (
-        <Wrapper>
-            {articleComments.reverse().map((item, index) => {
-                return (
-                    <CommentWrapper key={index}>
-                        <Image src={item?.user?.picture} />
-                        <TextDiv>
-                            <Name>{item?.user?.name}</Name>
-                            <Date>{item?.date}</Date>
-                            <Comment>{item?.comment}</Comment>
-                        </TextDiv>
-                    </CommentWrapper>
-                )
-            })}
-        </Wrapper>
+        <>
+            {!isLoading
+            ? <Wrapper>
+                {articleComments.reverse().map((item, index) => {
+                    return (
+                        <CommentWrapper key={index}>
+                            <Image src={item?.user?.picture} />
+                            <TextDiv>
+                                <Name>{item?.user?.name}</Name>
+                                <Date>{item?.date}</Date>
+                                <Comment>{item?.comment}</Comment>
+                            </TextDiv>
+                        </CommentWrapper>
+                    )
+                })}
+            </Wrapper>
+            : <LoadingPage />
+            }
+        </>
     )
 }
 

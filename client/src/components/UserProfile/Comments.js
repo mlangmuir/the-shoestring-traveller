@@ -1,30 +1,29 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Context } from "../../Context";
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Comments = () => {
 
-    const { isLoading, setIsLoading } = useContext(Context);
-
-    const { userId } = useParams();
+    const { setIsLoading } = useContext(Context);
 
     const { user } = useAuth0();
 
-    const [userComments, setUserComments] = useState([]);
+    const navigate = useNavigate();
 
-    console.log(userId)
+    const [userComments, setUserComments] = useState([]);
 
     useEffect(() => {
         if (user) {
-        fetch(`/api/comments/${userId}`)
+        fetch(`/api/user-comments/${user.email}`)
             .then((res) => res.json())
             .then((data) => {
                 setUserComments(data.data);
+                setIsLoading(false);
             })
         }
-    },[setUserComments]);
+    },[user]);
 
     console.log(userComments)
 
@@ -36,12 +35,12 @@ const Comments = () => {
                     {userComments.reverse().map((item, index) => {
                         return (
                             <CommentWrapper key={index}>
-                                <Image src={item?.user?.picture} />
                                 <TextDiv>
-                                    <Name>{item?.user?.name}</Name>
-                                    <Date>{item?.date}</Date>
                                     <Comment>{item?.comment}</Comment>
+                                    <ArticleTitle>Commented on <Span onClick={()=> navigate(`/articles/id/${item?.article?.id}`)}>{item?.article?.title}</Span></ArticleTitle>
+                                    <Date>{item?.date}</Date>
                                 </TextDiv>
+                                <Image src={item?.article?.coverImgSrc?.imgSrc} />
                             </CommentWrapper>
                         )
                     })}
@@ -77,36 +76,55 @@ const Title = styled.h1`
 const CommentWrapper = styled.div`
     display: flex;
     padding: 10px 0;
+    height: 100px;
+    margin-top: 30px;
+    justify-content: center;
 `;
 
 const Image = styled.img`
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
+    height: 100px;
+    width: 150px;
+    object-fit: cover;
+    object-position: 0 -8px;
+
+    :hover {
+        cursor: pointer;
+    }
 `;
 
 const TextDiv = styled.div`
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
-    margin-top: -15px;
+    justify-content: space-between;
+    margin-right: 20px;
+    height: 100%;
+    width: 50%;
 `;
 
-const Name = styled.p`
+const Comment = styled.p`
     font-size: 14px;
     font-weight: 600;
+    margin-top: 0px;
+`;
+
+const ArticleTitle = styled.p`
+    font-size: 14px;
+    margin-top: -10px;
+`;
+
+const Span = styled.span`
+    color: #4636be ;
+    font-weight: 600;
+
+    :hover {
+        cursor: pointer;
+    }
 `;
 
 const Date = styled.p`
     font-size: 11px;
     color: grey;
-    margin-top: -15px;
-`;
-
-const Comment = styled.p`
-    margin-top: -5px;
-    text-align: justify;
-    font-size: 14px;
+    margin-top: -10px;
 `;
 
 const NoComments = styled.div`

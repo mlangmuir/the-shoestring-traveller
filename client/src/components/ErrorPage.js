@@ -2,37 +2,46 @@ import styled from "styled-components";
 import  { useNavigate } from 'react-router-dom';
 import LoadingPage from "./LoadingPage";
 import { Context } from "../Context";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import gif404 from "../assets/404.gif"
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
 
 // declare errorPage function
 const ErrorPage = () => {
 
     const { isLoading, setIsLoading } = useContext(Context);
 
-    const navigate = useNavigate();
+    const { isAuthenticated } = useAuth0;
 
-    useEffect(() => {
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000)
-    },[isLoading]);
+    const navigate = useNavigate();
 
     // declare handleClick function which redirects user to homepage
     const handleClick = () => {
         navigate("/");
     }
+
+    useEffect(() => {
+    if (!isAuthenticated) {
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000)
+    }
+},[])
     
     return (
-        !isLoading ?
-        <Wrapper>
-            <Img src={gif404} alt="broken chain" />
-            <Title>Page Not Found...</Title>
-            <Text>The page you requested does not exist.</Text>
-            <Button onClick={handleClick}>Go to Home</Button>
-        </Wrapper>
-        : <LoadingPage/>
+        <>
+            {!isLoading ?
+            <Wrapper>
+                <Img src={gif404} alt="broken chain" />
+                <Title>Page Not Found...</Title>
+                <Text>The page you requested does not exist.</Text>
+                <Button onClick={handleClick}>Go to Home</Button>
+            </Wrapper>
+            : <LoadingPage/>
+            }
+        </>
     )
     
 }

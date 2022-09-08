@@ -58,9 +58,9 @@ express()
 
     .get("/api/articles/id/:articleId", getArticleById)
 
-    .get("/api/comments/:articleId", getCommentsByArticle)
+    .get("/api/article-comments/:articleId", getCommentsByArticle)
 
-    .get("/api/comments/:userId", getCommentsByUser)
+    .get("/api/user-comments/:userId", getCommentsByUser)
 
     .get("/api/favourites/:userId", getFavouriteArticles)
 

@@ -37,7 +37,11 @@ const Header = () => {
         <NavBar>
             <Wrapper>
                 <NavLink to="/">
-                    <Logo src={siteLogo} alt="The Shoestring Traveller Logo"/>
+                    <Logo
+                        src={siteLogo}
+                        onClick={() => clickBurger && handleClickBurger()}
+                        alt="The Shoestring Traveller Logo"
+                    />
                 </NavLink>
                     <Container>
                         <Searchbar />
@@ -66,7 +70,6 @@ const Header = () => {
             <Hamburger src={hamburger} onClick={handleClickBurger}/>
         </NavBar>
 
-        
         <MobileWrapper  style={{display: !clickBurger && "none"}}>
         <MobileContainer>
             <MobileNavDiv>

@@ -199,8 +199,8 @@ const SignIn = styled.p`
 `;
 
 const Span = styled.span`
-    color: #0000EE;
-    font-weight: 700;
+    color: #4636be;
+    font-weight: 600;
 
     :hover {
         cursor: pointer;
