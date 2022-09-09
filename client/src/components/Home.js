@@ -5,10 +5,6 @@ import { useContext } from "react";
 import { Context } from "../Context";
 import { useNavigate } from "react-router-dom";
 import LoadingPage from "./LoadingPage";
-import aboutMePoster from "../assets/about-me-poster.png";
-import signUpPoster from "../assets/sign-up-poster.png";
-import discoverChobePoster from "../assets/discover-chobe.png";
-import tipsPoster from "../assets/tips-poster.png";
 
 const Home = () => {
 
@@ -52,11 +48,6 @@ const Home = () => {
                                 })}
                             </FeaturedGrid>
                     </FeaturedWrapper>
-                    <PostersWrapper>
-                        <Poster src={aboutMePoster} />
-                        <Poster src={signUpPoster} />
-                        <Poster src = {tipsPoster} />
-                    </PostersWrapper>
                 </Container>
             </>
             : <LoadingPage />
@@ -148,6 +139,7 @@ const Container = styled.div`
 
 const FeaturedWrapper = styled.div`
     margin-top: 50px;
+    margin-bottom: 90px;
     width: 75%;
     display: flex;
     flex-direction: column;
