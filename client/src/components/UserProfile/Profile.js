@@ -1,18 +1,18 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useContext } from "react";
 import { Context } from "../../Context";
-import ErrorPage from "../ErrorPage";
 import Tab from "./Tab";
 import Favourites from "./Favourites";
 import ReadLater from "./ReadLater";
 import Comments from "./Comments";
 import styled from "styled-components";
+import LoadingPage from "../LoadingPage";
 
 const Profile = () => {
 
     const { logout, isAuthenticated, user } = useAuth0();
 
-    const { profileTab } = useContext(Context);
+    const { profileTab, isLoading } = useContext(Context);
 
     const handleLogout = () => {
         logout({returnTo: window.location.origin});
@@ -50,7 +50,7 @@ const Profile = () => {
                     }
                 </AllTabsDiv>
             </Wrapper>
-            : <ErrorPage />
+            : <LoadingPage />
         }
         </>
     )

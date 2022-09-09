@@ -10,9 +10,7 @@ import { useEffect } from "react";
 // declare errorPage function
 const ErrorPage = () => {
 
-    const { isLoading, setIsLoading } = useContext(Context);
-
-    const { isAuthenticated } = useAuth0;
+    const { isLoading } = useContext(Context);
 
     const navigate = useNavigate();
 
@@ -21,26 +19,17 @@ const ErrorPage = () => {
         navigate("/");
     }
 
-    useEffect(() => {
-    if (!isAuthenticated) {
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000)
-    }
-},[])
-    
     return (
         <>
-            {!isLoading ?
-            <Wrapper>
+        {!isLoading 
+            ? <Wrapper>
                 <Img src={gif404} alt="broken chain" />
                 <Title>Page Not Found...</Title>
                 <Text>The page you requested does not exist.</Text>
                 <Button onClick={handleClick}>Go to Home</Button>
             </Wrapper>
-            : <LoadingPage/>
-            }
+            : <LoadingPage />
+        }
         </>
     )
     

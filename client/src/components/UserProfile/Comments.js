@@ -113,7 +113,7 @@ const ArticleTitle = styled.p`
 `;
 
 const Span = styled.span`
-    color: #4636be ;
+    color: #4636be;
     font-weight: 600;
 
     :hover {

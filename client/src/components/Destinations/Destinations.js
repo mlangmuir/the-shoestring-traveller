@@ -1,15 +1,33 @@
 import styled from "styled-components";
 import Maps from "./Map";
 import Continents from "./Continents";
+import { useContext } from "react";
+import { Context } from "../../Context";
+import LoadingPage from "../LoadingPage";
+import { useEffect } from "react";
 
 const Destinations = () => {
 
+    const { isLoading, setIsLoading } = useContext(Context);
+    
+    useEffect(() => {
+        setIsLoading(true)
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 500)
+    }, [])
+
     return (
-        <Wrapper>
-            <Title>Discover your dream destination!</Title>
-            <Maps />
-            <Continents />
-        </Wrapper>
+        <>
+            {!isLoading
+            ? <Wrapper>
+                <Title>Discover your dream destination!</Title>
+                <Maps />
+                <Continents />
+            </Wrapper>
+            : <LoadingPage />
+            }
+        </>
     )
 }
 
