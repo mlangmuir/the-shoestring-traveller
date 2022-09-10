@@ -24,6 +24,10 @@ const Icons = ({ articleData }) => {
     const [foundFavourite, setFoundFavourite] = useState("");
     const [foundReadLater, setFoundReadLater] = useState("");
     const [concatArticleUser, setConcatArticleUser] = useState("");
+    const [addFavourite, setAddFavourite] = useState(false);
+    const [removeFavourite, setRemoveFavourite] = useState(false);
+    const [addReadLater, setAddReadLater] = useState(false);
+    const [removeReadLater, setRemoveReadLater] = useState(false);
 
     // fetches favourite and read later data + concats article id with user email
     useEffect(() => {
@@ -77,6 +81,11 @@ const Icons = ({ articleData }) => {
 
             setClickFavourite(true);
 
+            setAddFavourite(true);
+            setTimeout(() => {
+                setAddFavourite(false);
+            }, 4000);
+
             fetch(`/api/add-favourite/${concatArticleUser}`, {
                 method: "POST",
                 headers: {"Accept": "application/json","Content-Type": "application/json"},
@@ -89,6 +98,11 @@ const Icons = ({ articleData }) => {
         } else if (clickFavourite) {
 
             setClickFavourite(false);
+
+            setRemoveFavourite(true);
+            setTimeout(() => {
+                setRemoveFavourite(false);
+            }, 4000);
 
             fetch(`/api/delete-favourite/${concatArticleUser}`, {
                 method: "DELETE",
@@ -105,6 +119,11 @@ const Icons = ({ articleData }) => {
 
             setClickReadLater(true);
 
+            setAddReadLater(true);
+            setTimeout(() => {
+                setAddReadLater(false);
+            }, 4000);
+
             fetch(`/api/add-read-later/${concatArticleUser}`, {
                 method: "POST",
                 headers: {"Accept": "application/json","Content-Type": "application/json"},
@@ -117,6 +136,11 @@ const Icons = ({ articleData }) => {
         } else if (clickReadLater) {
 
             setClickReadLater(false);
+
+            setRemoveReadLater(true);
+            setTimeout(() => {
+                setRemoveReadLater(false);
+            }, 4000);
 
             fetch(`/api/delete-read-later/${concatArticleUser}`, {
                 method: "DELETE",
@@ -136,15 +160,13 @@ const Icons = ({ articleData }) => {
         {!isLoading
         ? <IconsWrapper>
             {isAuthenticated
-                ? <Tippy placement="bottom" content="Add to Favourites">
-                    <HeartIconDiv onClick={handleFavourite}>
-                        <AiOutlineHeart
-                            size={20}
-                            style={{color: clickFavourite ? "red" : "black"}}
-                        />
-                        <IconText>Favourite</IconText>
-                    </HeartIconDiv>
-                </Tippy>
+                ? <HeartIconDiv onClick={handleFavourite}>
+                    <AiOutlineHeart
+                        size={20}
+                        style={{color: clickFavourite ? "red" : "black"}}
+                    />
+                    <IconText>Favourite</IconText>
+                </HeartIconDiv>
                 : <Tippy placement="bottom" content="Sign in to add to Favourites">
                     <HeartIconDiv onClick={handleSignIn}>
                         <AiOutlineHeart
@@ -155,15 +177,13 @@ const Icons = ({ articleData }) => {
                 </Tippy>
             }
             {isAuthenticated
-                ? <Tippy placement="bottom" content="Add to Read Later">
-                    <BookmarkIconDiv onClick={handleReadLater}>
+                ? <BookmarkIconDiv onClick={handleReadLater}>
                         <BiBookmark
                             size={20}
                             style={{color: clickReadLater ? "green" : "black"}}
                         />
                         <IconText>Read Later</IconText>
-                    </BookmarkIconDiv>
-                </Tippy>
+                </BookmarkIconDiv>
                 : <Tippy placement="bottom" content="Sign in to add to Read Later">
                     <BookmarkIconDiv onClick={handleSignIn}>
                         <BiBookmark
@@ -173,7 +193,7 @@ const Icons = ({ articleData }) => {
                     </BookmarkIconDiv>
                 </Tippy>
             }
-            <Snackbar open={foundFavourite}>
+            <Snackbar open={addFavourite}>
                 <Alert
                     severity="success"
                     elevation={6}
@@ -182,13 +202,31 @@ const Icons = ({ articleData }) => {
                     Article added to Favourites!
                 </Alert>
             </Snackbar>
-            <Snackbar open={clickReadLater}>
+            <Snackbar open={removeFavourite}>
+                <Alert
+                    severity="warning"
+                    elevation={6}
+                    variant="filled"
+                >
+                    Article removed from Favourites!
+                </Alert>
+            </Snackbar>
+            <Snackbar open={addReadLater}>
                 <Alert
                     severity="success"
                     elevation={6}
                     variant="filled"
                 >
                     Article added to Read Later!
+                </Alert>
+            </Snackbar>
+            <Snackbar open={removeReadLater}>
+                <Alert
+                    severity="warning"
+                    elevation={6}
+                    variant="filled"
+                >
+                    Article removed from Read Later!
                 </Alert>
             </Snackbar>
         </IconsWrapper>

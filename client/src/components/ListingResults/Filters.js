@@ -25,6 +25,7 @@ const Filters = ({
 
     // applied filters button displays all filters based on 4 categories
     const handleApplyFilters = (e) => {
+        
         e.preventDefault();
 
         setContinent(localContinent);
@@ -38,18 +39,6 @@ const Filters = ({
 
         window.scrollTo(0,0);
     }
-
-    // resets the filter checkboxes everytime a search is in the search bar
-    // useEffect(() => {
-    //     if (displayValue) {
-    //         setCategory([]);
-    //         setBodyLocation([]);
-    //         setPrice([]);
-    //         setNumInStock("0");
-    //     }
-    // },[])
-
-    console.log('localArticleType', localArticleType)
     
     return (
         <FilterBox>

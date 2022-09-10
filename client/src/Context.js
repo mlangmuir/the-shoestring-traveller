@@ -14,6 +14,7 @@ const Provider = ({ children }) => {
     const [articleTypes, setArticleTypes] = useState([]);
     const [profileTab, setProfileTab] = useState("profile");
     const [articleComments, setArticleComments] = useState([]);
+    const [displayValue, setDisplayValue] = useState("");
 
     useEffect(() => {
         setIsLoading(true);
@@ -44,7 +45,9 @@ const Provider = ({ children }) => {
                 profileTab,
                 setProfileTab,
                 articleComments,
-                setArticleComments
+                setArticleComments,
+                displayValue,
+                setDisplayValue
             }}
         >
             {children}

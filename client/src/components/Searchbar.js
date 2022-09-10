@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Context } from "../Context";
+import { useEffect } from "react";
 
 const Searchbar = () => {
 
@@ -9,7 +10,7 @@ const Searchbar = () => {
 
     const search = useLocation().search;
 
-    const { allArticles } = useContext(Context);
+    const { allArticles, setDisplayValue } = useContext(Context);
 
     // allows search bar value to be saved in useState and URLSearchParams
     const [value, setValue] = useState(new URLSearchParams(search).get("title") || '');
@@ -49,6 +50,7 @@ const Searchbar = () => {
                         case "Enter": {
                             ev.preventDefault();
                             setIsFocus(false);
+                            setDisplayValue(value);
                             window.scrollTo(0, 0)
                             if (value.length >= 1 && filteredSuggestions.length > 0) {
                                 handleSelect(filteredSuggestions[selectedSuggestionIndex]?.id)

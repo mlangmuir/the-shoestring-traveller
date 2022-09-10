@@ -8,15 +8,20 @@ import westernAsia from "../../assets/western-asia.jpeg";
 import eastAsia from "../../assets/east-asia.jpg";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useContext } from "react";
+import { Context } from "../../Context";
 
 const Maps = () => {
 
     const navigate = useNavigate();
 
+    const {setDisplayValue} = useContext(Context);
+
     return (
         <MapDiv>
             <NorthernAmerica
                 onClick={()=> {
+                    setDisplayValue("");
                     navigate("/articles?region=Northern%20America");
                     window.scrollTo(0,0);
                 }}
@@ -26,6 +31,7 @@ const Maps = () => {
             </NorthernAmerica>
             <CentralAmerica
                 onClick={()=> {
+                    setDisplayValue("");
                     navigate("/articles?region=Central%20America");
                     window.scrollTo(0,0);
                 }}
@@ -35,6 +41,7 @@ const Maps = () => {
             </CentralAmerica>
             <WesternEurope
                 onClick={()=> {
+                    setDisplayValue("");
                     navigate("/articles?region=Western%20Europe");
                     window.scrollTo(0,0);
                 }}
@@ -44,6 +51,7 @@ const Maps = () => {
             </WesternEurope>
             <NorthAfrica
                 onClick={()=> {
+                    setDisplayValue("");
                     navigate("/articles?region=North%20Africa");
                     window.scrollTo(0,0);
                 }}
@@ -53,6 +61,7 @@ const Maps = () => {
             </NorthAfrica>
             <SouthernAfrica
                 onClick={()=> {
+                    setDisplayValue("");
                     navigate("/articles?region=Southern%20Africa");
                     window.scrollTo(0,0);
                 }}
@@ -62,6 +71,7 @@ const Maps = () => {
             </SouthernAfrica>
             <WestAsia
                 onClick={()=> {
+                    setDisplayValue("");
                     navigate("/articles?region=Western%20Asia");
                     window.scrollTo(0,0);
                 }}
@@ -71,6 +81,7 @@ const Maps = () => {
             </WestAsia>
             <EastAsia
                 onClick={()=> {
+                    setDisplayValue("");
                     navigate("/articles?region=East%20Asia");
                     window.scrollTo(0,0);
                 }}

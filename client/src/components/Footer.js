@@ -7,7 +7,7 @@ const Footer = () => {
 
     const navigate = useNavigate();
 
-    const { allArticles } = useContext(Context);
+    const { allArticles, setDisplayValue } = useContext(Context);
 
     // Create array for continent list in footer
     const continents = []
@@ -36,6 +36,7 @@ const Footer = () => {
                             {article.featured
                                 && <Item
                                     onClick={ () => {
+                                        setDisplayValue("");
                                         navigate(`articles/id/${article.id}`);
                                         window.scrollTo(0, 0);
                                     }}
@@ -55,6 +56,7 @@ const Footer = () => {
                             <div key={index}>
                                 <Item
                                     onClick={ () => {
+                                        setDisplayValue("");
                                         navigate(`/articles?continent=${continent}`);
                                         window.scrollTo(0, 0);
                                     }}
@@ -73,6 +75,7 @@ const Footer = () => {
                             <div key={index}>
                                 <Item
                                     onClick={ () => {
+                                        setDisplayValue("");
                                         navigate(`/articles?region=${region}`);
                                         window.scrollTo(0, 0);
                                     }}
@@ -92,6 +95,7 @@ const Footer = () => {
                                 {article.articleType === "Travel Tips"
                             && <Item
                                 onClick={ () => {
+                                    setDisplayValue("");
                                     navigate(`/articles/id/${article.id}`);
                                     window.scrollTo(0, 0);
                                 }}

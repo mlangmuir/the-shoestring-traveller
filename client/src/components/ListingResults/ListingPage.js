@@ -8,7 +8,7 @@ import List from "./List";
 
 const ListingPage = () => {
 
-    const { isLoading, setIsLoading, continents, setContinents, regions, setRegions, countries, setCountries, articleTypes, setArticleTypes } = useContext(Context);
+    const { isLoading, setIsLoading, continents, setContinents, regions, setRegions, countries, setCountries, articleTypes, setArticleTypes, displayValue, allArticles } = useContext(Context);
 
     const [results, setResults] = useState([]);
     const [page, setPage] = useState(0);
@@ -105,7 +105,14 @@ const ListingPage = () => {
     }
 
     // concatenating all filter arrays/variables to display all applied filters at top of page
-    const filtersLabel = [...continent, ...region, ...country, ...articleType]
+    let filtersLabel = [];
+    if (displayValue) {
+        filtersLabel = [displayValue, ...continent, ...region, ...country, ...articleType];
+    } else {
+        filtersLabel = [...continent, ...region, ...country, ...articleType];
+    }
+
+    console.log(filtersLabel)
 
     // dividing total item count by items per page to get total # of pages
     const totalPages = Math.ceil(itemCount / 15);
@@ -118,29 +125,22 @@ const ListingPage = () => {
                         <TitleTextDiv>
                             <div>
                                 <ShowResultsFor>Showing results for: </ShowResultsFor>
-                                {/* {displayValue
-                                    ? <FiltersAppliedDiv>
-                                        <div>
-                                            <FiltersApplied>{displayValue}</FiltersApplied>
-                                        </div> */}
-                                    {/* </FiltersAppliedDiv> */}
-                                    <FiltersAppliedDiv>
-                                        {filtersLabel.map((item, index) => {
-                                            return (
-                                                <div key={index}>
-                                                    {index === 4
-                                                        ? <FiltersApplied>{item}...</FiltersApplied>
-                                                        : <FiltersApplied>{item}</FiltersApplied>
-                                                    }
-                                                    {index !== filtersLabel.length - 1 && index !== 4
-                                                        && <FiltersApplied>,&nbsp;</FiltersApplied>
-                                                    }
-                                                </div>
-                                            )
-                                        })}
-                                    </FiltersAppliedDiv>
-                                
-                                {itemCount === 348
+                                <FiltersAppliedDiv>
+                                    {filtersLabel.map((item, index) => {
+                                        return (
+                                            <div key={index}>
+                                                {index === 4
+                                                    ? <FiltersApplied>{item}...</FiltersApplied>
+                                                    : <FiltersApplied>{item}</FiltersApplied>
+                                                }
+                                                {index !== filtersLabel.length - 1 && index !== 4
+                                                    && <FiltersApplied>,&nbsp;</FiltersApplied>
+                                                }
+                                            </div>
+                                        )
+                                    })}
+                                </FiltersAppliedDiv>
+                                {itemCount === allArticles.length
                                     && <FiltersAppliedDiv>
                                         <div>
                                             <FiltersApplied>All products</FiltersApplied>
