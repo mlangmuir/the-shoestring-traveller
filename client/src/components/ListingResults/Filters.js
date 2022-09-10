@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { useContext, useEffect } from "react";
-import { Context } from "../../Context";
+import { useState } from "react";
 
 const Filters = ({
     doSearch,
-    filtersLabel,
     page,
     continent,
     setContinent,
@@ -20,15 +18,24 @@ const Filters = ({
     articleTypes
 }) => {
 
-    console.log(continent)
-
-    const { allFilters, setAllFilters } = useContext(Context);
+    const [localContinent, setLocalContinent] = useState(continent);
+    const [localRegion, setLocalRegion] = useState(region);
+    const [localCountry, setLocalCountry] = useState(country);
+    const [localArticleType, setLocalArticleType] = useState(articleType);
 
     // applied filters button displays all filters based on 4 categories
     const handleApplyFilters = (e) => {
         e.preventDefault();
+
+        setContinent(localContinent);
+        setRegion(localRegion);
+        setCountry(localCountry);
+        setArticleType(localArticleType);
+
         page = 1
-        doSearch({ continent, region, country, articleType, page });
+
+        doSearch({ continent: localContinent, region: localRegion, country: localCountry, articleType: localArticleType, page });
+
         window.scrollTo(0,0);
     }
 
@@ -42,14 +49,8 @@ const Filters = ({
     //     }
     // },[])
 
-    useEffect(() => {
-        setContinent([]);
-        setAllFilters([]);
-    },[])
+    console.log('localArticleType', localArticleType)
     
-
-    console.log(allFilters)
-
     return (
         <FilterBox>
             <FilterTitle>Filters</FilterTitle>
@@ -60,15 +61,13 @@ const Filters = ({
                         <div key={index}>
                             <Input
                             onChange={(e) => {
-                                if (e.target.checked && !continent.includes(item)) {
-                                    setContinent([...continent, item]);
-                                    // setAllFilters([...allFilters, item]);
-                                } else if(!e.target.checked && continent.includes(item)) {
-                                    setContinent(continent.filter(val => val !== item));
-                                    // setAllFilters(allFilters.filter(val => val !== item));
+                                if (e.target.checked && !localContinent.includes(item)) {
+                                    setLocalContinent([...localContinent, item]);
+                                } else if(!e.target.checked && localContinent.includes(item)) {
+                                    setLocalContinent(localContinent.filter(val => val !== item));
                                 }
                             }}
-                            checked={continent.includes(item)}
+                            checked={localContinent.includes(item)}
                             type="checkbox"
                             id={item}
                         />
@@ -85,15 +84,13 @@ const Filters = ({
                         <div key={index}>
                             <Input
                                 onChange={(e) => {
-                                    if (e.target.checked && !region.includes(item)) {
-                                        setRegion([...region, item]);
-                                        // setAllFilters([...allFilters, item]);
-                                    } else if(!e.target.checked && region.includes(item)) {
-                                        setRegion(region.filter(val => val !== item));
-                                        // setAllFilters(allFilters.filter(val => val !== item));
+                                    if (e.target.checked && !localRegion.includes(item)) {
+                                        setLocalRegion([...localRegion, item]);
+                                    } else if(!e.target.checked && localRegion.includes(item)) {
+                                        setLocalRegion(localRegion.filter(val => val !== item));
                                     }
                                 }}
-                                checked={region.includes(item)}
+                                checked={localRegion.includes(item)}
                                 type="checkbox"
                                 id={item}
                             />
@@ -110,15 +107,13 @@ const Filters = ({
                         <div key={index}>
                             <Input
                                 onChange={(e) => {
-                                    if (e.target.checked && !country.includes(item)) {
-                                        setCountry([...country, item]);
-                                        // setAllFilters([...allFilters, item]);     
-                                    } else if(!e.target.checked && country.includes(item)) {
-                                        setCountry(country.filter(val => val !== item));
-                                        // setAllFilters(allFilters.filter(val => val !== item));
+                                    if (e.target.checked && !localCountry.includes(item)) {
+                                        setLocalCountry([...localCountry, item]);
+                                    } else if(!e.target.checked && localCountry.includes(item)) {
+                                        setLocalCountry(localCountry.filter(val => val !== item));
                                     }
                                 }}
-                                checked={country.includes(item)}
+                                checked={localCountry.includes(item)}
                                 type="checkbox"
                                 id={item}
                             />
@@ -135,15 +130,16 @@ const Filters = ({
                         <div key={index}>
                             <Input
                                 onChange={(e) => {
-                                    if (e.target.checked && !articleType.includes(item)) {
-                                        setArticleType([...articleType, item]);
-                                        // setAllFilters([...allFilters, item]);    
-                                    } else if(!e.target.checked && articleType.includes(item)) {
-                                        setArticleType(articleType.filter(val => val !== item));
-                                        // setAllFilters(allFilters.filter(val => val !== item));
+                                    console.log('item', item)
+                                    console.log('localArticleType', localArticleType)
+                                    console.log('e target', e.target)
+                                    if (e.target.checked && !localArticleType.includes(item)) {
+                                        setLocalArticleType([...localArticleType, item]);
+                                    } else if(!e.target.checked && localArticleType.includes(item)) {
+                                        setLocalArticleType(localArticleType.filter(val => val !== item));
                                     }
                                 }}
-                                checked={articleType.includes(item)}
+                                checked={localArticleType.includes(item)}
                                 type="checkbox"
                                 id={item}
                             />

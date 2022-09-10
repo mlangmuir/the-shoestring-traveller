@@ -88,6 +88,7 @@ const ItemWrapper = styled.div`
     @media (max-width: 600px) {
         flex-direction: column;
         align-items: center;
+        padding: 0;
     }
 `;
 
@@ -109,6 +110,7 @@ const ItemTextDiv = styled.div`
 
     @media (max-width: 600px) {
         margin: 0;
+        align-items: center;
     }
 `;
 
@@ -125,6 +127,7 @@ const ItemTitle = styled.h1`
     @media (max-width: 600px) {
         text-align: center;
         margin-top: 15px;
+        font-size: 18px;
     }
 `;
 
@@ -147,6 +150,7 @@ const ItemParagraph = styled.p`
     @media (max-width: 600px) {
         text-align: center;
         margin-top: 15px;
+        width: 80%;
     }
 `;
 

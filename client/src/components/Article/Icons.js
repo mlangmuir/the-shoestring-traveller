@@ -165,7 +165,7 @@ const Icons = ({ articleData }) => {
                     </BookmarkIconDiv>
                 </Tippy>
                 : <Tippy placement="bottom" content="Sign in to add to Read Later">
-                    <BookmarkIconDiv onClick={handleReadLater}>
+                    <BookmarkIconDiv onClick={handleSignIn}>
                         <BiBookmark
                             size={20}
                         />

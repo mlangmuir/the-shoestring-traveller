@@ -12,7 +12,7 @@ const Searchbar = () => {
     const { allArticles } = useContext(Context);
 
     // allows search bar value to be saved in useState and URLSearchParams
-    const [value, setValue] = useState(new URLSearchParams(search).get("name") || '');
+    const [value, setValue] = useState(new URLSearchParams(search).get("title") || '');
 
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
     const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
@@ -53,7 +53,7 @@ const Searchbar = () => {
                             if (value.length >= 1 && filteredSuggestions.length > 0) {
                                 handleSelect(filteredSuggestions[selectedSuggestionIndex]?.id)
                             }
-                            // navigate('/articles?name='+value)
+                            navigate('/articles?title='+value);
                             return;
                         }
                         case "ArrowUp": {
@@ -140,7 +140,7 @@ const Input = styled.input`
 
 const List = styled.ul`
     z-index: 999;
-    width: 40%;
+    width: 550px;
     border: 1px solid white;
     border-radius: 5px;
     box-shadow: 0 3px 6px 0 lightgrey;
@@ -148,12 +148,22 @@ const List = styled.ul`
     position: absolute;
     margin-top: 50px;
     list-style: none;
+
+    @media (max-width: 900px) {
+        width: 450px;
+    }
+
+    @media (max-width: 600px) {
+        width: 80%;
+    }
 `;
 
 const Suggestion = styled.li`
-    padding: 10px 10px;
+    padding: 10px;
+    margin-left: -40px;
     line-height: 23px;
     font-size: 18px;
+
 
     :hover {
         cursor: pointer;

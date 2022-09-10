@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useRef, useState } from 'react';
 import emailjs from "emailjs-com";
 import { useAuth0 } from '@auth0/auth0-react';
-import boKaapBackground from "../assets/bo-kaap-background.JPG";
+import boKaapBackground from "../assets/chefchaoun-bg.JPG";
 
 const Contact = () => {
 
@@ -63,18 +63,20 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 `;
 
 const Confirmation = styled.div`
     z-index: 6;
     height: 100%;
-    width: 40%;
+    width: 30%;
     text-align: center;
+    justify-content: center;
     display: flex;
     align-items: center;
     font-size: 32px;
     color: white;
-    margin-top: 100px;
+    position: absolute;
 
     @media (max-width: 855px) {
         width: 80%
@@ -89,10 +91,11 @@ const Form = styled.form`
     z-index: 3;
     padding: 25px;
     max-width: 500px;
-    height: 50px;
     font-size: 18px;
     color: white;
     text-shadow: 1px 1px black;
+    border-radius: 25px;
+    position: absolute;
 `;
 
 const Title = styled.h1`
@@ -100,9 +103,10 @@ const Title = styled.h1`
     font-size: 42px;
     color: white;
     text-align: center;
+    margin-top: -5px;
 
     @media (max-width: 500px) {
-        font-size: 28px;
+        font-size: 36px;
     }
 `;
 
@@ -130,7 +134,7 @@ const InputDiv = styled.div`
 `;
 
 const Input = styled.input`
-    width: 100%;
+    width: 98%;
     height: 30px;
     padding: 5px;
     display: flex;
@@ -147,10 +151,12 @@ const Input = styled.input`
 
 const TextArea = styled.textarea`
     height: 50px;
+    width: 98%;
     font-size: 20px;
     padding: 5px;
     border: none;
     border-radius: 5px;
+    font-family: "Open Sans", sans-serif;
 
     @media (max-width: 650px) {
         font-size: 20px;
@@ -160,7 +166,8 @@ const TextArea = styled.textarea`
 
 const Submit = styled.input`
     height: 45px;
-    background-color: #999900;
+    width: 100%;
+    background-color: navy;
     color: white;
     font-size: 22px;
     border: none;
@@ -175,11 +182,16 @@ const Submit = styled.input`
 const CoverShade = styled.div`
     z-index: 2;
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 600px;
+    height: 600px;
+    border-radius: 20px;
     object-fit: cover;
     background-color: black;
-    opacity: 30%;
+    opacity: 50%;
+
+    @media (max-width: 650px) {
+        width: 100%;
+    }
 `;
 
 const Background = styled.img`
@@ -187,7 +199,6 @@ const Background = styled.img`
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    margin-top: -100px;
 `;
 
 export default Contact;

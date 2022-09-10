@@ -13,7 +13,7 @@ const LoadingPage = () => {
         if (!isAuthenticated) {
             setTimeout(() => {
                 setShowSignIn(true);
-            }, 500)
+            }, 1000)
         }
     },[])
 

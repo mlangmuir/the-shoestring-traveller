@@ -7,7 +7,7 @@ const Provider = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [allArticles, setAllArticles] = useState([]);
-    const [allFilters, setAllFilters] = usePersistedState("allFilters", []);
+    const [filtersLabel, setFiltersLabel] = usePersistedState("allFilters", []);
     const [continents, setContinents] = useState([]);
     const [regions, setRegions] = useState([]);
     const [countries, setCountries] = useState([]);
@@ -31,8 +31,8 @@ const Provider = ({ children }) => {
                 allArticles,
                 isLoading,
                 setIsLoading,
-                allFilters,
-                setAllFilters,
+                filtersLabel,
+                setFiltersLabel,
                 continents,
                 setContinents,
                 regions,

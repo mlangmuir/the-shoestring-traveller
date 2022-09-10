@@ -8,7 +8,7 @@ import List from "./List";
 
 const ListingPage = () => {
 
-    const { isLoading, setIsLoading, allFilters, continents, setContinents, regions, setRegions, countries, setCountries, articleTypes, setArticleTypes } = useContext(Context);
+    const { isLoading, setIsLoading, continents, setContinents, regions, setRegions, countries, setCountries, articleTypes, setArticleTypes } = useContext(Context);
 
     const [results, setResults] = useState([]);
     const [page, setPage] = useState(0);
@@ -29,6 +29,11 @@ const ListingPage = () => {
     const [country, setCountry] = useState(new URLSearchParams(search).getAll("country") || []);
     const [articleType, setArticleType] = useState(new URLSearchParams(search).getAll("articleType") || []);
 
+    useEffect(() => {
+        setContinent(new URLSearchParams(search).getAll("continent") || []);
+        setRegion(new URLSearchParams(search).getAll("region") || []);
+    },[search])
+
     // callback that overwrites query params
     const getQueryParams = useCallback((overwrites={})=>{
         const {
@@ -46,13 +51,13 @@ const ListingPage = () => {
 
         // default values for query params
         const params = [
-            { key: 'title', value: title || searchParams.get("title") || ""},
             { key: 'sortKey', value: sortKey || searchParams.get("sortKey") || "title"},
             { key: 'sortDirection', value: sortDirection || searchParams.get("sortDirection") || '1'},
             { key: 'continent', value: continent || searchParams.get("continent") || []},
             { key: 'region', value: region || searchParams.getAll("region") || []},
             { key: 'country', value: country || searchParams.getAll("country") || []},
             { key: 'articleType', value: articleType || searchParams.getAll("articleType") || []},
+            { key: 'title', value: title || searchParams.get("title") || ""},
             { key: 'page', value: page || searchParams.get("page") || '1'}
         ]
 
@@ -68,15 +73,12 @@ const ListingPage = () => {
         return paramsStr;
     },[search])
 
-    console.log(allFilters)
-
     // fetches data necessary for filtering based on the search URL params defined above
     useEffect(() => {
         setIsLoading(true);
         fetch(`/api/articles?${search.substring(1)}`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setResults(data.data)
                 setItemCount(data.itemCount);
                 setPageCount(data.pageCount);
@@ -103,9 +105,7 @@ const ListingPage = () => {
     }
 
     // concatenating all filter arrays/variables to display all applied filters at top of page
-    // const filtersLabel = continent.concat(region, country, articleType)
-
-    // console.log(filtersLabel)
+    const filtersLabel = [...continent, ...region, ...country, ...articleType]
 
     // dividing total item count by items per page to get total # of pages
     const totalPages = Math.ceil(itemCount / 15);
@@ -125,14 +125,14 @@ const ListingPage = () => {
                                         </div> */}
                                     {/* </FiltersAppliedDiv> */}
                                     <FiltersAppliedDiv>
-                                        {allFilters.map((item, index) => {
+                                        {filtersLabel.map((item, index) => {
                                             return (
                                                 <div key={index}>
                                                     {index === 4
                                                         ? <FiltersApplied>{item}...</FiltersApplied>
                                                         : <FiltersApplied>{item}</FiltersApplied>
                                                     }
-                                                    {index !== allFilters.length - 1 && index !== 4
+                                                    {index !== filtersLabel.length - 1 && index !== 4
                                                         && <FiltersApplied>,&nbsp;</FiltersApplied>
                                                     }
                                                 </div>
@@ -154,8 +154,8 @@ const ListingPage = () => {
                             <SelectDiv>
                                 <SelectLabel>List by:</SelectLabel>
                                 <Select onChange={handleOnChange} defaultValue={sortSelected}>
-                                    <option value="title|1" >Name - ascending</option>
-                                    <option value="title|-1">Name - descending</option>
+                                    <option value="title|1" >Title - ascending</option>
+                                    <option value="title|-1">Title - descending</option>
                                     <option value="id|1">Date Posted - oldest first</option>
                                     <option value="id|-1">Date Posted - newest first</option>
                                 </Select>
@@ -176,7 +176,6 @@ const ListingPage = () => {
                             <Filters
                                 results={results}
                                 doSearch={doSearch}
-                                // filtersLabel={filtersLabel}
                                 continent={continent}
                                 setContinent={setContinent}
                                 region={region}
@@ -256,6 +255,8 @@ const FiltersAppliedDiv = styled.div`
         width: 100%;
         justify-content: center;
         font-size: 20px;
+        flex-direction: column;
+        align-items: center;
     }
 
     @media (max-width: 500px) {
@@ -266,19 +267,20 @@ const FiltersAppliedDiv = styled.div`
 const FiltersApplied = styled.span`
     font-weight: 700;
     font-weight: 700;
-    font-size: 28px;
+    font-size: 20px;
     width: 1000px;
 
     @media (max-width: 1250px) {
-        font-size: 20px;
-    }
-
-    @media (max-width: 1100px) {
-        font-size: 18px;
-    }
-
-    @media (max-width: 600px) {
         font-size: 16px;
+    }
+
+    @media (max-width: 1000px) {
+        font-size: 14px;
+        width: 80%;
+    }
+
+    @media (max-width: 950px) {
+        font-size: 18px;
     }
 `;
 
@@ -310,6 +312,10 @@ const Select = styled.select`
     height: 30px;
     width: 230px;
     font-size: 18px;
+
+    @media (max-width: 1100px) {
+        width: 150px;
+    }
 
     :hover {
         cursor: pointer;

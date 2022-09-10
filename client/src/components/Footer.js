@@ -36,8 +36,8 @@ const Footer = () => {
                             {article.featured
                                 && <Item
                                     onClick={ () => {
-                                        window.scrollTo(0, 0);
                                         navigate(`articles/id/${article.id}`);
+                                        window.scrollTo(0, 0);
                                     }}
                                 >
                                     {article.title}
@@ -55,8 +55,8 @@ const Footer = () => {
                             <div key={index}>
                                 <Item
                                     onClick={ () => {
+                                        navigate(`/articles?continent=${continent}`);
                                         window.scrollTo(0, 0);
-                                        navigate(`articles?continent=${continent}`);
                                     }}
                                 >
                                     {continent}
@@ -73,8 +73,8 @@ const Footer = () => {
                             <div key={index}>
                                 <Item
                                     onClick={ () => {
-                                        window.scrollTo(0, 0);
                                         navigate(`/articles?region=${region}`);
+                                        window.scrollTo(0, 0);
                                     }}
                                 >
                                     {region}
@@ -92,8 +92,8 @@ const Footer = () => {
                                 {article.articleType === "Travel Tips"
                             && <Item
                                 onClick={ () => {
+                                    navigate(`/articles/id/${article.id}`);
                                     window.scrollTo(0, 0);
-                                    navigate(`/articles/id/${article.id}`)
                                 }}
                             >
                                 {article.title}

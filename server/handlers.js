@@ -72,13 +72,15 @@ const getArticles = async (req, res) => {
     }
 
     // setting page limit, page numbers and sorting type and direction
-    const limit = req.query.limit || 15;
+    const limit = req.query.limit || 10;
     const page = req.query.page || 1;
     const sortKey = req.query.sortKey || "id";
     const sortDirection = req.query.sortDirection || -1;
     const findFilters = filters.length > 0 ? { $and: filters } : {};
-    const findTitle = title ? { title: { $regex: RegExp(title.toLowerCase()) } } : {};
+    const findTitle = title ? { $text: { $search: title } } : {};
     const find = { ...findFilters, ...findTitle };
+
+    console.log('find', find)
 
     // gets items collection from DB (only filtered ones as defined in "find" variable and determines sorting, page # and limit)
     let data = await db.collection("articles")
