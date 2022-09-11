@@ -12,7 +12,7 @@ const Profile = () => {
 
     const { logout, isAuthenticated, user } = useAuth0();
 
-    const { profileTab, isLoading } = useContext(Context);
+    const { profileTab } = useContext(Context);
 
     const handleLogout = () => {
         logout({returnTo: window.location.origin});

@@ -34,7 +34,7 @@ const Searchbar = () => {
                     }, 200)
                 }}
                 type="search"
-                placeholder="Search this site"
+                placeholder="Search articles by title"
                 value={value}
                 onChange={(ev) => {
                     setValue(ev.target.value);

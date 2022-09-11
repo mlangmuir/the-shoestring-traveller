@@ -2,9 +2,10 @@ import { useNavigate } from "react-router-dom"
 import { useContext } from "react";
 import { Context } from "../../Context";
 import styled from "styled-components";
-// import noResults from "../../assets/no-result.gif";
+import PageChanger from "./PageChanger";
+import noResults from "../../assets/no-result.gif";
 
-const List = ({ results }) => {
+const List = ({ results, page, pageCount, itemCount, doSearch }) => {
 
     const navigate = useNavigate();
 
@@ -12,14 +13,14 @@ const List = ({ results }) => {
 
     return (
         <div>
-        {/* {results.length === 0 */}
-            {/* ? <NoResultsWrapper> */}
-                {/* <NoResults>
+        {results.length === 0
+            ? <NoResultsWrapper>
+                <NoResults>
                     <Gif src={noResults} alt="Sorry! No result found..." />
                     <NoResultsText>Sorry, we couldn't find what you were looking for...</NoResultsText>
-                </NoResults> */}
-            {/* </NoResultsWrapper> */}
-            <>
+                </NoResults>
+            </NoResultsWrapper>
+            : <>
                 <ListContainer>
                     {results?.map((item, index) => {
                         return (
@@ -51,9 +52,12 @@ const List = ({ results }) => {
                             </ItemWrapper>
                         )
                     })}
+                    <PageChangerDiv>
+                        <PageChanger page={page} pageCount={pageCount} itemCount={itemCount} doSearch={doSearch}/>
+                    </PageChangerDiv>
                 </ListContainer>
             </>
-            {/* } */}
+        }
         </div>
     )
 }
@@ -128,6 +132,7 @@ const ItemTitle = styled.h1`
         text-align: center;
         margin-top: 15px;
         font-size: 18px;
+        width: 80%;
     }
 `;
 
@@ -154,53 +159,50 @@ const ItemParagraph = styled.p`
     }
 `;
 
-// const NoResultsWrapper = styled.div`
-//     width: 825px;
-//     display: grid;
-//     justify-content: center;
-//     margin-left: 30px;
-
-//     @media (max-width: 1200px) {
-//         width: 600px;
-//     }
-
-//     @media (max-width: 1100px) {
-//         width: 500px;
-//     }
-
-//     @media (max-width: 900px) {
-//         width: 350px;
-//     }
-
-// `;
+const NoResultsWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
 
 const NoResults = styled.div`
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
 
-    @media (max-width: 500px) {
-        width: 80%;
+const Gif = styled.img`
+
+    @media (max-width: 1100px) {
+        width: 500px;
+    }
+
+    @media (max-width: 900px) {
+        width: 300px;
     }
 `;
 
-// const Gif = styled.img`
-//     height: 420px;
+const NoResultsText = styled.p`
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 60px;
 
-//     @media (max-width: 900px) {
-//         height: 300px;
-//     }
+    @media (max-width: 900px) {
+        font-size: 20px;
+    }
+`;
 
-//     @media (max-width: 500px) {
-//         height: 220px;
-//     }
-// `;
+const PageChangerDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
 
-// const NoResultsText = styled.p`
-//     text-align: center;
-//     font-size: 24px;
-
-//     @media (max-width: 900px) {
-//         font-size: 20px;
-//     }
-// `;
+    @media (max-width: 1100px) {
+        display: none;
+    }
+`;
 
 export default List;

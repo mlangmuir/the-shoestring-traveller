@@ -45,8 +45,8 @@ const Contact = () => {
                     }
                 </InputDiv>
                 <InputDiv>
-                    <label>Comments:</label>
-                    <TextArea placeholder="Enter your comments here!" name="comments" required></TextArea>
+                    <label>Message:</label>
+                    <TextArea placeholder="Enter your message here" name="message" required></TextArea>
                 </InputDiv>
                 <InputDiv>
                     <Submit type="submit" />

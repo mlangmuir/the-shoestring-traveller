@@ -31,7 +31,7 @@ const Comments = () => {
         <Wrapper>
             <Title>Comments</Title>
             {userComments.length !== 0 ?
-                <div>
+                <Container>
                     {userComments.reverse().map((item, index) => {
                         return (
                             <CommentWrapper key={index}>
@@ -44,7 +44,7 @@ const Comments = () => {
                             </CommentWrapper>
                         )
                     })}
-                </div>
+                </Container>
                 : <NoComments>
                         <p>You haven't posted any comments yet.</p>
                 </NoComments>
@@ -60,6 +60,7 @@ const Wrapper = styled.div`
     align-items: center;
     width: 100%;
     margin-left: 50px;
+    margin-bottom: 30px;
 
     @media (max-width: 675px) {
         margin-left: 0;
@@ -73,12 +74,26 @@ const Title = styled.h1`
     padding-bottom: 30px;
 `;
 
-const CommentWrapper = styled.div`
+const Container = styled.div`
+    width: 100%;
     display: flex;
-    padding: 10px 0;
-    height: 100px;
-    margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const CommentWrapper = styled.div`
+    width: 80%;
+    display: flex;
+    padding: 30px 0;
+    min-height: 100px;
     justify-content: center;
+    border-bottom: 1px dotted lightgrey;
+
+    @media (max-width: 950px) {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 `;
 
 const Image = styled.img`
@@ -99,16 +114,24 @@ const TextDiv = styled.div`
     margin-right: 20px;
     height: 100%;
     width: 50%;
+
+    @media (max-width: 950px) {
+        flex-direction: column;
+        align-items: center;
+        width: 75%;
+        text-align: center;
+        margin: 0;
+    }
 `;
 
 const Comment = styled.p`
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     margin-top: 0px;
 `;
 
 const ArticleTitle = styled.p`
-    font-size: 14px;
+    font-size: 16px;
     margin-top: -10px;
 `;
 
@@ -122,7 +145,7 @@ const Span = styled.span`
 `;
 
 const Date = styled.p`
-    font-size: 11px;
+    font-size: 14px;
     color: grey;
     margin-top: -10px;
 `;

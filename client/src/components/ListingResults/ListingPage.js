@@ -8,7 +8,7 @@ import List from "./List";
 
 const ListingPage = () => {
 
-    const { isLoading, setIsLoading, continents, setContinents, regions, setRegions, countries, setCountries, articleTypes, setArticleTypes, displayValue, allArticles } = useContext(Context);
+    const { isLoading, setIsLoading, continents, setContinents, regions, setRegions, countries, setCountries, articleTypes, setArticleTypes, displayValue, setDisplayValue, allArticles } = useContext(Context);
 
     const [results, setResults] = useState([]);
     const [page, setPage] = useState(0);
@@ -104,6 +104,10 @@ const ListingPage = () => {
         navigate(`/articles?${search}`);
     }
 
+    useEffect(() => {
+        setDisplayValue(title);
+    },[])
+
     // concatenating all filter arrays/variables to display all applied filters at top of page
     let filtersLabel = [];
     if (displayValue) {
@@ -115,7 +119,7 @@ const ListingPage = () => {
     console.log(filtersLabel)
 
     // dividing total item count by items per page to get total # of pages
-    const totalPages = Math.ceil(itemCount / 15);
+    const totalPages = Math.ceil(itemCount / 10);
 
     return (
         <>
@@ -143,7 +147,7 @@ const ListingPage = () => {
                                 {itemCount === allArticles.length
                                     && <FiltersAppliedDiv>
                                         <div>
-                                            <FiltersApplied>All products</FiltersApplied>
+                                            <FiltersApplied>All articles</FiltersApplied>
                                         </div>
                                     </FiltersAppliedDiv>
                                 }
@@ -176,6 +180,8 @@ const ListingPage = () => {
                             <Filters
                                 results={results}
                                 doSearch={doSearch}
+                                pageCount={pageCount}
+                                itemCount={itemCount}
                                 continent={continent}
                                 setContinent={setContinent}
                                 region={region}

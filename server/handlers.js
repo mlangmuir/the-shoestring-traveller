@@ -1,17 +1,22 @@
 const { getDb } = require('./db');
 
+
 const getAllArticles = async (req, res) => {
 
     const db = await getDb();
 
-    // get all articles from database
-    const data = await db.collection("articles").find({}).toArray();
+    try {
+        // get all articles from database
+        const data = await db.collection("articles").find({}).toArray();
 
-    (data.length > 0) ?
-        // send data
-        res.status(200).send({ status: 200, data: data }) :
-        // send error message
-        res.status(404).send({ status: 404, message: "Not found" })
+        if (data) {
+            res.status(200).send({ status: 200, data: data })
+        } else {
+            res.status(404).send({ status: 404, message: "Not found" })
+        }
+    } catch {
+        res.status(500).send({ status: 500, message: "Error" })
+    }
 };
 
 const getArticles = async (req, res) => {
@@ -80,8 +85,6 @@ const getArticles = async (req, res) => {
     const findTitle = title ? { $text: { $search: title } } : {};
     const find = { ...findFilters, ...findTitle };
 
-    console.log('find', find)
-
     // gets items collection from DB (only filtered ones as defined in "find" variable and determines sorting, page # and limit)
     let data = await db.collection("articles")
         .find(find)
@@ -118,17 +121,21 @@ const getArticleById = async (req, res) => {
 
     const db = await getDb();
 
-    // get article id from req params
+    try {
+        // get article id from req params
+        const articleId = req.params.articleId;
 
-    const articleId = req.params.articleId;
+        // getting item by id from database and store it in result
+        const result = await db.collection("articles").findOne({ "id": articleId });
 
-    // getting item by id from database and store it in result
-    const result = await db.collection("articles").findOne({ "id": articleId });
-
-    // if result is null, show error otherwise show result's data
-    result !== null ?
-        res.status(200).send({ status: 200, data: result }) :
-        res.status(404).send({ status: 404, articleId, message: "Invalid article id" })
+        if (result) {
+            res.status(200).send({ status: 200, data: result })
+        } else {
+            res.status(404).send({ status: 404, message: "Article not found" })
+        }
+    } catch {
+        res.status(500).send({ status: 500, message: "Error" })
+    }
 };
 
 
@@ -138,11 +145,12 @@ const getFavouriteArticles = async (req, res) => {
 
     try {
         const data = await db.collection("favourites").find({ userId: req.params.userId }).toArray();
+
         // send data
-        res.status(200).send({ status: 200, data: data })
+        res.status(200).send({ data: data })
     } catch {
         // send error message
-        res.status(404).send({ status: 404, message: "Not found" })
+        res.status(500).send({ status: 500, message: "Error" })
     }
 };
 
@@ -156,7 +164,7 @@ const getReadLaterArticles = async (req, res) => {
         res.status(200).send({ status: 200, data: data })
     } catch {
         // send error message
-        res.status(404).send({ status: 404, message: "Not found" })
+        res.status(500).send({ status: 500, message: "Error" })
     }
 };
 
@@ -177,8 +185,6 @@ const getCommentsByArticle = async (req, res) => {
 
 const getCommentsByUser = async (req, res) => {
 
-    console.log('test')
-
     const db = await getDb();
 
     try {
@@ -187,7 +193,7 @@ const getCommentsByUser = async (req, res) => {
         res.status(200).send({ status: 200, data: data })
     } catch {
         // send error message
-        res.status(404).send({ status: 404, message: "Not found" })
+        res.status(500).send({ status: 500, message: "Error" })
     }
 };
 
@@ -196,17 +202,21 @@ const addFavourite = async(req, res) => {
     const db = await getDb();
 
     try {
-        await db.collection("favourites").insertOne({
+        const result = await db.collection("favourites").insertOne({
             id: req.params.articleUserId,
             userId: req.body.userId,
             articleId: req.body.articleId,
             article: req.body.articleData
         });
 
-        res.status(201).json({ status: 201 , message: "Added to Favourites" })
+        if (result) {
+            res.status(201).json({ status: 201, message: "Added to Favourites" })
+        } else {
+            res.status(400).json({ status: 400, message: "An unknown error has occurred." })
+        }
     } catch {
         // send error message
-        res.status(404).json({ status: 404, message: "Article not found" });
+        res.status(500).json({ status: 500, message: "Error" });
     }
 };
 
@@ -215,17 +225,21 @@ const addReadLater = async(req, res) => {
     const db = await getDb();
 
     try {
-        await db.collection("read-later").insertOne({
+        const result = await db.collection("read-later").insertOne({
             id: req.params.articleUserId,
             userId: req.body.userId,
             articleId: req.body.articleId,
             article: req.body.articleData
         });
 
-        res.status(201).json({ status: 201 , message: "Added to Read Later" })
+        if (result) {
+            res.status(201).json({ status: 201, message: "Added to Read Later" })
+        } else {
+            res.status(400).json({ status: 400, message: "An unknown error has occurred." })
+        }
     } catch {
         // send error message
-        res.status(404).json({ status: 404, message: "Article not found" });
+        res.status(500).json({ status: 500, message: "Error" });
     }
 };
 
@@ -234,7 +248,7 @@ const addComment = async(req, res) => {
     const db = await getDb();
 
     try {
-        await db.collection("comments").insertOne({
+        const result = await db.collection("comments").insertOne({
             userId: req.body.userId,
             articleId: req.body.articleId,
             user: req.body.user,
@@ -243,10 +257,14 @@ const addComment = async(req, res) => {
             date: req.body.date
         });
 
-        res.status(201).json({ status: 201 , message: "Comment added" })
+        if (result) {
+            res.status(201).json({ status: 201, message: "Added to Read Later" })
+        } else {
+            res.status(400).json({ status: 400, message: "An unknown error has occurred." })
+        }
     } catch {
         // send error message
-        res.status(404).json({ status: 404, message: "Not found" });
+        res.status(500).json({ status: 500, message: "Error" });
     }
 };
 
@@ -255,12 +273,16 @@ const deleteFavourite = async(req, res) => {
     const db = await getDb();
 
     try {
-        await db.collection("favourites").deleteOne({ id: req.params.articleUserId });
+        const result = await db.collection("favourites").deleteOne({ id: req.params.articleUserId });
 
-        res.status(201).json({ status: 201 , message: "Deleted from Favourites" })
+        if (result) {
+            res.status(201).json({ status: 201 , message: "Deleted from Favourites" })
+        } else {
+            res.status(400).json({ status: 404, message: "Article found" });
+        }
     } catch {
         // send error message
-        res.status(404).json({ status: 404, message: "Article not found" });
+        res.status(500).json({ status: 500, message: "Error" });
     }
 };
 
@@ -269,12 +291,15 @@ const deleteReadLater = async(req, res) => {
     const db = await getDb();
 
     try {
-        await db.collection("read-later").deleteOne({ id: req.params.articleUserId });
+        const result = await db.collection("read-later").deleteOne({ id: req.params.articleUserId });
 
-        res.status(201).json({ status: 201 , message: "Deleted from Read Later" })
+        if (result) {
+            res.status(201).json({ status: 201 , message: "Deleted from Read Later" })
+        } else {
+            res.status(400).json({ status: 404, message: "Article not found" });
+        }
     } catch {
-        // send error message
-        res.status(404).json({ status: 404, message: "Article not found" });
+        res.status(500).json({ status: 500, message: "Error" });
     }
 };
 

@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import { useState } from "react";
+import PageChanger from "./PageChanger";
 
 const Filters = ({
     doSearch,
     page,
+    pageCount,
+    itemCount,
     continent,
     setContinent,
     region,
@@ -41,107 +44,112 @@ const Filters = ({
     }
     
     return (
-        <FilterBox>
-            <FilterTitle>Filters</FilterTitle>
-            <FilterDiv>
-                <FilterBy>Continents</FilterBy>
-                {continents.map((item, index) => {
-                    return (
-                        <div key={index}>
-                            <Input
-                            onChange={(e) => {
-                                if (e.target.checked && !localContinent.includes(item)) {
-                                    setLocalContinent([...localContinent, item]);
-                                } else if(!e.target.checked && localContinent.includes(item)) {
-                                    setLocalContinent(localContinent.filter(val => val !== item));
-                                }
-                            }}
-                            checked={localContinent.includes(item)}
-                            type="checkbox"
-                            id={item}
-                        />
-                            <Label htmlFor={item}>{item}</Label>
-                        </div>
-                    )
-                })}
-            </FilterDiv>
-
-            <FilterDiv>
-                <FilterBy>Regions</FilterBy>
-                {regions.map((item, index) => {
-                    return (
-                        <div key={index}>
-                            <Input
+        <>
+            <FilterBox>
+                <FilterTitle>Filters</FilterTitle>
+                <FilterDiv>
+                    <FilterBy>Continents</FilterBy>
+                    {continents.map((item, index) => {
+                        return (
+                            <div key={index}>
+                                <Input
                                 onChange={(e) => {
-                                    if (e.target.checked && !localRegion.includes(item)) {
-                                        setLocalRegion([...localRegion, item]);
-                                    } else if(!e.target.checked && localRegion.includes(item)) {
-                                        setLocalRegion(localRegion.filter(val => val !== item));
+                                    if (e.target.checked && !localContinent.includes(item)) {
+                                        setLocalContinent([...localContinent, item]);
+                                    } else if(!e.target.checked && localContinent.includes(item)) {
+                                        setLocalContinent(localContinent.filter(val => val !== item));
                                     }
                                 }}
-                                checked={localRegion.includes(item)}
+                                checked={localContinent.includes(item)}
                                 type="checkbox"
                                 id={item}
                             />
-                            <Label htmlFor={item}>{item}</Label>
-                        </div>
-                    )
-                })}
-            </FilterDiv>
-            
-            <FilterDiv>
-                <FilterBy>Countries</FilterBy>
-                {countries.map((item, index) => {
-                    return (
-                        <div key={index}>
-                            <Input
-                                onChange={(e) => {
-                                    if (e.target.checked && !localCountry.includes(item)) {
-                                        setLocalCountry([...localCountry, item]);
-                                    } else if(!e.target.checked && localCountry.includes(item)) {
-                                        setLocalCountry(localCountry.filter(val => val !== item));
-                                    }
-                                }}
-                                checked={localCountry.includes(item)}
-                                type="checkbox"
-                                id={item}
-                            />
-                            <Label htmlFor={item}>{item}</Label>
-                        </div>
-                    )
-                })}
-            </FilterDiv>
+                                <Label htmlFor={item}>{item}</Label>
+                            </div>
+                        )
+                    })}
+                </FilterDiv>
 
-            <FilterDiv>
-                <FilterBy>Article Type</FilterBy>
-                {articleTypes.map((item, index) => {
-                    return (
-                        <div key={index}>
-                            <Input
-                                onChange={(e) => {
-                                    console.log('item', item)
-                                    console.log('localArticleType', localArticleType)
-                                    console.log('e target', e.target)
-                                    if (e.target.checked && !localArticleType.includes(item)) {
-                                        setLocalArticleType([...localArticleType, item]);
-                                    } else if(!e.target.checked && localArticleType.includes(item)) {
-                                        setLocalArticleType(localArticleType.filter(val => val !== item));
-                                    }
-                                }}
-                                checked={localArticleType.includes(item)}
-                                type="checkbox"
-                                id={item}
-                            />
-                            <Label htmlFor={item}>{item}</Label>
-                        </div>
-                    )
-                })}
-            </FilterDiv>
+                <FilterDiv>
+                    <FilterBy>Regions</FilterBy>
+                    {regions.map((item, index) => {
+                        return (
+                            <div key={index}>
+                                <Input
+                                    onChange={(e) => {
+                                        if (e.target.checked && !localRegion.includes(item)) {
+                                            setLocalRegion([...localRegion, item]);
+                                        } else if(!e.target.checked && localRegion.includes(item)) {
+                                            setLocalRegion(localRegion.filter(val => val !== item));
+                                        }
+                                    }}
+                                    checked={localRegion.includes(item)}
+                                    type="checkbox"
+                                    id={item}
+                                />
+                                <Label htmlFor={item}>{item}</Label>
+                            </div>
+                        )
+                    })}
+                </FilterDiv>
+                
+                <FilterDiv>
+                    <FilterBy>Countries</FilterBy>
+                    {countries.map((item, index) => {
+                        return (
+                            <div key={index}>
+                                <Input
+                                    onChange={(e) => {
+                                        if (e.target.checked && !localCountry.includes(item)) {
+                                            setLocalCountry([...localCountry, item]);
+                                        } else if(!e.target.checked && localCountry.includes(item)) {
+                                            setLocalCountry(localCountry.filter(val => val !== item));
+                                        }
+                                    }}
+                                    checked={localCountry.includes(item)}
+                                    type="checkbox"
+                                    id={item}
+                                />
+                                <Label htmlFor={item}>{item}</Label>
+                            </div>
+                        )
+                    })}
+                </FilterDiv>
 
-            <Button onClick={handleApplyFilters}>
-                Apply filters
-            </Button>
-        </FilterBox>
+                <FilterDiv>
+                    <FilterBy>Article Type</FilterBy>
+                    {articleTypes.map((item, index) => {
+                        return (
+                            <div key={index}>
+                                <Input
+                                    onChange={(e) => {
+                                        console.log('item', item)
+                                        console.log('localArticleType', localArticleType)
+                                        console.log('e target', e.target)
+                                        if (e.target.checked && !localArticleType.includes(item)) {
+                                            setLocalArticleType([...localArticleType, item]);
+                                        } else if(!e.target.checked && localArticleType.includes(item)) {
+                                            setLocalArticleType(localArticleType.filter(val => val !== item));
+                                        }
+                                    }}
+                                    checked={localArticleType.includes(item)}
+                                    type="checkbox"
+                                    id={item}
+                                />
+                                <Label htmlFor={item}>{item}</Label>
+                            </div>
+                        )
+                    })}
+                </FilterDiv>
+
+                <Button onClick={handleApplyFilters}>
+                    Apply filters
+                </Button>
+            </FilterBox>
+            <PageChangerDiv>
+                <PageChanger page={page} pageCount={pageCount} itemCount={itemCount} doSearch={doSearch}/>
+            </PageChangerDiv>
+        </>
     )
 }
 
@@ -149,6 +157,7 @@ const FilterBox = styled.div`
     width: 180px;
     padding: 0 25px;
     border: 1px solid lightgrey;
+    max-height: 1150px;
 
     @media (max-width: 1100px) {
         margin-bottom: 50px;
@@ -202,6 +211,16 @@ const Button = styled.button`
 
     :hover {
         cursor: pointer;
+    }
+`;
+
+const PageChangerDiv = styled.div`
+    display: none;
+    width: 100%;
+
+    @media (max-width: 1100px) {
+        display: flex;
+        justify-content: center;
     }
 `;
 
