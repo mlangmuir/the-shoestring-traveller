@@ -142,7 +142,7 @@ const Input = styled.input`
 
 const List = styled.ul`
     z-index: 999;
-    width: 550px;
+    width: 460px;
     border: 1px solid white;
     border-radius: 5px;
     box-shadow: 0 3px 6px 0 lightgrey;
@@ -150,10 +150,6 @@ const List = styled.ul`
     position: absolute;
     margin-top: 50px;
     list-style: none;
-
-    @media (max-width: 900px) {
-        width: 450px;
-    }
 
     @media (max-width: 600px) {
         width: 80%;

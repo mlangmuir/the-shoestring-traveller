@@ -40,6 +40,8 @@ const Wrapper = styled.div`
 const Title = styled.h1`
     margin-top: 75px;
     margin-bottom: 50px;
+    font-family: 'Forum', cursive;
+    font-size: 48px;
 
     @media (max-width: 550px) {
         text-align: center;
