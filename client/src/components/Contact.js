@@ -99,11 +99,11 @@ const Form = styled.form`
 `;
 
 const Title = styled.h1`
-    font-weight: bold;
-    font-size: 42px;
+    font-size: 52px;
     color: white;
     text-align: center;
     margin-top: -5px;
+    font-family: 'Forum', cursive;
 
     @media (max-width: 500px) {
         font-size: 36px;
@@ -111,10 +111,11 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-    font-size: 20px;
+    font-size: 24px;
     color: white;
     text-align: justify;
     margin-top: 20px;
+    font-family: 'Forum', cursive;
 
     @media (max-width: 500px) {
         font-size: 20px;

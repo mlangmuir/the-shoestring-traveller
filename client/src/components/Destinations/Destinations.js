@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { Context } from "../../Context";
 import LoadingPage from "../LoadingPage";
 import { useEffect } from "react";
+import desertBg from "../../assets/desert-bg.jpg";
 
 const Destinations = () => {
 
@@ -20,10 +21,17 @@ const Destinations = () => {
     return (
         <>
             {!isLoading
-            ? <Wrapper>
+            ? <Wrapper style={{
+                    backgroundImage: `url(${desertBg})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat'
+            }}>
+
                 <Title>Discover your dream destination!</Title>
                 <Maps />
                 <Continents />
+                
             </Wrapper>
             : <LoadingPage />
             }
@@ -38,10 +46,13 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
+    color: white;
+    z-index: 1;
     margin-top: 75px;
     margin-bottom: 50px;
+    text-align: center;
     font-family: 'Forum', cursive;
-    font-size: 48px;
+    font-size: 56px;
 
     @media (max-width: 550px) {
         text-align: center;

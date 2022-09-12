@@ -96,6 +96,7 @@ const Maps = () => {
 
 
 const MapDiv = styled.div`
+    z-index: 1;
     width: 80%;
     display: flex;
     justify-content: center;
@@ -284,12 +285,14 @@ const RegionImage = styled.img`
 `;
 
 const RegionText = styled.p`
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 3px;
     color: #050a30;
     text-align: center;
     width: 100%;
     font-weight: 700;
+    color: white;
+    font-family: 'Forum', cursive;
 
     @media (max-width: 1150px) {
         font-size: 10px;
@@ -300,11 +303,7 @@ const RegionText = styled.p`
 const Map = styled.img`
     z-index: 0;
     width: 80%;
-    opacity: 40%;
-
-    @media (max-width: 1150px) {
-        width: 95%;
-    }
+    opacity: 60%;
 `;
 
 export default Maps;

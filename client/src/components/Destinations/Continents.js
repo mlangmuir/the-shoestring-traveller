@@ -57,11 +57,20 @@ const Continents = () => {
 
 
 const ContinentDiv = styled.div`
-    width: 75%;
+    z-index: 1;
+    width: 95%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
+
+    @media (max-width: 1432px) {
+        width: 70%;
+    }
+
+    @media (max-width: 950px) {
+        width: 95%;
+    }
 `;
 
 const ContinentWrapper = styled.div`
@@ -78,13 +87,9 @@ const ContinentWrapper = styled.div`
 const ContinentText = styled.h2`
     z-index: 2;
     color: white;
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 700;
     position: absolute;
-
-    @media (max-width: 550px) {
-        font-size: 28px;
-    }
 `;
 
 const CoverShade = styled.div`
@@ -94,26 +99,17 @@ const CoverShade = styled.div`
     position: absolute;
     background-color: black;
     opacity: 40%;
-    width: 450px;
-    height: 225px;
     margin: 20px;
-
-    @media (max-width: 550px) {
-        width: 300px;
-        height: 150px;
-    }
+    width: 300px;
+    height: 180px;
 `;
 
 const Continent = styled.img`
     z-index: 0;
-    width: 450px;
-    height: 225px;
     margin: 20px;
-
-    @media (max-width: 550px) {
-        width: 300px;
-        height: 150px;
-    }
+    width: 300px;
+    height: 180px;
+    object-fit: cover;
 `;
 
 export default Continents;
