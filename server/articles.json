@@ -737,10 +737,25 @@
             },
         "paragraphs": [
             {
-                "subHeading": "",
-                "imgSrc": "",
-                "imgCaption": "",
-                "text": ""
+                "text": "My visit to the Apartheid Museum in Johannesburg was an emotional experience. Being a biracial person, the topic of race has always been something I have felt uncomfortable about. Moreover, I have always felt like I didn’t have a single identity to cling on to. The way I dealt with this was by convincing myself that race didn’t matter and that nobody is defined by their race."
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145494/Article%20Photos%20-%20The%20Shoestring%20Traveller/Apartheid%20Museum/IMG_5725_izonjz.jpg",
+                "imgCaption": "A white identity card from the apartheid era.",
+                "text": "When I browsed through the museum and revisited South Africa’s dark past where people were defined and categorized based on the colour of their skin, it hit a soft spot for me."
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145493/Article%20Photos%20-%20The%20Shoestring%20Traveller/Apartheid%20Museum/IMG_5722_wnfppn.jpg",
+                "imgCaption": "Spoken by a white South African politician in the House of Assembly Debates in 1950.",
+                "text": "As I made my way from wall to wall, I found myself either cringing or dropping my jaw in horror. Although I had studied apartheid in university, the reality of the system struck me hard after seeing the gruesome images of the regime’s brutality. To think that this racist, oppressive and discriminatory system was in place just twenty-five years before my visit was appalling to me."
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145495/Article%20Photos%20-%20The%20Shoestring%20Traveller/Apartheid%20Museum/IMG_5760_hpwfbx.jpg",
+                "text": "On a lighter note, the museum did dedicate a large portion of its exhibitions to celebrating the legacy of Nelson Mandela, a figure that is revered as one of the key actors to bring an end to apartheid. The Mandela Exhibition shares the incredible life of the former South African president as a prisoner, negotiator, statesman and leader."
+            },
+            {
+                "imgSrc": "https://res.cloudinary.com/didxdrmjj/image/upload/v1662145495/Article%20Photos%20-%20The%20Shoestring%20Traveller/Apartheid%20Museum/IMG_5753_cr1309.jpg",
+                "text": "Despite the exhibitions portraying the brutality of the apartheid regime, I still believe that Apartheid Museum is a must-visit site for anyone visiting Johannesburg. It is especially perfect for history buffs such as myself, who are interested in truly understanding South Africa’s history and its people."
             }
         ],
         "articleType": "Tourist Attractions",
