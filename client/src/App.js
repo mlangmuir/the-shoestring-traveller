@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import About from "./components/About";
 import Destinations from "./components/Destinations/Destinations";
-import TravelTips from "./components/TravelTips";
+import TravelTips from "./components/TravelTips/TravelTips";
 import Contact from "./components/Contact";
 import Article from "./components/Article/Article";
 import ErrorPage from "./components/ErrorPage";
@@ -26,7 +26,7 @@ const App = () => {
             <Route exact path="/destinations" element={<Destinations />} />
             <Route exact path="/travel-tips" element={<TravelTips />} />
             <Route exact path="/contact" element={<Contact />} />
-            <Route exact path="articles/id/:articleId" element={<Article />} />
+            <Route exact path="/articles/id/:articleId" element={<Article />} />
             <Route exact path="/articles" element={<ListingPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>

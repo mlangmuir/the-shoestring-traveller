@@ -15,6 +15,19 @@ const Provider = ({ children }) => {
     const [profileTab, setProfileTab] = useState("profile");
     const [articleComments, setArticleComments] = useState([]);
     const [displayValue, setDisplayValue] = useState("");
+    const [travelTipArticles, setTravelTipArticles] = useState([]);
+
+    // fetches only travel tip articles
+    useEffect(() => {
+        setIsLoading(true);
+        console.log(travelTipArticles)
+        fetch("/api/articles?articleType=Travel%20Tips")
+            .then((res) => res.json())
+            .then((data) => {
+                setIsLoading(false);
+                setTravelTipArticles(data.data);
+            })
+    },[]);
 
     useEffect(() => {
         setIsLoading(true);
@@ -47,7 +60,9 @@ const Provider = ({ children }) => {
                 articleComments,
                 setArticleComments,
                 displayValue,
-                setDisplayValue
+                setDisplayValue,
+                travelTipArticles,
+                setTravelTipArticles
             }}
         >
             {children}

@@ -9,14 +9,14 @@ import desertBg from "../../assets/desert-bg.jpg";
 
 const Destinations = () => {
 
-    const { isLoading, setIsLoading } = useContext(Context);
-    
+    const { isLoading, setIsLoading } = useContext(Context)
+
     useEffect(() => {
-        setIsLoading(true)
+        setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false);
-        }, 500)
-    }, [])
+        }, 300)
+    },[])
 
     return (
         <>
@@ -27,11 +27,9 @@ const Destinations = () => {
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat'
             }}>
-
                 <Title>Discover your dream destination!</Title>
                 <Maps />
                 <Continents />
-                
             </Wrapper>
             : <LoadingPage />
             }

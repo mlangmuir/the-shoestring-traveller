@@ -40,7 +40,7 @@ const Comments = () => {
                                     <ArticleTitle>Commented on <Span onClick={()=> navigate(`/articles/id/${item?.article?.id}`)}>{item?.article?.title}</Span></ArticleTitle>
                                     <Date>{item?.date}</Date>
                                 </TextDiv>
-                                <Image src={item?.article?.coverImgSrc?.imgSrc} />
+                                <Image src={item?.article?.coverImgSrc?.imgSrc} onClick={()=> navigate(`/articles/id/${item?.article?.id}`)}/>
                             </CommentWrapper>
                         )
                     })}

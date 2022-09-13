@@ -4,6 +4,9 @@ import vicFalls from "../assets/vic-falls.JPG";
 import boKaap from "../assets/bo-kaap-background.JPG";
 import countriesVisitedMap from "../assets/countries-visited.png";
 import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import LoadingPage from "./LoadingPage";
+import { Context } from "../Context";
 
 const About = () => {
 
@@ -14,8 +17,19 @@ const About = () => {
         window.scrollTo(0,0);
     }
 
+    const { isLoading, setIsLoading } = useContext(Context)
+
+    useEffect(() => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 300)
+    },[])
+
     return (
-        <Wrapper>
+        <>
+        {!isLoading
+        ? <Wrapper>
             <TitleDiv>
                 <TitleBox />
                 <Title>Meet the Shoestring Traveller</Title>
@@ -23,8 +37,9 @@ const About = () => {
             </TitleDiv>
             <AboutDiv>
                 <AboutTitle>Hello, I'm Matt!</AboutTitle>
-                <Paragraph>I am a web developer and avid traveller who has travelled to 27 countries across 5 continents. I have managed to do most of my travelling on a shoestring budget and I am here to help you do the same!</Paragraph>
-                <Paragraph>I love travelling because I believe it is the best way to get out of your comfort zone and try to gain an understand our our complicated but wonderful world.</Paragraph>
+                <Paragraph>I am a web developer and avid traveller who has been to 27 countries across 5 continents. I love travelling because I believe it is the best way to get out of your comfort zone and try to gain an understand of our complicated but wonderful world.</Paragraph>
+                <Paragraph>Although I have been to many places, I have managed to do so by travelling on a shoestring budget. I believe that by making smart budget-friendly decisions, you can experience more for less!</Paragraph>
+                <Paragraph>So take a look at my travel tips and book your next budget vacation! There is simply too much in the world to see to stay in one place. As the French composer Gustave Nadaud once said, "To stay is to exist, but to travel, is to live."</Paragraph>
                 <Button onClick={handleClickContact}>Contact me</Button>
             </AboutDiv>
             <QuoteDiv>
@@ -44,6 +59,9 @@ const About = () => {
                 <Map src={countriesVisitedMap} alt="Map of countries visited by the Shoestring Traveller." />
             </MapDiv>
         </Wrapper>
+        : <LoadingPage />
+        }
+        </>
     )
 }
 
@@ -212,6 +230,7 @@ const VicFallsImageDiv = styled.div`
     @media (max-width: 900px) {
         margin: 0;
         justify-content: center;
+        margin-top: 50px;
     }
 `;
 
@@ -236,6 +255,7 @@ const BoKaapImageDiv = styled.div`
     @media (max-width: 900px) {
         margin: 0;
         justify-content: center;
+        margin-top: 50px;
     }
 `;
 
@@ -269,6 +289,10 @@ const MapTitle = styled.h2`
 const Map = styled.img`
     width: 80%;
     margin-bottom: 100px;
+
+    @media (max-width: 900px) {
+        width: 95%;
+    }
 `;
 
 export default About;
