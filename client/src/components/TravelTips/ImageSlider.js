@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Context } from "../../Context";
@@ -89,6 +89,10 @@ const ArrowLeft = styled.div`
     :hover {
         cursor: pointer;
     }
+
+    @media (max-width: 600px) {
+        margin-left: 5px;
+    }
 `;
 
 const ArrowRight = styled.div`
@@ -96,6 +100,10 @@ const ArrowRight = styled.div`
 
     :hover {
         cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+        margin-right: 5px;
     }
 `;
 
@@ -110,14 +118,39 @@ const TextDiv = styled.div`
     flex-direction: column;
     text-align: center;
     align-items: center;
+
+    @media (max-width: 1200px) {
+        width: 60%;
+    }
+
+    @media (max-width: 800px) {
+        width: 65%;
+    }
 `;
 
 const Title = styled.h1`   
     font-size: 48px;
+
+    @media (max-width: 800px) {
+        font-size: 32px;
+        margin-bottom: -10px;
+    }
 `;
 
 const Paragraph = styled.p`
     font-size: 28px;
+
+    @media (max-width: 1200px) {
+        font-size: 24px;
+    }
+
+    @media (max-width: 800px) {
+        margin-bottom: -10px;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 20px;
+    }
 `;
 
 const Button = styled.button`

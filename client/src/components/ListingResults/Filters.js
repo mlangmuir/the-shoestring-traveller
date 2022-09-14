@@ -123,9 +123,6 @@ const Filters = ({
                             <div key={index}>
                                 <Input
                                     onChange={(e) => {
-                                        console.log('item', item)
-                                        console.log('localArticleType', localArticleType)
-                                        console.log('e target', e.target)
                                         if (e.target.checked && !localArticleType.includes(item)) {
                                             setLocalArticleType([...localArticleType, item]);
                                         } else if(!e.target.checked && localArticleType.includes(item)) {

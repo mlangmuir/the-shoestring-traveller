@@ -116,8 +116,6 @@ const ListingPage = () => {
         filtersLabel = [...continent, ...region, ...country, ...articleType];
     }
 
-    console.log(filtersLabel)
-
     // dividing total item count by items per page to get total # of pages
     const totalPages = Math.ceil(itemCount / 10);
 

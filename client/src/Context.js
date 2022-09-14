@@ -20,7 +20,6 @@ const Provider = ({ children }) => {
     // fetches only travel tip articles
     useEffect(() => {
         setIsLoading(true);
-        console.log(travelTipArticles)
         fetch("/api/articles?articleType=Travel%20Tips")
             .then((res) => res.json())
             .then((data) => {
@@ -31,7 +30,7 @@ const Provider = ({ children }) => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`/api/allArticles`)
+        fetch(`/api/articles`)
             .then((res) => res.json())
             .then((data) => {
                 setAllArticles(data.data);

@@ -180,6 +180,10 @@ const FeaturedItem = styled.div`
     @media (max-width: 850px) {
         padding: 20px 12px;
     }
+
+    @media (max-width: 400px) {
+        padding: 20px 0px;
+    }
 `;
 
 const FeaturedPhoto = styled.img`
@@ -190,30 +194,6 @@ const FeaturedPhoto = styled.img`
 const FeaturedCaption = styled.p`
     text-align: center;
     font-weight: bold;
-`;
-
-const PostersWrapper = styled.div`
-    margin: 100px 0;
-    width: 80%;
-    display: flex;
-    justify-content: space-evenly;
-
-    @media (max-width: 1400px) {
-        width: 100%;
-    }
-
-    @media (max-width: 1100px) {
-        flex-direction: column;
-        align-items: center;
-    }
-`;
-
-const Poster = styled.img`
-    height: 400px;
-
-    @media (max-width: 1100px) {
-        margin-bottom: 50px;
-    }
 `;
 
 export default Home;

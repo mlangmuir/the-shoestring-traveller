@@ -75,6 +75,10 @@ const Wrapper = styled.div`
 const SitesDiv = styled.div`
     width: 60%;
     margin: 50px 0;
+
+    @media (max-width: 750px) {
+        width: 80%;
+    }
 `;
 
 const Title = styled.h1`
@@ -94,6 +98,10 @@ const SiteDiv = styled.div`
     display: flex;
     align-items: center;
     border-bottom: 1px dotted lightgrey;
+
+    @media (max-width: 1100px) {
+        flex-direction: column;
+    }
 `;
 
 const Image = styled.img`
@@ -104,6 +112,10 @@ const Text = styled.p`
     margin-left: 60px;
     font-size: 20px;
     text-align: justify;
+
+    @media (max-width: 1100px) {
+        margin-left: 0;
+    }
 `;
 
 export default TravelTips;

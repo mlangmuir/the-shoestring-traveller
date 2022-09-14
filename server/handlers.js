@@ -1,23 +1,7 @@
 const { getDb } = require('./db');
 
 
-const getAllArticles = async (req, res) => {
-
-    const db = await getDb();
-
-    try {
-        // get all articles from database
-        const data = await db.collection("articles").find({}).toArray();
-
-        if (data) {
-            res.status(200).send({ status: 200, data: data })
-        } else {
-            res.status(404).send({ status: 404, message: "Not found" })
-        }
-    } catch {
-        res.status(500).send({ status: 500, message: "Error" })
-    }
-};
+// USER HANDLERS
 
 const getArticles = async (req, res) => {
 
@@ -303,4 +287,67 @@ const deleteReadLater = async(req, res) => {
     }
 };
 
-module.exports = { getAllArticles, getArticles, getArticleById, getCommentsByArticle, getCommentsByUser, addFavourite, addReadLater, addComment, deleteFavourite, deleteReadLater, getFavouriteArticles, getReadLaterArticles };
+
+// ADMIN HANDLERS
+
+const addArticle = async(req, res) => {
+
+    const db = await getDb();
+
+    try {
+        const result = await db.collection("articles").insertOne({
+            id: req.body.id,
+            title: req.body.title,
+            date: req.body.date,
+            coverImgSrc: req.body.coverImgSrc,
+            paragraphs: req.body.paragraphs,
+            articleType: req.body.articleType,
+            featured: req.body.featured,
+            continent: req.body.continent,
+            region: req.body.region,
+            country: req.body.country
+        });
+
+        if (result) {
+            res.status(201).json({ status: 201, message: "Added article successfully" })
+        } else {
+            res.status(400).json({ status: 400, message: "An unknown error has occurred." })
+        }
+    } catch {
+        // send error message
+        res.status(500).json({ status: 500, message: "Error" });
+    }
+};
+
+const deleteArticle = async(req, res) => {
+
+    const db = await getDb();
+
+    try {
+        const result = await db.collection("articles").deleteOne({ id: req.params.articleId });
+
+        if (result) {
+            res.status(201).json({ status: 201 , message: "Deleted article successfully" })
+        } else {
+            res.status(400).json({ status: 404, message: "Article not found" });
+        }
+    } catch {
+        res.status(500).json({ status: 500, message: "Error" });
+    }
+};
+
+module.exports = {
+    getArticles,
+    getArticleById,
+    getCommentsByArticle,
+    getCommentsByUser,
+    addFavourite,
+    addReadLater,
+    addComment,
+    deleteFavourite,
+    deleteReadLater,
+    getFavouriteArticles,
+    getReadLaterArticles,
+    addArticle,
+    deleteArticle
+};

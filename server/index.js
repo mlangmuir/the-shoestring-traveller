@@ -4,7 +4,21 @@ const express = require('express');
 const { auth } = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 const morgan = require('morgan');
-const { getAllArticles, getArticles, getArticleById, addFavourite, addReadLater, deleteFavourite, deleteReadLater, getFavouriteArticles, getReadLaterArticles, addComment, getCommentsByArticle, getCommentsByUser } = require("./handlers");
+const {
+    getArticles,
+    getArticleById,
+    addFavourite,
+    addReadLater,
+    deleteFavourite,
+    deleteReadLater,
+    getFavouriteArticles,
+    getReadLaterArticles,
+    addComment,
+    getCommentsByArticle,
+    getCommentsByUser,
+    addArticle,
+    deleteArticle
+} = require("./handlers");
 
 const PORT = process.env.PORT || 3001;
 
@@ -36,7 +50,8 @@ express()
     .use(express.urlencoded({ extended: false }))
     .use('/', express.static(__dirname + '/'))
 
-    // REST endpoints
+    
+    // USER endpoints
 
     // req.isAuthenticated is provided from the auth router
     .get('/', (req, res) => {
@@ -51,8 +66,6 @@ express()
     .get('/profile', requiresAuth(), (req, res) => {
         res.send(JSON.stringify(req.oidc.user));
     })
-
-    .get("/api/allArticles", getAllArticles)
 
     .get("/api/articles", getArticles)
 
@@ -75,6 +88,13 @@ express()
     .delete("/api/delete-favourite/:articleUserId", deleteFavourite)
 
     .delete("/api/delete-read-later/:articleUserId", deleteReadLater)
+
+
+    // ADMIN ENDPOINTS
+
+    .post("/api/add-article", addArticle)
+
+    .delete("/api/delete-article/:articleId", deleteArticle)
 
     //Invalid route
     .get("*", (req, res) => {

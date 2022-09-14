@@ -25,8 +25,6 @@ const Comments = () => {
         }
     },[user]);
 
-    console.log(userComments)
-
     return (
         <Wrapper>
             <Title>Comments</Title>

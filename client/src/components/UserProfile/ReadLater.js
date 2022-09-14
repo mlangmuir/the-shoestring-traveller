@@ -25,8 +25,6 @@ const ReadLater = () => {
         }
     },[user]);
 
-    console.log(readLaterData)
-
     return (
         <Wrapper>
             <Title>Read Later</Title>

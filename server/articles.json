@@ -763,5 +763,47 @@
         "continent": "Africa",
         "region": "Southern Africa",
         "country": "South Africa"
+    },
+    {
+        "id": "0013",
+        "title": "",
+        "date": "September 13, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": ""
+            },
+        "paragraphs": [
+            {
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            }
+        ],
+        "articleType": "Tourist Attractions",
+        "featured": false,
+        "continent": "North America",
+        "region": "Central America",
+        "country": "Mexico"
+    },
+    {
+        "id": "0014",
+        "title": "",
+        "date": "September 13, 2022",
+        "coverImgSrc":
+            {
+                "imgSrc": ""
+            },
+        "paragraphs": [
+            {
+                "imgSrc": "",
+                "imgCaption": "",
+                "text": ""
+            }
+        ],
+        "articleType": "Tourist Attractions",
+        "featured": false,
+        "continent": "Asia",
+        "region": "East Asia",
+        "country": "Singapore"
     }
 ]

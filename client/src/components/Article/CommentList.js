@@ -19,8 +19,6 @@ const CommentList = () => {
             })
     },[setArticleComments]);
 
-    console.log(articleComments)
-
     return (
         <>
             {!isLoading
