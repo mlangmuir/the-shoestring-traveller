@@ -9,20 +9,21 @@ const Footer = () => {
 
     const { allArticles, setDisplayValue } = useContext(Context);
 
-    // Create array for continent list in footer
+    // Create array for continents list in footer
     const continents = []
-    allArticles.map((article) => {
-        if (!continents.includes(article.continent)) {
-            continents.push(article.continent)
+    for (let i = 0; i < allArticles.length; i++) {
+        if (!continents.includes(allArticles[i].continent)) {
+            continents.push(allArticles[i].continent);
         }
-    })
+    }
 
+    // Create array for regions list in footer
     const regions = []
-    allArticles.map((article) => {
-        if (!regions.includes(article.region)) {
-            regions.push(article.region)
+    for (let i = 0; i < allArticles.length; i++) {
+        if (!regions.includes(allArticles[i].region)) {
+            regions.push(allArticles[i].region);
         }
-    }) 
+    }
 
     return (
         <Wrapper>

@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useState, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Context } from "../Context";
-import { useEffect } from "react";
 
 const Searchbar = () => {
 

@@ -236,7 +236,6 @@ const Icons = ({ articleData }) => {
     )
 }
 
-
 const IconsWrapper = styled.div`
     display: flex;
     justify-content: center;

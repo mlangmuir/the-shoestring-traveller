@@ -4,10 +4,7 @@ import LoadingPage from "./LoadingPage";
 import { Context } from "../Context";
 import { useContext } from "react";
 import gif404 from "../assets/404.gif"
-import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect } from "react";
 
-// declare errorPage function
 const ErrorPage = () => {
 
     const { isLoading } = useContext(Context);

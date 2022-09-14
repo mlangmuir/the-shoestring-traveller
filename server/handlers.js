@@ -1,7 +1,26 @@
 const { getDb } = require('./db');
+const { v4: uuidv4 } = require('uuid');
 
 
 // USER HANDLERS
+
+const getAllArticles = async (req, res) => {
+
+    const db = await getDb();
+
+    try {
+        // getting item by id from database and store it in result
+        const result = await db.collection("articles").find({}).toArray();
+
+        if (result) {
+            res.status(200).send({ status: 200, data: result })
+        } else {
+            res.status(404).send({ status: 404, message: "Articles not found" })
+        }
+    } catch {
+        res.status(500).send({ status: 500, message: "Error" })
+    }
+};
 
 const getArticles = async (req, res) => {
 
@@ -233,6 +252,7 @@ const addComment = async(req, res) => {
 
     try {
         const result = await db.collection("comments").insertOne({
+            id: uuidv4(),
             userId: req.body.userId,
             articleId: req.body.articleId,
             user: req.body.user,
@@ -252,6 +272,24 @@ const addComment = async(req, res) => {
     }
 };
 
+const deleteComment = async(req, res) => {
+
+    const db = await getDb();
+
+    try {
+        const result = await db.collection("comments").deleteOne({ id: req.params.id });
+
+        if (result) {
+            res.status(201).json({ status: 201 , message: "Comment deleted" })
+        } else {
+            res.status(400).json({ status: 404, message: "Comment not found" });
+        }
+    } catch {
+        // send error message
+        res.status(500).json({ status: 500, message: "Error" });
+    }
+};
+
 const deleteFavourite = async(req, res) => {
 
     const db = await getDb();
@@ -262,7 +300,7 @@ const deleteFavourite = async(req, res) => {
         if (result) {
             res.status(201).json({ status: 201 , message: "Deleted from Favourites" })
         } else {
-            res.status(400).json({ status: 404, message: "Article found" });
+            res.status(400).json({ status: 404, message: "Article not found" });
         }
     } catch {
         // send error message
@@ -337,6 +375,7 @@ const deleteArticle = async(req, res) => {
 };
 
 module.exports = {
+    getAllArticles,
     getArticles,
     getArticleById,
     getCommentsByArticle,
@@ -344,6 +383,7 @@ module.exports = {
     addFavourite,
     addReadLater,
     addComment,
+    deleteComment,
     deleteFavourite,
     deleteReadLater,
     getFavouriteArticles,

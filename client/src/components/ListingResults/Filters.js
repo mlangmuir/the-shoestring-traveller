@@ -154,7 +154,7 @@ const FilterBox = styled.div`
     width: 180px;
     padding: 0 25px;
     border: 1px solid lightgrey;
-    max-height: 1150px;
+    max-height: 1250px;
 
     @media (max-width: 1100px) {
         margin-bottom: 50px;

@@ -23,14 +23,14 @@ const Provider = ({ children }) => {
         fetch("/api/articles?articleType=Travel%20Tips")
             .then((res) => res.json())
             .then((data) => {
-                setIsLoading(false);
                 setTravelTipArticles(data.data);
+                setIsLoading(false);
             })
     },[]);
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`/api/articles`)
+        fetch(`/api/all-articles`)
             .then((res) => res.json())
             .then((data) => {
                 setAllArticles(data.data);

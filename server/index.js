@@ -5,6 +5,7 @@ const { auth } = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 const morgan = require('morgan');
 const {
+    getAllArticles,
     getArticles,
     getArticleById,
     addFavourite,
@@ -14,6 +15,7 @@ const {
     getFavouriteArticles,
     getReadLaterArticles,
     addComment,
+    deleteComment,
     getCommentsByArticle,
     getCommentsByUser,
     addArticle,
@@ -50,7 +52,7 @@ express()
     .use(express.urlencoded({ extended: false }))
     .use('/', express.static(__dirname + '/'))
 
-    
+
     // USER endpoints
 
     // req.isAuthenticated is provided from the auth router
@@ -66,6 +68,8 @@ express()
     .get('/profile', requiresAuth(), (req, res) => {
         res.send(JSON.stringify(req.oidc.user));
     })
+
+    .get("/api/all-articles", getAllArticles)
 
     .get("/api/articles", getArticles)
 
@@ -84,6 +88,8 @@ express()
     .post("/api/add-read-later/:articleUserId", addReadLater)
 
     .post("/api/add-comment/:articleId", addComment)
+
+    .delete("/api/delete-comment/:id", deleteComment)
 
     .delete("/api/delete-favourite/:articleUserId", deleteFavourite)
 

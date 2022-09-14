@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Context } from "../../Context";
 import styled from "styled-components";
 import LoadingPage from "../LoadingPage";
+import CommentMenu from "./CommentMenu";
 
 const CommentList = () => {
 
@@ -25,14 +26,17 @@ const CommentList = () => {
             ? <Wrapper>
                 {articleComments.reverse().map((item, index) => {
                     return (
-                        <CommentWrapper key={index}>
-                            <Image src={item?.user?.picture} />
-                            <TextDiv>
-                                <Name>{item?.user?.name}</Name>
-                                <Date>{item?.date}</Date>
-                                <Comment>{item?.comment}</Comment>
-                            </TextDiv>
-                        </CommentWrapper>
+                        <Container>
+                            <CommentWrapper key={index} className="comment-wrapper">
+                                <Image src={item?.user?.picture} />
+                                <TextDiv>
+                                    <Name>{item?.user?.name}</Name>
+                                    <Date>{item?.date}</Date>
+                                    <Comment>{item?.comment}</Comment>
+                                </TextDiv>
+                            </CommentWrapper>
+                            <CommentMenu commentId={item?.id} />  
+                        </Container>
                     )
                 })}
             </Wrapper>
@@ -45,6 +49,11 @@ const CommentList = () => {
 const Wrapper = styled.div`
     margin-top: 30px;
     overflow: hidden;
+`;
+
+const Container = styled.div`
+    display: flex;
+    justify-content: space-between;
 `;
 
 const CommentWrapper = styled.div`
@@ -68,6 +77,10 @@ const TextDiv = styled.div`
 const Name = styled.p`
     font-size: 16px;
     font-weight: 600;
+
+    @media (max-width: 500px) {
+        font-size: 14px;
+    }
 `;
 
 const Date = styled.p`
@@ -80,6 +93,10 @@ const Comment = styled.p`
     margin-top: -5px;
     text-align: justify;
     font-size: 16px;
+
+    @media (max-width: 500px) {
+        font-size: 14px;
+    }
 `;
 
 export default CommentList;
