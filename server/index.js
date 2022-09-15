@@ -57,7 +57,7 @@ const app = express()
     // if (env === "development") {
     //     app.use('/', express.static(__dirname + '/'))
     // } else {
-        const clientDistPath = path.resolve(__dirname, '../client/build');
+        // const clientDistPath = path.resolve(__dirname, '../client/build');
         // app.get('*', (req, res, next) => {
         //     if (req.path.startsWith('/api/')) {
         //     next();
@@ -67,7 +67,7 @@ const app = express()
     
         //     res.sendFile(path.resolve(clientDistPath, 'index.html'));
         // });
-        app.use(express.static(clientDistPath))
+        // app.use(express.static(clientDistPath))
     // }
 
 
@@ -127,5 +127,12 @@ const app = express()
     //     message: "This is obviously not what you are looking for.",
     //     });
     // })
+
+    const clientDistPath = path.resolve(__dirname, '../client/build');
+    app.use(express.static(clientDistPath))
+
+    console.log('process.env', process.env)
+    console.log('env', env)
+    console.log('clientDistPath', clientDistPath)
 
     app.listen(PORT, () => console.info(`Listening on port ${PORT}`));
