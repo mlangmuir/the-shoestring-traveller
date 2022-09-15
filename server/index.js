@@ -4,6 +4,7 @@ const express = require('express');
 const { auth } = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 const morgan = require('morgan');
+const path = require('path');
 const {
     getAllArticles,
     getArticles,
@@ -24,17 +25,20 @@ const {
 
 const PORT = process.env.PORT || 3001;
 
+const env = process.env.NODE_ENV || "development";
+
 const config = {
     authRequired: false,
     auth0Logout: true,
     secret: 'a long, randomly-generated string stored in env',
-    baseURL: 'http://localhost:3001',
+    baseURL: env === "development" ? 'http://localhost:3001' : "https://theshoestringtraveller.matthewlangmuir.com",
     clientID: 'q8LwvyfY11h98fQHjnHUsx9hP5IkU39I',
     issuerBaseURL: 'https://dev-3g52qn3j.us.auth0.com'
 };
 
-express()
-    .use(function (req, res, next) {
+const app = express()
+
+    app.use(function (req, res, next) {
     res.header(
         'Access-Control-Allow-Methods',
         'OPTIONS, HEAD, GET, PUT, POST, DELETE'
@@ -46,68 +50,73 @@ express()
     next();
     })
     // auth router attaches /login, /logout, and /callback routes to the baseURL
-    .use(auth(config))
-    .use(morgan('tiny'))
-    .use(express.json())
-    .use(express.urlencoded({ extended: false }))
-    .use('/', express.static(__dirname + '/'))
+    app.use(auth(config))
+    app.use(morgan('tiny'))
+    app.use(express.json())
+    app.use(express.urlencoded({ extended: false }))
+    if (env === "development") {
+        app.use('/', express.static(__dirname + '/'))
+    } else {
+        const clientDistPath = path.resolve(__dirname, '../client/build');
+        app.use('/', express.static(clientDistPath))
+    }
 
 
     // USER endpoints
 
     // req.isAuthenticated is provided from the auth router
-    .get('/', (req, res) => {
+    app.get('/', (req, res) => {
         res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
     })
 
-    .get('/loginServer', (req, res) => {
+    app.get('/loginServer', (req, res) => {
         const { login, password } = req.body;
         res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
     })
 
-    .get('/profile', requiresAuth(), (req, res) => {
+    app.get('/profile', requiresAuth(), (req, res) => {
         res.send(JSON.stringify(req.oidc.user));
     })
 
-    .get("/api/all-articles", getAllArticles)
+    app.get("/api/all-articles", getAllArticles)
 
-    .get("/api/articles", getArticles)
+    app.get("/api/articles", getArticles)
 
-    .get("/api/articles/id/:articleId", getArticleById)
+    app.get("/api/articles/id/:articleId", getArticleById)
 
-    .get("/api/article-comments/:articleId", getCommentsByArticle)
+    app.get("/api/article-comments/:articleId", getCommentsByArticle)
 
-    .get("/api/user-comments/:userId", getCommentsByUser)
+    app.get("/api/user-comments/:userId", getCommentsByUser)
 
-    .get("/api/favourites/:userId", getFavouriteArticles)
+    app.get("/api/favourites/:userId", getFavouriteArticles)
 
-    .get("/api/read-later/:userId", getReadLaterArticles)
+    app.get("/api/read-later/:userId", getReadLaterArticles)
 
-    .post("/api/add-favourite/:articleUserId", addFavourite)
+    app.post("/api/add-favourite/:articleUserId", addFavourite)
 
-    .post("/api/add-read-later/:articleUserId", addReadLater)
+    app.post("/api/add-read-later/:articleUserId", addReadLater)
 
-    .post("/api/add-comment/:articleId", addComment)
+    app.post("/api/add-comment/:articleId", addComment)
 
-    .delete("/api/delete-comment/:id", deleteComment)
+    app.delete("/api/delete-comment/:id", deleteComment)
 
-    .delete("/api/delete-favourite/:articleUserId", deleteFavourite)
+    app.delete("/api/delete-favourite/:articleUserId", deleteFavourite)
 
-    .delete("/api/delete-read-later/:articleUserId", deleteReadLater)
+    app.delete("/api/delete-read-later/:articleUserId", deleteReadLater)
 
 
     // ADMIN ENDPOINTS
 
-    .post("/api/add-article", addArticle)
+    app.post("/api/add-article", addArticle)
 
-    .delete("/api/delete-article/:articleId", deleteArticle)
+    app.delete("/api/delete-article/:articleId", deleteArticle)
 
     //Invalid route
-    .get("*", (req, res) => {
+    app.get("*", (req, res) => {
         res.status(404).json({
         status: 404,
         message: "This is obviously not what you are looking for.",
         });
     })
 
-    .listen(PORT, () => console.info(`Listening on port ${PORT}`));
+    app.listen(PORT, () => console.info(`Listening on port ${PORT}`));
