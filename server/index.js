@@ -128,11 +128,6 @@ const app = express()
     //     });
     // })
 
-    const clientDistPath = path.resolve(__dirname, '../client/build');
-    app.use(express.static(clientDistPath))
-
-    console.log('process.env', process.env)
-    console.log('env', env)
-    console.log('clientDistPath', clientDistPath)
+    app.use(express.static('./public_html'))
 
     app.listen(PORT, () => console.info(`Listening on port ${PORT}`));
