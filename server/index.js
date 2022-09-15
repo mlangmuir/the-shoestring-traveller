@@ -67,7 +67,7 @@ const app = express()
     
         //     res.sendFile(path.resolve(clientDistPath, 'index.html'));
         // });
-        app.use('/', express.static(clientDistPath))
+        app.use(express.static(clientDistPath))
     // }
 
 
