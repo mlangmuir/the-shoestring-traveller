@@ -74,14 +74,14 @@ const app = express()
     // USER endpoints
 
     // req.isAuthenticated is provided from the auth router
-    app.get('/', (req, res) => {
-        res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-    })
+    // app.get('/', (req, res) => {
+    //     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+    // })
 
-    app.get('/loginServer', (req, res) => {
-        const { login, password } = req.body;
-        res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-    })
+    // app.get('/loginServer', (req, res) => {
+    //     const { login, password } = req.body;
+    //     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+    // })
 
     app.get('/profile', requiresAuth(), (req, res) => {
         res.send(JSON.stringify(req.oidc.user));
