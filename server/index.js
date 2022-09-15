@@ -54,9 +54,9 @@ const app = express()
     app.use(morgan('tiny'))
     app.use(express.json())
     app.use(express.urlencoded({ extended: false }))
-    if (env === "development") {
-        app.use('/', express.static(__dirname + '/'))
-    } else {
+    // if (env === "development") {
+    //     app.use('/', express.static(__dirname + '/'))
+    // } else {
         const clientDistPath = path.resolve(__dirname, '../client/build');
         // app.get('*', (req, res, next) => {
         //     if (req.path.startsWith('/api/')) {
@@ -68,7 +68,7 @@ const app = express()
         //     res.sendFile(path.resolve(clientDistPath, 'index.html'));
         // });
         app.use('/', express.static(clientDistPath))
-    }
+    // }
 
 
     // USER endpoints
