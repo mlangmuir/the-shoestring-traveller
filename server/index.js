@@ -58,6 +58,15 @@ const app = express()
         app.use('/', express.static(__dirname + '/'))
     } else {
         const clientDistPath = path.resolve(__dirname, '../client/build');
+        app.get('*', (req, res, next) => {
+            if (req.path.startsWith('/api/')) {
+            next();
+    
+            return;
+            }
+    
+            res.sendFile(path.resolve(clientDistPath, 'index.html'));
+        });
         app.use('/', express.static(clientDistPath))
     }
 
