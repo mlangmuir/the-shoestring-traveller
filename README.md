@@ -1,15 +1,29 @@
-# The Shoestring Traveller
+# The Shoestring Traveller - Travel Website
 
-Development:
+For my final project for the Diploma of Full-Stack Web Development at Concordia University, I created a travel website where I share the amazing experiences I have had travelling the world, as well as advice on how to travel on a shoestring budget.
 
-Frontend:
-cd client
-yarn start
+The project demonstrates the knowledge that I acquired through this full-stack program. It uses React.js on the frontend, Node.js on the backend and MongoDB as its database. I also implemented some APIs to the project, such as Auth0 for the sign in component and EmailJS, which allows me to receive emails with form data from the Contact page.
 
-Backend:
-cd server
-nodemon
+The website is currently deployed at the following link: https://theshoestringtraveller.matthewlangmuir.com/
 
-Batch import:
-node < drag batchImport.js here >
-If articles is deleted and re-imported to Mongo, must recreate text index with following object for search bar to work: { "title": "text" }
+## Development mode:
+
+### Frontend:
+- In the terminal, enter `cd client`, `yarn`, and then `yarn start`.
+
+### Backend:
+- `cd server` to enter the backend directory. Install the following dependencies with `yarn add`: mongodb, express, nodemon and morgan. Run the proxy by entering `nodemon` in the terminal.
+
+### Batch import:
+- node << drag batchImport.js here >>
+- Go to articles collection in MongoDB and create text index with following object: { "title": "text" }
+
+## Production mode:
+
+### Frontend:
+- Same as development mode.
+
+### Backend:
+- cd server, NODE_ENV=production yarn start
+
+<img width="1440" alt="Screen Shot 2022-09-15 at 9 48 10 PM" src="https://user-images.githubusercontent.com/96800876/190558761-6392c6ff-285e-4f73-965d-a11b0f1163ec.png">
