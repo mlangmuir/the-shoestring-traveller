@@ -14,8 +14,8 @@ The website is currently deployed at the following link: https://theshoestringtr
 ### Backend:
 - `cd server` to enter the backend directory. Install the following dependencies with `yarn add`: mongodb, express, nodemon and morgan. Run the proxy by entering `nodemon` in the terminal.
 
-### Batch import:
-- node << drag batchImport.js here >>
+### Batch import to MongoDB:
+- All articles need to be imported to the database. In the server folder, run `node << drag batchImport.js file in here >>
 - Go to articles collection in MongoDB and create text index with following object: { "title": "text" }
 
 ## Production mode:
