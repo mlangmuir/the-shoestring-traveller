@@ -31,8 +31,8 @@ const config = {
     authRequired: false,
     auth0Logout: true,
     secret: 'a long, randomly-generated string stored in env',
-    baseURL: env === "development" ? 'http://localhost:3001' : "https://theshoestringtraveller.matthewlangmuir.com",
-    clientID: env === "development" ? 'q8LwvyfY11h98fQHjnHUsx9hP5IkU39I' : 'ODrcPl8Adhu1XDhWUOdjRHAXLChXXB9x',
+    baseURL: env === "production" ? "https://theshoestringtraveller.matthewlangmuir.com" : 'http://localhost:3001',
+    clientID: env === "production" ?  'ODrcPl8Adhu1XDhWUOdjRHAXLChXXB9x' : 'q8LwvyfY11h98fQHjnHUsx9hP5IkU39I',
     issuerBaseURL: 'https://dev-3g52qn3j.us.auth0.com'
 };
 
@@ -54,34 +54,6 @@ const app = express()
     app.use(morgan('tiny'))
     app.use(express.json())
     app.use(express.urlencoded({ extended: false }))
-    // if (env === "development") {
-    //     app.use('/', express.static(__dirname + '/'))
-    // } else {
-        // const clientDistPath = path.resolve(__dirname, '../client/build');
-        // app.get('*', (req, res, next) => {
-        //     if (req.path.startsWith('/api/')) {
-        //     next();
-    
-        //     return;
-        //     }
-    
-        //     res.sendFile(path.resolve(clientDistPath, 'index.html'));
-        // });
-        // app.use(express.static(clientDistPath))
-    // }
-
-
-    // USER endpoints
-
-    // req.isAuthenticated is provided from the auth router
-    // app.get('/', (req, res) => {
-    //     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-    // })
-
-    // app.get('/loginServer', (req, res) => {
-    //     const { login, password } = req.body;
-    //     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-    // })
 
     app.get('/profile', requiresAuth(), (req, res) => {
         res.send(JSON.stringify(req.oidc.user));
