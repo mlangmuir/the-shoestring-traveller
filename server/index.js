@@ -32,7 +32,7 @@ const config = {
     auth0Logout: true,
     secret: 'a long, randomly-generated string stored in env',
     baseURL: env === "development" ? 'http://localhost:3001' : "https://theshoestringtraveller.matthewlangmuir.com",
-    clientID: env === 'q8LwvyfY11h98fQHjnHUsx9hP5IkU39I',
+    clientID: 'q8LwvyfY11h98fQHjnHUsx9hP5IkU39I',
     issuerBaseURL: 'https://dev-3g52qn3j.us.auth0.com'
 };
 
