@@ -99,7 +99,7 @@ const app = express()
             next();
             return;
         }
-        res.sendFile('./public_html/index.html');
+        res.sendFile(path.resolve('./public_html/index.html'));
     });
 
     app.listen(PORT, () => console.info(`Listening on port ${PORT}`));
