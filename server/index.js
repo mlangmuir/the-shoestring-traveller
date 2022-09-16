@@ -101,5 +101,14 @@ const app = express()
     // })
 
     app.use(express.static('./public_html'))
+    app.get('*', (req, res, next) => {
+        if (req.path.startsWith('/api/')) {
+            next();
+            return;
+        }
+        res.sendFile('./public_html/index.html');
+    });
+
+    app.use(express.static('./public_html'))
 
     app.listen(PORT, () => console.info(`Listening on port ${PORT}`));
