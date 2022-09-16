@@ -1,6 +1,6 @@
 # The Shoestring Traveller - Travel Website
 
-For my final project for the Diploma of Full-Stack Web Development at Concordia University, I created a travel website where I share the amazing experiences I have had travelling the world, as well as advice on how to travel on a shoestring budget.
+For my final project for the Diploma of Full-Stack Web Development at Concordia University, I created a travel website where I share my amazing experiences travelling the world, as well as advice on how to travel on a shoestring budget.
 
 The project demonstrates the knowledge that I acquired through this full-stack program. It uses React.js on the frontend, Node.js on the backend and MongoDB as its database. I also implemented some APIs to the project, such as Auth0 for the sign in component and EmailJS, which allows me to receive emails with form data from the Contact page.
 
