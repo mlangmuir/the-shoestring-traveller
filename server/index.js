@@ -31,8 +31,8 @@ const config = {
     authRequired: false,
     auth0Logout: true,
     secret: 'a long, randomly-generated string stored in env',
-    baseURL: "https://theshoestringtraveller.matthewlangmuir.com",
-    clientID: 'ODrcPl8Adhu1XDhWUOdjRHAXLChXXB9x',
+    baseURL: env === "development" ? 'http://localhost:3001' : "https://theshoestringtraveller.matthewlangmuir.com",
+    clientID: env === "development" ? 'q8LwvyfY11h98fQHjnHUsx9hP5IkU39I' : 'ODrcPl8Adhu1XDhWUOdjRHAXLChXXB9x',
     issuerBaseURL: 'https://dev-3g52qn3j.us.auth0.com'
 };
 
