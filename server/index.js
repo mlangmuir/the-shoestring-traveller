@@ -93,14 +93,15 @@ const app = express()
     app.delete("/api/delete-article/:articleId", deleteArticle)
 
     //Invalid route
-    // app.get("*", (req, res) => {
-    //     res.status(404).json({
-    //     status: 404,
-    //     message: "This is obviously not what you are looking for.",
-    //     });
-    // })
+    app.get("*", (req, res) => {
+        res.status(404).json({
+        status: 404,
+        message: "This is obviously not what you are looking for.",
+        });
+    })
 
     app.use(express.static('./public_html'))
+
     app.get('*', (req, res, next) => {
         if (req.path.startsWith('/api/')) {
             next();
@@ -108,7 +109,5 @@ const app = express()
         }
         res.sendFile('./public_html/index.html');
     });
-
-    app.use(express.static('./public_html'))
 
     app.listen(PORT, () => console.info(`Listening on port ${PORT}`));
