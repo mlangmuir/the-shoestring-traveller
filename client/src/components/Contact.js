@@ -20,7 +20,7 @@ const Contact = () => {
             .then((result) => {
                 setSendSuccess(true);
             }, (error) => {
-                alert("An error has occurred. Please try again!");
+                alert("Sorry! An error has occurred. Please try again!");
             });
     }
 
