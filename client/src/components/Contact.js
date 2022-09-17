@@ -108,6 +108,10 @@ const Title = styled.h1`
     @media (max-width: 500px) {
         font-size: 36px;
     }
+
+    @media (max-height: 600px) {
+        font-size: 28px;
+    }
 `;
 
 const Description = styled.p`
@@ -121,6 +125,11 @@ const Description = styled.p`
         font-size: 20px;
         margin-bottom: 20px;
     }
+
+    @media (max-height: 600px) {
+        font-size: 16px;
+        margin-top: 10px;
+    }
 `;
 
 const InputDiv = styled.div`
@@ -131,6 +140,11 @@ const InputDiv = styled.div`
 
     @media (max-width: 650px) {
         font-size: 20px;
+    }
+
+    @media (max-height: 600px) {
+        font-size: 16px;
+        margin-top: 10px;
     }
 `;
 
@@ -148,6 +162,11 @@ const Input = styled.input`
         font-size: 20px;
         height: 30px;
     }
+
+    @media (max-height: 600px) {
+        height: 20px;
+        font-size: 16px;
+    }
 `;
 
 const TextArea = styled.textarea`
@@ -162,6 +181,11 @@ const TextArea = styled.textarea`
     @media (max-width: 650px) {
         font-size: 20px;
         height: 75px;
+    }
+
+    @media (max-height: 600px) {
+        height: 20px;
+        font-size: 16px;
     }
 `;
 
@@ -178,6 +202,12 @@ const Submit = styled.input`
         cursor: pointer;
         opacity: 75%;
     }
+
+    @media (max-height: 600px) {
+        font-size: 16px;
+        height: 25px;
+        margin-top: 10px;
+    }
 `;
 
 const CoverShade = styled.div`
@@ -192,6 +222,11 @@ const CoverShade = styled.div`
 
     @media (max-width: 650px) {
         width: 100%;
+    }
+
+    @media (max-height: 600px) {
+        height: 350px;
+        font-size: 16px;
     }
 `;
 
