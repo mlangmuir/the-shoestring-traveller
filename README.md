@@ -15,15 +15,16 @@ The website is currently deployed at the following link: https://theshoestringtr
 - `cd server` to enter the backend directory. Install the following dependencies with `yarn add`: mongodb, express, nodemon and morgan. Run the proxy by entering `nodemon` in the terminal.
 
 ### Batch import to MongoDB:
-- All articles need to be imported to the database. In the server folder, run `node << drag batchImport.js file in here >>
-- Go to articles collection in MongoDB and create text index with following object: { "title": "text" }
+- All articles need to be imported to the database. In the server folder, run `node << drag batchImport.js file in here >>`
+- Go to articles collection in MongoDB and create text index with following object: `{ "title": "text" }`
 
 ## Production mode:
 
 ### Frontend:
-- Same as development mode.
+- `yarn build`
 
 ### Backend:
-- cd server, NODE_ENV=production yarn start
+- `cd server`
+- `NODE_ENV=production yarn start`
 
 <img width="1440" alt="Screen Shot 2022-09-15 at 9 48 10 PM" src="https://user-images.githubusercontent.com/96800876/190558761-6392c6ff-285e-4f73-965d-a11b0f1163ec.png">
