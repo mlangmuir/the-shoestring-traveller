@@ -4,8 +4,11 @@ import { Context } from "../../Context";
 import styled from "styled-components";
 import LoadingPage from "../LoadingPage";
 import CommentMenu from "./CommentMenu";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const CommentList = () => {
+
+    const { user } = useAuth0();
 
     const { isLoading, setIsLoading, setArticleComments, articleComments } = useContext(Context);
 
@@ -27,7 +30,8 @@ const CommentList = () => {
                 {articleComments.reverse().map((item, index) => {
                     return (
                         <Container>
-                            <CommentWrapper key={index} className="comment-wrapper">
+                            <CommentWrapper key={index}
+                            style={{paddingRight: item?.userId !== user?.email && "85px"}} >
                                 <Image src={item?.user?.picture} />
                                 <TextDiv>
                                     <Name>{item?.user?.name}</Name>
@@ -35,7 +39,7 @@ const CommentList = () => {
                                     <Comment>{item?.comment}</Comment>
                                 </TextDiv>
                             </CommentWrapper>
-                            <CommentMenu commentId={item?.id} />  
+                            <CommentMenu commentId={item?.id} userId={item?.userId}/> 
                         </Container>
                     )
                 })}

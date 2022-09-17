@@ -10,8 +10,11 @@ import Stack from '@mui/material/Stack';
 import threeDots from '../../assets/three-dots.jpeg';
 import styled from 'styled-components';
 import CommentDialog from './CommentDialog';
+import { useAuth0 } from '@auth0/auth0-react';
 
-const CommentMenu = ({ commentId }) => {
+const CommentMenu = ({ commentId, userId }) => {
+
+    const { user } = useAuth0();
 
     const [open, setOpen] = useState(false);
     const anchorRef = useRef(null);
@@ -44,7 +47,11 @@ const CommentMenu = ({ commentId }) => {
     }
 
     return (
-        <Stack direction="row" spacing={2}>
+        <Stack
+            style={{display: userId !== user?.email && "none"}}
+            direction="row"
+            spacing={2}
+        >
             <CommentDialog
                 openDialog={openDialog}
                 setOpenDialog={setOpenDialog}
