@@ -115,11 +115,6 @@ const Searchbar = () => {
                     })}
                 </List>
             }
-            {value.length >= 1 && filteredSuggestions.length === 0 && isFocus &&
-                <List>
-                    <Suggestion>No results</Suggestion>
-                </List>
-            }
         </Wrapper>
     )
 }
