@@ -21,6 +21,7 @@ The website is currently deployed at the following link: https://theshoestringtr
 ## Production mode:
 
 ### Frontend:
+- `cd client`
 - `yarn build`
 
 ### Backend:
